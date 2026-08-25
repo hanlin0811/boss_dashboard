@@ -69,10 +69,12 @@ def render():
         return f"{(cur - prev) / prev * 100:+.0f}% vs 上週"
 
     def kpi_row(this_d, last_d):
-        c1, c2, c3 = st.columns(3)
+        c1, c2, c3, c4 = st.columns(4)
         _kpi(c1, "營業額 Sales", f"${this_d['sales']:,.0f}", delta(this_d['sales'], last_d['sales']))
         _kpi(c2, "杯數 Cups", f"{this_d['cups']:,}", delta(this_d['cups'], last_d['cups']))
-        _kpi(c3, "來客 Orders", f"{this_d['tc']:,}", delta(this_d['tc'], last_d['tc']))
+        _kpi(c3, "食物份數 Food Items", f"{this_d.get('food', 0):,}",
+             delta(this_d.get('food', 0), last_d.get('food', 0)))
+        _kpi(c4, "來客 Orders", f"{this_d['tc']:,}", delta(this_d['tc'], last_d['tc']))
 
     st.subheader("本週 This Week（近 7 天）")
     st.markdown("**合計 Total（兩店）**")
