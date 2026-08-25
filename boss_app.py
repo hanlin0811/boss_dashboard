@@ -35,8 +35,17 @@ def check_password() -> bool:
 
 
 @st.cache_data(ttl=300)
-def load_data():
+def _load(_sig):
     return json.loads(DATA.read_text(encoding="utf-8"))
+
+
+def load_data():
+    # 以檔案修改時間當快取鍵：boss_data.json 一更新就自動載入新資料
+    try:
+        sig = DATA.stat().st_mtime_ns
+    except OSError:
+        sig = 0
+    return _load(sig)
 
 
 def _kpi(col, label, value, delta=None):
