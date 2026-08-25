@@ -52,6 +52,33 @@ def _kpi(col, label, value, delta=None):
     col.metric(label, value, delta)
 
 
+def _avg_ticket(x):
+    return x["sales"] / x["tc"] if x.get("tc") else 0
+
+
+def find_alerts(daily, stores, lookback=10, hist_days=28):
+    """從每日序列自動抓紅燈：營業額 0、食物 0（有賣飲料卻沒食物）、單日暴跌。
+    回傳 [(date, store, level, msg)]，level: 'red' / 'amber'。"""
+    alerts = []
+    for store in stores:
+        rows = daily.get(store, [])
+        if not rows:
+            continue
+        hist = rows[-hist_days:]
+        svals = sorted(r["sales"] for r in hist if r["sales"])
+        med = svals[len(svals) // 2] if svals else 0
+        for r in rows[-lookback:]:
+            if r["tc"] and not r["sales"]:
+                alerts.append((r["date"], store, "red", "營業額 $0（可能未匯入或休店）"))
+            elif r["sales"] and r["cups"] and not r.get("food", 0):
+                alerts.append((r["date"], store, "amber", "食物份數 0（可能漏記錄）"))
+            if med and r["sales"] and r["sales"] < 0.6 * med:
+                alerts.append((r["date"], store, "amber",
+                               f"營業額 ${r['sales']:,.0f}，低於近月中位 ${med:,.0f} 的 6 成"))
+    alerts.sort(key=lambda a: a[0], reverse=True)
+    return alerts
+
+
 def render():
     try:
         d = load_data()
@@ -78,12 +105,31 @@ def render():
         return f"{(cur - prev) / prev * 100:+.0f}% vs 上週"
 
     def kpi_row(this_d, last_d):
-        c1, c2, c3, c4 = st.columns(4)
-        _kpi(c1, "營業額 Sales", f"${this_d['sales']:,.0f}", delta(this_d['sales'], last_d['sales']))
-        _kpi(c2, "杯數 Cups", f"{this_d['cups']:,}", delta(this_d['cups'], last_d['cups']))
-        _kpi(c3, "食物份數 Food Items", f"{this_d.get('food', 0):,}",
+        cols = st.columns(6)
+        _kpi(cols[0], "營業額 Sales", f"${this_d['sales']:,.0f}",
+             delta(this_d['sales'], last_d['sales']))
+        _kpi(cols[1], "杯數 Cups", f"{this_d['cups']:,}", delta(this_d['cups'], last_d['cups']))
+        _kpi(cols[2], "食物份數 Food", f"{this_d.get('food', 0):,}",
              delta(this_d.get('food', 0), last_d.get('food', 0)))
-        _kpi(c4, "來客 Orders", f"{this_d['tc']:,}", delta(this_d['tc'], last_d['tc']))
+        _kpi(cols[3], "來客 Orders", f"{this_d['tc']:,}", delta(this_d['tc'], last_d['tc']))
+        at, atl = _avg_ticket(this_d), _avg_ticket(last_d)
+        _kpi(cols[4], "客單價 Avg Ticket", f"${at:,.2f}", delta(at, atl))
+        lab, labl = this_d.get("labor"), last_d.get("labor")
+        if lab:
+            splh = this_d["sales"] / lab
+            d5 = delta(splh, last_d["sales"] / labl) if labl else None
+            _kpi(cols[5], "人效 $/工時", f"${splh:,.1f}", d5)
+        else:
+            _kpi(cols[5], "人效 $/工時", "未匯入")
+
+    # ── 🚦 紅燈警示（近 10 天異常）──
+    alerts = find_alerts(d.get("daily", {}), d["stores"])
+    if alerts:
+        st.subheader("🚦 需要注意 Alerts（近 10 天）")
+        for dt, store, level, msg in alerts:
+            icon = "🔴" if level == "red" else "🟠"
+            st.markdown(f"{icon} **{dt}　{store}**　{msg}")
+        st.divider()
 
     st.subheader("本週 This Week（近 7 天）")
     st.markdown("**合計 Total（兩店）**")
@@ -138,6 +184,43 @@ def render():
         pivot = mdf.pivot_table(index="月份", columns="店別", values="營業額",
                                 aggfunc="sum").fillna(0)
         st.dataframe(pivot.style.format("${:,.0f}"), use_container_width=True)
+
+    # ── 同比 YoY（今年 vs 去年同月）──
+    yrows = []
+    for store in d["stores"]:
+        for r in d["monthly"].get(store, []):
+            ly = r.get("sales_ly")
+            yoy = (r["sales"] - ly) / ly * 100 if ly else None
+            yrows.append({"月份": r["month"], "店別": store,
+                          "今年": r["sales"], "去年同月": ly,
+                          "YoY": round(yoy, 0) if yoy is not None else None})
+    if any(row["去年同月"] for row in yrows):
+        st.subheader("同比 YoY（今年 vs 去年同月）")
+        ydf = pd.DataFrame(yrows)
+
+        def _money(v):
+            return "—" if v is None or pd.isna(v) else f"${v:,.0f}"
+
+        def _yoy_text(v):
+            if v is None or pd.isna(v):
+                return "—"
+            return f"{'▲' if v >= 0 else '▼'} {abs(v):.0f}%"
+
+        def _yoy_color(v):
+            if v is None or pd.isna(v):
+                return "color:#9aa0a6"
+            return ("color:#1a9850;font-weight:700" if v >= 0
+                    else "color:#d73027;font-weight:700")
+
+        cols = st.columns(len(d["stores"]))
+        for col, store in zip(cols, d["stores"]):
+            sub = ydf[ydf["店別"] == store][["月份", "今年", "去年同月", "YoY"]]
+            col.markdown(f"##### {store}")
+            sty = (sub.style
+                   .format({"今年": _money, "去年同月": _money, "YoY": _yoy_text})
+                   .map(_yoy_color, subset=["YoY"]))
+            col.dataframe(sty, hide_index=True, use_container_width=True)
+        st.caption("YoY＝(今年−去年同月) ÷ 去年同月，正成長▲綠、衰退▼紅。去年同月已套用同比修正（如缺失月份）。")
 
     st.divider()
 
