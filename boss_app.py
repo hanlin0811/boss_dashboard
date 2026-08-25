@@ -54,17 +54,32 @@ def render():
     st.title("🧋 營運總覽 Operations")
     st.caption(f"資料更新於 {gen}　·　唯讀 Read-only")
 
-    # ── 本週 KPI（含週比較）──
+    # ── 本週 KPI（合計＋各店，含週比較）──
     tw, lw = d["week"]["this"], d["week"]["last"]
+
+    def _side(side, key):
+        """取某側（this/last）某店或合計的數字；相容舊格式（扁平＝合計）。"""
+        if isinstance(side, dict) and "total" in side:
+            return side.get(key, {"sales": 0, "cups": 0, "tc": 0})
+        return side if key == "total" else {"sales": 0, "cups": 0, "tc": 0}
+
     def delta(cur, prev):
         if not prev:
             return None
         return f"{(cur - prev) / prev * 100:+.0f}% vs 上週"
+
+    def kpi_row(this_d, last_d):
+        c1, c2, c3 = st.columns(3)
+        _kpi(c1, "營業額 Sales", f"${this_d['sales']:,.0f}", delta(this_d['sales'], last_d['sales']))
+        _kpi(c2, "杯數 Cups", f"{this_d['cups']:,}", delta(this_d['cups'], last_d['cups']))
+        _kpi(c3, "來客 Orders", f"{this_d['tc']:,}", delta(this_d['tc'], last_d['tc']))
+
     st.subheader("本週 This Week（近 7 天）")
-    c1, c2, c3 = st.columns(3)
-    _kpi(c1, "營業額 Sales", f"${tw['sales']:,.0f}", delta(tw['sales'], lw['sales']))
-    _kpi(c2, "杯數 Cups", f"{tw['cups']:,}", delta(tw['cups'], lw['cups']))
-    _kpi(c3, "來客 Orders", f"{tw['tc']:,}", delta(tw['tc'], lw['tc']))
+    st.markdown("**合計 Total（兩店）**")
+    kpi_row(_side(tw, "total"), _side(lw, "total"))
+    for store in d["stores"]:
+        st.markdown(f"**{store}**")
+        kpi_row(_side(tw, store), _side(lw, store))
 
     st.divider()
 

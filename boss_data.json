@@ -1408,14 +1408,38 @@
  },
  "week": {
   "this": {
-   "sales": 10914.03,
-   "cups": 995,
-   "tc": 844
+   "Azusa": {
+    "sales": 3955.7,
+    "cups": 448,
+    "tc": 253
+   },
+   "Southridge": {
+    "sales": 6958.33,
+    "cups": 547,
+    "tc": 591
+   },
+   "total": {
+    "sales": 10914.03,
+    "cups": 995,
+    "tc": 844
+   }
   },
   "last": {
-   "sales": 10665.39,
-   "cups": 946,
-   "tc": 817
+   "Azusa": {
+    "sales": 3493.5,
+    "cups": 374,
+    "tc": 229
+   },
+   "Southridge": {
+    "sales": 7171.89,
+    "cups": 572,
+    "tc": 588
+   },
+   "total": {
+    "sales": 10665.39,
+    "cups": 946,
+    "tc": 817
+   }
   }
  }
 }
