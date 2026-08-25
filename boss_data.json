@@ -1,17 +1,11 @@
 {
- "generated_at": "2026-08-23",
+ "generated_at": "2026-08-24",
  "stores": [
   "Azusa",
   "Southridge"
  ],
  "daily": {
   "Azusa": [
-   {
-    "date": "2026-05-25",
-    "sales": 519.87,
-    "cups": 51,
-    "tc": 35
-   },
    {
     "date": "2026-05-26",
     "sales": 459.94,
@@ -539,15 +533,21 @@
     "sales": 597.45,
     "cups": 67,
     "tc": 36
+   },
+   {
+    "date": "2026-08-22",
+    "sales": 455.74,
+    "cups": 52,
+    "tc": 26
+   },
+   {
+    "date": "2026-08-23",
+    "sales": 904.88,
+    "cups": 86,
+    "tc": 52
    }
   ],
   "Southridge": [
-   {
-    "date": "2026-05-25",
-    "sales": 749.74,
-    "cups": 68,
-    "tc": 73
-   },
    {
     "date": "2026-05-26",
     "sales": 589.46,
@@ -1075,6 +1075,18 @@
     "sales": 1094.69,
     "cups": 77,
     "tc": 88
+   },
+   {
+    "date": "2026-08-22",
+    "sales": 1482.74,
+    "cups": 124,
+    "tc": 123
+   },
+   {
+    "date": "2026-08-23",
+    "sales": 1332.3,
+    "cups": 107,
+    "tc": 116
    }
   ]
  },
@@ -1124,9 +1136,9 @@
    },
    {
     "month": "2026-08",
-    "sales": 11532.75,
-    "cups": 1216,
-    "tc": 736
+    "sales": 12893.37,
+    "cups": 1354,
+    "tc": 814
    }
   ],
   "Southridge": [
@@ -1174,23 +1186,104 @@
    },
    {
     "month": "2026-08",
-    "sales": 21076.66,
-    "cups": 1696,
-    "tc": 1723
+    "sales": 23891.7,
+    "cups": 1927,
+    "tc": 1962
    }
   ]
  },
- "top_items": [],
+ "top_items": [
+  {
+   "item": "All Mozzarella",
+   "qty": 646
+  },
+  {
+   "item": "Mozza Hotdog",
+   "qty": 388
+  },
+  {
+   "item": "Potato Mozzarella",
+   "qty": 342
+  },
+  {
+   "item": "Pearl Milk Tea",
+   "qty": 325
+  },
+  {
+   "item": "Original Hotdog",
+   "qty": 303
+  },
+  {
+   "item": "Brown Sugar Pearl with Fresh Milk",
+   "qty": 299
+  },
+  {
+   "item": "Popping Blue Moon",
+   "qty": 212
+  },
+  {
+   "item": "Passion Fruit & Mango Slush",
+   "qty": 211
+  },
+  {
+   "item": "Cheddar Hotdog",
+   "qty": 184
+  },
+  {
+   "item": "Mango Rainbow",
+   "qty": 183
+  },
+  {
+   "item": "2 Ladies Milk Tea",
+   "qty": 162
+  },
+  {
+   "item": "Mozzarella & Cheddar",
+   "qty": 159
+  },
+  {
+   "item": "Tropical Special",
+   "qty": 157
+  },
+  {
+   "item": "Jumbo Beef Hotdog",
+   "qty": 155
+  },
+  {
+   "item": "Mozza & Hotdog",
+   "qty": 154
+  },
+  {
+   "item": "Strawberry Smoothie",
+   "qty": 146
+  },
+  {
+   "item": "Potato Hotdog",
+   "qty": 129
+  },
+  {
+   "item": "Taro",
+   "qty": 121
+  },
+  {
+   "item": "Crunchy Fries",
+   "qty": 120
+  },
+  {
+   "item": "Matcha Strawberry Love",
+   "qty": 115
+  }
+ ],
  "week": {
   "this": {
-   "sales": 8610.2,
-   "cups": 797,
-   "tc": 671
+   "sales": 10914.03,
+   "cups": 995,
+   "tc": 844
   },
   "last": {
-   "sales": 10657.2,
-   "cups": 967,
-   "tc": 804
+   "sales": 10665.39,
+   "cups": 946,
+   "tc": 817
   }
  }
 }
