@@ -56,6 +56,62 @@ def _avg_ticket(x):
     return x["sales"] / x["tc"] if x.get("tc") else 0
 
 
+# ── 響應式 KPI 卡片（手機自動換行，桌機一排）────────────────────────
+_KPI_CSS = """
+<style>
+.k-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));
+        gap:.5rem;margin:.2rem 0 .6rem}
+.k-card{background:#fffdf9;border:1px solid #eadfce;border-radius:10px;
+        padding:.5rem .6rem}
+.k-l{font-size:.72rem;color:#8a7d6d;margin-bottom:.1rem;white-space:nowrap}
+.k-v{font-size:1.28rem;font-weight:700;line-height:1.15;color:#2a2320}
+.k-d{font-size:.72rem;font-weight:600;white-space:nowrap}
+.k-d small{color:#a99;font-weight:400}
+.k-up{color:#1a9850}.k-dn{color:#d73027}.k-na{color:#9aa0a6}
+</style>
+"""
+
+
+def _delta_pct(cur, prev):
+    return (cur - prev) / prev * 100 if prev else None
+
+
+def _kpi_cards(items, cmp_label="vs 上週"):
+    """items: [{label, value, delta(pct or None)}] → 響應式卡片格。"""
+    cards = []
+    for it in items:
+        dp = it.get("delta")
+        if dp is None:
+            dh = '<span class="k-d k-na">—</span>'
+        else:
+            cls, arr = ("k-up", "▲") if dp >= 0 else ("k-dn", "▼")
+            dh = f'<span class="k-d {cls}">{arr} {abs(dp):.0f}% <small>{cmp_label}</small></span>'
+        cards.append(f'<div class="k-card"><div class="k-l">{it["label"]}</div>'
+                     f'<div class="k-v">{it["value"]}</div>{dh}</div>')
+    st.markdown('<div class="k-grid">' + ''.join(cards) + '</div>',
+                unsafe_allow_html=True)
+
+
+def _day_row(daily, stores, target_date):
+    """回傳某日 {合計, 各店} 的彙總 dict；抓不到該店該日回 None。"""
+    out = {"total": {"sales": 0.0, "cups": 0, "food": 0, "tc": 0}}
+    for s in stores:
+        row = next((r for r in daily.get(s, []) if r["date"] == target_date), None)
+        out[s] = row
+        if row:
+            for k in ("sales", "cups", "tc"):
+                out["total"][k] += row.get(k, 0)
+            out["total"]["food"] += row.get("food", 0)
+    return out
+
+
+def _latest_two_dates(daily, stores):
+    """所有店最新兩個有資料的日期（昨日、前一日）。"""
+    dates = sorted({r["date"] for s in stores for r in daily.get(s, [])})
+    return (dates[-1] if dates else None,
+            dates[-2] if len(dates) >= 2 else None)
+
+
 def find_alerts(daily, stores, lookback=10, hist_days=28):
     """從每日序列自動抓紅燈：營業額 0、食物 0（有賣飲料卻沒食物）、單日暴跌。
     回傳 [(date, store, level, msg)]，level: 'red' / 'amber'。"""
@@ -87,8 +143,45 @@ def render():
         return
 
     gen = d.get("generated_at", "—")
+    st.markdown(_KPI_CSS, unsafe_allow_html=True)
     st.title("🧋 營運總覽 Operations")
     st.caption(f"資料更新於 {gen}　·　唯讀 Read-only")
+
+    stores = d["stores"]
+    daily = d.get("daily", {})
+
+    # ── 資料新鮮度警示（夜間同步可能失敗）──
+    try:
+        age = (date.today() - date.fromisoformat(gen)).days
+        if age >= 2:
+            st.error(f"⚠️ 資料可能未更新：最後更新 {gen}（{age} 天前）。"
+                     f"夜間同步可能失敗，以下數字請當「舊資料」看。")
+    except (ValueError, TypeError):
+        pass
+
+    # ── 昨日快照（老闆最常問「昨天做多少」）──
+    yday, pday = _latest_two_dates(daily, stores)
+    if yday:
+        cur = _day_row(daily, stores, yday)
+        prev = _day_row(daily, stores, pday) if pday else None
+        st.subheader(f"昨日 Yesterday（{yday}）")
+        t = cur["total"]
+        tp = prev["total"] if prev else None
+        items = [{"label": "營業額 合計", "value": f"${t['sales']:,.0f}",
+                  "delta": _delta_pct(t["sales"], tp["sales"]) if tp else None}]
+        for s in stores:
+            sv = cur[s]["sales"] if cur.get(s) else 0
+            spv = prev[s]["sales"] if prev and prev.get(s) else None
+            items.append({"label": f"營業額 {s}", "value": f"${sv:,.0f}",
+                          "delta": _delta_pct(sv, spv) if spv else None})
+        items.append({"label": "來客 合計", "value": f"{t['tc']:,}",
+                      "delta": _delta_pct(t["tc"], tp["tc"]) if tp else None})
+        at = t["sales"] / t["tc"] if t["tc"] else 0
+        atp = tp["sales"] / tp["tc"] if tp and tp["tc"] else None
+        items.append({"label": "客單價 合計", "value": f"${at:,.2f}",
+                      "delta": _delta_pct(at, atp) if atp else None})
+        _kpi_cards(items, cmp_label="vs 前一日")
+        st.divider()
 
     # ── 本週 KPI（合計＋各店，含週比較）──
     tw, lw = d["week"]["this"], d["week"]["last"]
@@ -99,31 +192,30 @@ def render():
             return side.get(key, {"sales": 0, "cups": 0, "tc": 0})
         return side if key == "total" else {"sales": 0, "cups": 0, "tc": 0}
 
-    def delta(cur, prev):
-        if not prev:
-            return None
-        return f"{(cur - prev) / prev * 100:+.0f}% vs 上週"
-
     def kpi_row(this_d, last_d):
-        cols = st.columns(6)
-        _kpi(cols[0], "營業額 Sales", f"${this_d['sales']:,.0f}",
-             delta(this_d['sales'], last_d['sales']))
-        _kpi(cols[1], "杯數 Cups", f"{this_d['cups']:,}", delta(this_d['cups'], last_d['cups']))
-        _kpi(cols[2], "食物份數 Food", f"{this_d.get('food', 0):,}",
-             delta(this_d.get('food', 0), last_d.get('food', 0)))
-        _kpi(cols[3], "來客 Orders", f"{this_d['tc']:,}", delta(this_d['tc'], last_d['tc']))
         at, atl = _avg_ticket(this_d), _avg_ticket(last_d)
-        _kpi(cols[4], "客單價 Avg Ticket", f"${at:,.2f}", delta(at, atl))
+        items = [
+            {"label": "營業額", "value": f"${this_d['sales']:,.0f}",
+             "delta": _delta_pct(this_d['sales'], last_d['sales'])},
+            {"label": "杯數", "value": f"{this_d['cups']:,}",
+             "delta": _delta_pct(this_d['cups'], last_d['cups'])},
+            {"label": "食物", "value": f"{this_d.get('food', 0):,}",
+             "delta": _delta_pct(this_d.get('food', 0), last_d.get('food', 0))},
+            {"label": "來客", "value": f"{this_d['tc']:,}",
+             "delta": _delta_pct(this_d['tc'], last_d['tc'])},
+            {"label": "客單價", "value": f"${at:,.2f}", "delta": _delta_pct(at, atl)},
+        ]
         lab, labl = this_d.get("labor"), last_d.get("labor")
         if lab:
             splh = this_d["sales"] / lab
-            d5 = delta(splh, last_d["sales"] / labl) if labl else None
-            _kpi(cols[5], "人效 $/工時", f"${splh:,.1f}", d5)
+            items.append({"label": "人效 $/工時", "value": f"${splh:,.1f}",
+                          "delta": _delta_pct(splh, last_d["sales"] / labl) if labl else None})
         else:
-            _kpi(cols[5], "人效 $/工時", "未匯入")
+            items.append({"label": "人效 $/工時", "value": "未匯入", "delta": None})
+        _kpi_cards(items)
 
     # ── 🚦 紅燈警示（近 10 天異常）──
-    alerts = find_alerts(d.get("daily", {}), d["stores"])
+    alerts = find_alerts(daily, stores)
     if alerts:
         st.subheader("🚦 需要注意 Alerts（近 10 天）")
         for dt, store, level, msg in alerts:
