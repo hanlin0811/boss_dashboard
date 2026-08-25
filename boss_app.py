@@ -68,6 +68,15 @@ _KPI_CSS = """
 .k-d{font-size:.72rem;font-weight:600;white-space:nowrap}
 .k-d small{color:#a99;font-weight:400}
 .k-up{color:#1a9850}.k-dn{color:#d73027}.k-na{color:#9aa0a6}
+.ch-store{font-size:.82rem;font-weight:700;color:#2a2320;margin:.5rem 0 .2rem}
+.ch-bar{display:flex;height:30px;border-radius:7px;overflow:hidden;
+        font-size:.72rem;font-weight:600;box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)}
+.ch-seg{display:flex;align-items:center;justify-content:center;color:#fff;
+        white-space:nowrap;overflow:hidden}
+.ch-legend{font-size:.72rem;color:#8a7d6d;margin:.1rem 0 .3rem}
+.ch-detail{font-size:.76rem;color:#6b5f52;margin:.2rem 0 .1rem}
+.ch-dot{display:inline-block;width:9px;height:9px;border-radius:2px;
+        margin:0 .25rem 0 .7rem;vertical-align:middle}
 </style>
 """
 
@@ -234,6 +243,54 @@ def render():
         kpi_row(_side(tw, store), _side(lw, store))
 
     st.divider()
+
+    # ── 通路 Channel Mix（本週訂單佔比 + 週變化）──
+    cm = d.get("channel_mix", {})
+    if cm:
+        CH_ORDER = ["Dine In", "Pickup", "Delivery"]
+        CH_LABEL = {"Dine In": "堂食", "Pickup": "外帶自取", "Delivery": "外送"}
+        CH_COLOR = {"堂食": "#d9822b", "外帶自取": "#6b8e23", "外送": "#3a7ca5"}
+        st.subheader("通路 Channel Mix（本週訂單）")
+
+        legend = "".join(
+            f'<span class="ch-dot" style="background:{CH_COLOR[CH_LABEL[ch]]}"></span>'
+            f'{CH_LABEL[ch]}' for ch in CH_ORDER)
+        st.markdown(f'<div class="ch-legend">{legend}</div>', unsafe_allow_html=True)
+
+        for store in stores:
+            twc = cm.get(store, {}).get("this", {})
+            lwc = cm.get(store, {}).get("last", {})
+            tot = sum(twc.values()) or 1
+            segs = ""
+            for ch in CH_ORDER:
+                share = twc.get(ch, 0) / tot * 100
+                if share <= 0:
+                    continue
+                lbl = f"{share:.0f}%" if share >= 8 else ""
+                segs += (f'<div class="ch-seg" style="width:{share:.2f}%;'
+                         f'background:{CH_COLOR[CH_LABEL[ch]]}" '
+                         f'title="{CH_LABEL[ch]} {twc.get(ch, 0)} 單（{share:.0f}%）">{lbl}</div>')
+            # 每條 bar 下方一行：各通路訂單數 + 週變化（HTML，手機也穩）
+            parts = []
+            for ch in CH_ORDER:
+                n, ln = twc.get(ch, 0), lwc.get(ch, 0)
+                wow = (n - ln) / ln * 100 if ln else None
+                if wow is None:
+                    wtag = '<span style="color:#9aa0a6">—</span>'
+                else:
+                    c = "#1a9850" if wow >= 0 else "#d73027"
+                    wtag = (f'<span style="color:{c};font-weight:700">'
+                            f'{"▲" if wow >= 0 else "▼"}{abs(wow):.0f}%</span>')
+                parts.append(f'{CH_LABEL[ch]} {n} {wtag}')
+            st.markdown(f'<div class="ch-store">{store}（{tot} 單）</div>'
+                        f'<div class="ch-bar">{segs}</div>'
+                        f'<div class="ch-detail">{" ・ ".join(parts)}</div>',
+                        unsafe_allow_html=True)
+
+        st.caption("外帶自取＝自助機＋人工外帶（兩店 POS 標籤不同已合併）。"
+                   "每條下方為各通路本週訂單數 + WoW（vs 上週同通路，▲綠/▼紅）。")
+
+        st.divider()
 
     # ── 每日銷售趨勢 ──
     st.subheader("每日銷售趨勢 Daily Sales")

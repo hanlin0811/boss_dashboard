@@ -1857,5 +1857,31 @@
     "labor_days": 7
    }
   }
+ },
+ "channel_mix": {
+  "Azusa": {
+   "this": {
+    "Dine In": 100,
+    "Pickup": 93,
+    "Delivery": 54
+   },
+   "last": {
+    "Dine In": 86,
+    "Pickup": 92,
+    "Delivery": 50
+   }
+  },
+  "Southridge": {
+   "this": {
+    "Dine In": 462,
+    "Pickup": 108,
+    "Delivery": 21
+   },
+   "last": {
+    "Dine In": 473,
+    "Pickup": 90,
+    "Delivery": 25
+   }
+  }
  }
 }
