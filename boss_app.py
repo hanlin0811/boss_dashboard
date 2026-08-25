@@ -115,19 +115,28 @@ def render():
 
     st.divider()
 
-    # ── 品項排行 ──
-    items = d.get("top_items", [])
-    st.subheader("熱銷品項 Top Items（近 30 天）")
-    if items:
-        idf = pd.DataFrame(items)
-        ibar = alt.Chart(idf).mark_bar(color="#e8873c").encode(
-            x=alt.X("qty:Q", title="數量"),
-            y=alt.Y("item:N", title=None, sort="-x"),
-            tooltip=[alt.Tooltip("item:N", title="品項"), alt.Tooltip("qty:Q", title="數量")],
-        ).properties(height=min(500, 30 * len(idf) + 40))
-        st.altair_chart(ibar, use_container_width=True)
-    else:
+    # ── 本週熱銷品項：兩店分開、食物/飲料分開，含佔同類百分比 ──
+    tw_items = d.get("top_items_week", {})
+    st.subheader("本週熱銷品項 Top Sellers This Week（近 7 天）")
+    if not tw_items:
         st.caption("品項資料暫無（下次資料更新後顯示）。")
+    else:
+        for store in d["stores"]:
+            st.markdown(f"##### {store}")
+            c1, c2 = st.columns(2)
+            for col, cat_key, label in ((c1, "drinks", "🥤 飲料 Drinks"),
+                                        (c2, "food", "🍽️ 食物 Food")):
+                col.caption(label)
+                rows = tw_items.get(store, {}).get(cat_key, [])
+                if rows:
+                    tdf = pd.DataFrame(rows)
+                    tdf["佔比"] = tdf["pct"].map(lambda p: f"{p:.1f}%")
+                    tdf = tdf.rename(columns={"item": "品項", "qty": "數量"})
+                    col.dataframe(tdf[["品項", "數量", "佔比"]], hide_index=True,
+                                  use_container_width=True)
+                else:
+                    col.caption("—")
+        st.caption("佔比＝該品項佔同店同類（飲料或食物）本週總數量的百分比。")
 
     st.caption(f"CrunCheese × CoCo · 資料更新於 {gen} · 每日自動更新")
 

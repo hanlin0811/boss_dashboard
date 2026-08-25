@@ -1192,88 +1192,120 @@
    }
   ]
  },
- "top_items": [
-  {
-   "item": "All Mozzarella",
-   "qty": 646
+ "top_items_week": {
+  "Azusa": {
+   "drinks": [
+    {
+     "item": "2 Ladies Milk Tea",
+     "qty": 42,
+     "pct": 9.4
+    },
+    {
+     "item": "Pearl Milk Tea",
+     "qty": 41,
+     "pct": 9.2
+    },
+    {
+     "item": "Brown Sugar Pearl with Milk",
+     "qty": 27,
+     "pct": 6.0
+    },
+    {
+     "item": "Taro",
+     "qty": 24,
+     "pct": 5.4
+    },
+    {
+     "item": "Thai Milk Tea",
+     "qty": 17,
+     "pct": 3.8
+    }
+   ],
+   "food": [
+    {
+     "item": "Cheddar Hotdog",
+     "qty": 36,
+     "pct": 15.9
+    },
+    {
+     "item": "Mozza & Hotdog",
+     "qty": 32,
+     "pct": 14.1
+    },
+    {
+     "item": "Potato Mozzarella",
+     "qty": 31,
+     "pct": 13.7
+    },
+    {
+     "item": "All Mozzarella",
+     "qty": 22,
+     "pct": 9.7
+    },
+    {
+     "item": "Jumbo Beef Hotdog",
+     "qty": 19,
+     "pct": 8.4
+    }
+   ]
   },
-  {
-   "item": "Mozza Hotdog",
-   "qty": 388
-  },
-  {
-   "item": "Potato Mozzarella",
-   "qty": 342
-  },
-  {
-   "item": "Pearl Milk Tea",
-   "qty": 325
-  },
-  {
-   "item": "Original Hotdog",
-   "qty": 303
-  },
-  {
-   "item": "Brown Sugar Pearl with Fresh Milk",
-   "qty": 299
-  },
-  {
-   "item": "Popping Blue Moon",
-   "qty": 212
-  },
-  {
-   "item": "Passion Fruit & Mango Slush",
-   "qty": 211
-  },
-  {
-   "item": "Cheddar Hotdog",
-   "qty": 184
-  },
-  {
-   "item": "Mango Rainbow",
-   "qty": 183
-  },
-  {
-   "item": "2 Ladies Milk Tea",
-   "qty": 162
-  },
-  {
-   "item": "Mozzarella & Cheddar",
-   "qty": 159
-  },
-  {
-   "item": "Tropical Special",
-   "qty": 157
-  },
-  {
-   "item": "Jumbo Beef Hotdog",
-   "qty": 155
-  },
-  {
-   "item": "Mozza & Hotdog",
-   "qty": 154
-  },
-  {
-   "item": "Strawberry Smoothie",
-   "qty": 146
-  },
-  {
-   "item": "Potato Hotdog",
-   "qty": 129
-  },
-  {
-   "item": "Taro",
-   "qty": 121
-  },
-  {
-   "item": "Crunchy Fries",
-   "qty": 120
-  },
-  {
-   "item": "Matcha Strawberry Love",
-   "qty": 115
+  "Southridge": {
+   "drinks": [
+    {
+     "item": "Brown Sugar Pearl with Fresh Milk",
+     "qty": 50,
+     "pct": 9.1
+    },
+    {
+     "item": "Pearl Milk Tea",
+     "qty": 48,
+     "pct": 8.8
+    },
+    {
+     "item": "Popping Blue Moon",
+     "qty": 42,
+     "pct": 7.7
+    },
+    {
+     "item": "Mango Rainbow",
+     "qty": 36,
+     "pct": 6.6
+    },
+    {
+     "item": "Strawberry Smoothie",
+     "qty": 26,
+     "pct": 4.8
+    }
+   ],
+   "food": [
+    {
+     "item": "All Mozzarella",
+     "qty": 121,
+     "pct": 24.9
+    },
+    {
+     "item": "Mozza Hotdog",
+     "qty": 110,
+     "pct": 22.6
+    },
+    {
+     "item": "Original Hotdog",
+     "qty": 55,
+     "pct": 11.3
+    },
+    {
+     "item": "Potato Mozzarella",
+     "qty": 51,
+     "pct": 10.5
+    },
+    {
+     "item": "Cheesy Hot Cheetos Hotdog",
+     "qty": 33,
+     "pct": 6.8
+    }
+   ]
   }
- ],
+ },
  "week": {
   "this": {
    "sales": 10914.03,
