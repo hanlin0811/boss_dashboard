@@ -1219,6 +1219,31 @@
      "item": "Thai Milk Tea",
      "qty": 17,
      "pct": 3.8
+    },
+    {
+     "item": "Rainbow Passion Fruit Green Tea",
+     "qty": 17,
+     "pct": 3.8
+    },
+    {
+     "item": "Taro Slush",
+     "qty": 15,
+     "pct": 3.3
+    },
+    {
+     "item": "Passion Fruit & Mango Slush",
+     "qty": 15,
+     "pct": 3.3
+    },
+    {
+     "item": "Mango Rainbow",
+     "qty": 13,
+     "pct": 2.9
+    },
+    {
+     "item": "Jasmine Brown Sugar Pearl Milk Tea",
+     "qty": 12,
+     "pct": 2.7
     }
    ],
    "food": [
@@ -1246,6 +1271,31 @@
      "item": "Jumbo Beef Hotdog",
      "qty": 19,
      "pct": 8.4
+    },
+    {
+     "item": "Cheesy Hot Cheetos Dog",
+     "qty": 15,
+     "pct": 6.6
+    },
+    {
+     "item": "Original Hotdog",
+     "qty": 12,
+     "pct": 5.3
+    },
+    {
+     "item": "Mozzarella & Cheddar",
+     "qty": 11,
+     "pct": 4.8
+    },
+    {
+     "item": "Potato Hotdog",
+     "qty": 8,
+     "pct": 3.5
+    },
+    {
+     "item": "Crunchy Fries",
+     "qty": 7,
+     "pct": 3.1
     }
    ]
   },
@@ -1275,6 +1325,31 @@
      "item": "Strawberry Smoothie",
      "qty": 26,
      "pct": 4.8
+    },
+    {
+     "item": "Tropical Special",
+     "qty": 24,
+     "pct": 4.4
+    },
+    {
+     "item": "Passion Fruit & Mango Slush",
+     "qty": 21,
+     "pct": 3.8
+    },
+    {
+     "item": "Matcha Strawberry Love",
+     "qty": 21,
+     "pct": 3.8
+    },
+    {
+     "item": "Pearl Chocolate",
+     "qty": 21,
+     "pct": 3.8
+    },
+    {
+     "item": "Chunky Mango Slush",
+     "qty": 16,
+     "pct": 2.9
     }
    ],
    "food": [
@@ -1302,6 +1377,31 @@
      "item": "Cheesy Hot Cheetos Hotdog",
      "qty": 33,
      "pct": 6.8
+    },
+    {
+     "item": "Potato Hotdog",
+     "qty": 23,
+     "pct": 4.7
+    },
+    {
+     "item": "Mozzarella & Cheddar",
+     "qty": 23,
+     "pct": 4.7
+    },
+    {
+     "item": "Crunchy Fries",
+     "qty": 20,
+     "pct": 4.1
+    },
+    {
+     "item": "Cheddar Hotdog",
+     "qty": 14,
+     "pct": 2.9
+    },
+    {
+     "item": "Jumbo Beef Hotdog",
+     "qty": 12,
+     "pct": 2.5
     }
    ]
   }
