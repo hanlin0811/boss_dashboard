@@ -1,0 +1,136 @@
+"""老闆雲端唯讀 Dashboard — CrunCheese × CoCo。
+讀 boss_data.json（由 Mac 每天 push），密碼保護、唯讀顯示兩店營運數字。"""
+
+import json
+from datetime import date
+from pathlib import Path
+
+import altair as alt
+import pandas as pd
+import streamlit as st
+
+st.set_page_config(page_title="CrunCheese × CoCo 營運", page_icon="🧋", layout="wide")
+
+STORE_COLOR = {"Azusa": "#e07b2a", "Southridge": "#2c8ac9"}
+DATA = Path(__file__).parent / "boss_data.json"
+
+
+# ── 密碼閘 ──────────────────────────────────────────────────
+def check_password() -> bool:
+    if st.session_state.get("boss_auth"):
+        return True
+    expected = st.secrets.get("boss_password", None)
+    st.markdown("### 🧋 CrunCheese × CoCo 營運")
+    if not expected:
+        st.info("管理員尚未設定密碼（部署時於 Streamlit Cloud secrets 設定 `boss_password`）。")
+        return False
+    pw = st.text_input("密碼 Password", type="password")
+    if pw:
+        if pw == expected:
+            st.session_state["boss_auth"] = True
+            st.rerun()
+        else:
+            st.error("密碼錯誤 Wrong password")
+    return False
+
+
+@st.cache_data(ttl=300)
+def load_data():
+    return json.loads(DATA.read_text(encoding="utf-8"))
+
+
+def _kpi(col, label, value, delta=None):
+    col.metric(label, value, delta)
+
+
+def render():
+    try:
+        d = load_data()
+    except Exception:
+        st.error("目前讀不到資料，請稍後再試。")
+        return
+
+    gen = d.get("generated_at", "—")
+    st.title("🧋 營運總覽 Operations")
+    st.caption(f"資料更新於 {gen}　·　唯讀 Read-only")
+
+    # ── 本週 KPI（含週比較）──
+    tw, lw = d["week"]["this"], d["week"]["last"]
+    def delta(cur, prev):
+        if not prev:
+            return None
+        return f"{(cur - prev) / prev * 100:+.0f}% vs 上週"
+    st.subheader("本週 This Week（近 7 天）")
+    c1, c2, c3 = st.columns(3)
+    _kpi(c1, "營業額 Sales", f"${tw['sales']:,.0f}", delta(tw['sales'], lw['sales']))
+    _kpi(c2, "杯數 Cups", f"{tw['cups']:,}", delta(tw['cups'], lw['cups']))
+    _kpi(c3, "來客 Orders", f"{tw['tc']:,}", delta(tw['tc'], lw['tc']))
+
+    st.divider()
+
+    # ── 每日銷售趨勢 ──
+    st.subheader("每日銷售趨勢 Daily Sales")
+    win = st.radio("區間", [30, 60, 90], index=0, horizontal=True,
+                   format_func=lambda x: f"近 {x} 天")
+    rows = []
+    for store in d["stores"]:
+        for r in d["daily"].get(store, [])[-win:]:
+            rows.append({"date": r["date"], "store": store, "sales": r["sales"]})
+    if rows:
+        df = pd.DataFrame(rows)
+        chart = alt.Chart(df).mark_line(point=False).encode(
+            x=alt.X("date:T", title=None, axis=alt.Axis(format="%m/%d")),
+            y=alt.Y("sales:Q", title="營業額 $"),
+            color=alt.Color("store:N", title="店別",
+                            scale=alt.Scale(domain=list(STORE_COLOR.keys()),
+                                            range=list(STORE_COLOR.values()))),
+            tooltip=[alt.Tooltip("date:T", title="日期", format="%m/%d"),
+                     "store:N", alt.Tooltip("sales:Q", title="營業額", format="$,.0f")],
+        ).properties(height=320)
+        st.altair_chart(chart, use_container_width=True)
+
+    st.divider()
+
+    # ── 每月總計 ──
+    st.subheader("每月總計 Monthly")
+    mrows = []
+    for store in d["stores"]:
+        for r in d["monthly"].get(store, []):
+            mrows.append({"月份": r["month"], "店別": store,
+                          "營業額": r["sales"], "杯數": r["cups"], "來客": r["tc"]})
+    if mrows:
+        mdf = pd.DataFrame(mrows)
+        mbar = alt.Chart(mdf).mark_bar().encode(
+            x=alt.X("月份:N", title=None),
+            xOffset="店別:N",
+            y=alt.Y("營業額:Q", title="營業額 $"),
+            color=alt.Color("店別:N", scale=alt.Scale(domain=list(STORE_COLOR.keys()),
+                                                      range=list(STORE_COLOR.values()))),
+            tooltip=["月份", "店別", alt.Tooltip("營業額:Q", format="$,.0f"), "杯數", "來客"],
+        ).properties(height=300)
+        st.altair_chart(mbar, use_container_width=True)
+        pivot = mdf.pivot_table(index="月份", columns="店別", values="營業額",
+                                aggfunc="sum").fillna(0)
+        st.dataframe(pivot.style.format("${:,.0f}"), use_container_width=True)
+
+    st.divider()
+
+    # ── 品項排行 ──
+    items = d.get("top_items", [])
+    st.subheader("熱銷品項 Top Items（近 30 天）")
+    if items:
+        idf = pd.DataFrame(items)
+        ibar = alt.Chart(idf).mark_bar(color="#e8873c").encode(
+            x=alt.X("qty:Q", title="數量"),
+            y=alt.Y("item:N", title=None, sort="-x"),
+            tooltip=[alt.Tooltip("item:N", title="品項"), alt.Tooltip("qty:Q", title="數量")],
+        ).properties(height=min(500, 30 * len(idf) + 40))
+        st.altair_chart(ibar, use_container_width=True)
+    else:
+        st.caption("品項資料暫無（下次資料更新後顯示）。")
+
+    st.caption(f"CrunCheese × CoCo · 資料更新於 {gen} · 每日自動更新")
+
+
+if check_password():
+    render()
