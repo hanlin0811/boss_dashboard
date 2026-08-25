@@ -2,7 +2,7 @@
 讀 boss_data.json（由 Mac 每天 push），密碼保護、唯讀顯示兩店營運數字。"""
 
 import json
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 import altair as alt
@@ -160,11 +160,14 @@ def render():
         pass
 
     # ── 昨日快照（老闆最常問「昨天做多少」）──
-    yday, pday = _latest_two_dates(daily, stores)
+    yday, _ = _latest_two_dates(daily, stores)
     if yday:
+        # 同日比較：跟上週同一天比（餐飲看星期別才準）
+        pday = (date.fromisoformat(yday) - timedelta(days=7)).isoformat()
+        wd = "一二三四五六日"[date.fromisoformat(yday).weekday()]
         cur = _day_row(daily, stores, yday)
-        prev = _day_row(daily, stores, pday) if pday else None
-        st.subheader(f"昨日 Yesterday（{yday}）")
+        prev = _day_row(daily, stores, pday)
+        st.subheader(f"昨日 Yesterday（{yday} 週{wd}）")
         t = cur["total"]
         tp = prev["total"] if prev else None
         items = [{"label": "營業額 合計", "value": f"${t['sales']:,.0f}",
@@ -180,7 +183,7 @@ def render():
         atp = tp["sales"] / tp["tc"] if tp and tp["tc"] else None
         items.append({"label": "客單價 合計", "value": f"${at:,.2f}",
                       "delta": _delta_pct(at, atp) if atp else None})
-        _kpi_cards(items, cmp_label="vs 前一日")
+        _kpi_cards(items, cmp_label="vs 上週同日")
         st.divider()
 
     # ── 本週 KPI（合計＋各店，含週比較）──
