@@ -724,7 +724,7 @@
     "cups": 64,
     "food": 29,
     "tc": 32,
-    "labor": 16
+    "labor": 16.5
    }
   ],
   "Southridge": [
@@ -1510,9 +1510,9 @@
    },
    {
     "month": "2026-08",
-    "sales": 13440.79,
-    "cups": 1418,
-    "tc": 846,
+    "sales": 13840.6,
+    "cups": 1455,
+    "tc": 873,
     "sales_ly": 15370.35,
     "tc_ly": 1051
    }
@@ -1576,15 +1576,228 @@
    },
    {
     "month": "2026-08",
-    "sales": 24573.51,
-    "cups": 1980,
-    "tc": 2019,
+    "sales": 25231.47,
+    "cups": 2035,
+    "tc": 2078,
     "sales_ly": 37514.61,
     "tc_ly": 3235
    }
   ]
  },
- "top_items_week": {},
+ "top_items_week": {
+  "Azusa": {
+   "drinks": [
+    {
+     "item": "2 Ladies Milk Tea",
+     "qty": 42,
+     "pct": 9.2
+    },
+    {
+     "item": "Pearl Milk Tea",
+     "qty": 41,
+     "pct": 9.0
+    },
+    {
+     "item": "Brown Sugar Pearl with Milk",
+     "qty": 27,
+     "pct": 5.9
+    },
+    {
+     "item": "Taro",
+     "qty": 25,
+     "pct": 5.5
+    },
+    {
+     "item": "Thai Milk Tea",
+     "qty": 20,
+     "pct": 4.4
+    },
+    {
+     "item": "Rainbow Passion Fruit Green Tea",
+     "qty": 17,
+     "pct": 3.7
+    },
+    {
+     "item": "Taro Slush",
+     "qty": 15,
+     "pct": 3.3
+    },
+    {
+     "item": "Chunky Mango Coconut Milk Tea",
+     "qty": 14,
+     "pct": 3.1
+    },
+    {
+     "item": "Passion Fruit & Mango Slush",
+     "qty": 14,
+     "pct": 3.1
+    },
+    {
+     "item": "Chunky Mango Slush",
+     "qty": 12,
+     "pct": 2.6
+    }
+   ],
+   "food": [
+    {
+     "item": "Cheddar Hotdog",
+     "qty": 36,
+     "pct": 15.3
+    },
+    {
+     "item": "Mozza & Hotdog",
+     "qty": 33,
+     "pct": 14.0
+    },
+    {
+     "item": "Potato Mozzarella",
+     "qty": 31,
+     "pct": 13.2
+    },
+    {
+     "item": "All Mozzarella",
+     "qty": 23,
+     "pct": 9.8
+    },
+    {
+     "item": "Cheesy Hot Cheetos Dog",
+     "qty": 20,
+     "pct": 8.5
+    },
+    {
+     "item": "Jumbo Beef Hotdog",
+     "qty": 19,
+     "pct": 8.1
+    },
+    {
+     "item": "Original Hotdog",
+     "qty": 13,
+     "pct": 5.5
+    },
+    {
+     "item": "Mozzarella & Cheddar",
+     "qty": 11,
+     "pct": 4.7
+    },
+    {
+     "item": "Potato Hotdog",
+     "qty": 9,
+     "pct": 3.8
+    },
+    {
+     "item": "Crunchy Fries",
+     "qty": 5,
+     "pct": 2.1
+    }
+   ]
+  },
+  "Southridge": {
+   "drinks": [
+    {
+     "item": "Brown Sugar Pearl with Fresh Milk",
+     "qty": 51,
+     "pct": 9.6
+    },
+    {
+     "item": "Pearl Milk Tea",
+     "qty": 49,
+     "pct": 9.2
+    },
+    {
+     "item": "Mango Rainbow",
+     "qty": 36,
+     "pct": 6.8
+    },
+    {
+     "item": "Popping Blue Moon",
+     "qty": 36,
+     "pct": 6.8
+    },
+    {
+     "item": "Strawberry Smoothie",
+     "qty": 27,
+     "pct": 5.1
+    },
+    {
+     "item": "Passion Fruit & Mango Slush",
+     "qty": 27,
+     "pct": 5.1
+    },
+    {
+     "item": "Tropical Special",
+     "qty": 26,
+     "pct": 4.9
+    },
+    {
+     "item": "Matcha Strawberry Love",
+     "qty": 23,
+     "pct": 4.3
+    },
+    {
+     "item": "Pearl Chocolate",
+     "qty": 19,
+     "pct": 3.6
+    },
+    {
+     "item": "Strawberry Candy Pop",
+     "qty": 15,
+     "pct": 2.8
+    }
+   ],
+   "food": [
+    {
+     "item": "Mozza Hotdog",
+     "qty": 122,
+     "pct": 24.7
+    },
+    {
+     "item": "All Mozzarella",
+     "qty": 120,
+     "pct": 24.3
+    },
+    {
+     "item": "Potato Mozzarella",
+     "qty": 54,
+     "pct": 11.0
+    },
+    {
+     "item": "Original Hotdog",
+     "qty": 54,
+     "pct": 11.0
+    },
+    {
+     "item": "Cheesy Hot Cheetos Hotdog",
+     "qty": 29,
+     "pct": 5.9
+    },
+    {
+     "item": "Potato Hotdog",
+     "qty": 25,
+     "pct": 5.1
+    },
+    {
+     "item": "Crunchy Fries",
+     "qty": 22,
+     "pct": 4.5
+    },
+    {
+     "item": "Mozzarella & Cheddar",
+     "qty": 21,
+     "pct": 4.3
+    },
+    {
+     "item": "Cheddar Hotdog",
+     "qty": 13,
+     "pct": 2.6
+    },
+    {
+     "item": "Jumbo Beef Hotdog",
+     "qty": 12,
+     "pct": 2.4
+    }
+   ]
+  }
+ },
  "week": {
   "this": {
    "Azusa": {
@@ -1592,7 +1805,7 @@
     "cups": 457,
     "food": 235,
     "tc": 256,
-    "labor": 125.5,
+    "labor": 126.0,
     "days": 7,
     "labor_days": 7
    },
@@ -1645,5 +1858,30 @@
    }
   }
  },
- "channel_mix": {}
+ "channel_mix": {
+  "Azusa": {
+   "this": {
+    "Dine In": 96,
+    "Pickup": 94,
+    "Delivery": 60
+   },
+   "last": {
+    "Dine In": 94,
+    "Pickup": 93,
+    "Delivery": 46
+   }
+  },
+  "Southridge": {
+   "this": {
+    "Dine In": 462,
+    "Pickup": 107,
+    "Delivery": 17
+   },
+   "last": {
+    "Dine In": 457,
+    "Pickup": 94,
+    "Delivery": 29
+   }
+  }
+ }
 }
