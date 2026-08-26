@@ -2,7 +2,7 @@
 讀 boss_data.json（由 Mac 每天 push），密碼保護、唯讀顯示兩店營運數字。"""
 
 import json
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import altair as alt
@@ -160,13 +160,28 @@ def render():
     daily = d.get("daily", {})
 
     # ── 資料新鮮度警示（夜間同步可能失敗）──
-    try:
-        age = (date.today() - date.fromisoformat(gen)).days
-        if age >= 2:
-            st.error(f"⚠️ 資料可能未更新：最後更新 {gen}（{age} 天前）。"
-                     f"夜間同步可能失敗，以下數字請當「舊資料」看。")
-    except (ValueError, TypeError):
-        pass
+    # 優先用帶時區的時間戳算「絕對小時」，避免雲端(UTC)與 Mac(PDT)日期偏移誤報；
+    # 夜跑每 24h 一次 → 超過 36h 未更新才示警。舊資料無 ts 時退回日期比較（放寬到 3 天）。
+    stale_hint = None
+    gts = d.get("generated_ts")
+    if gts:
+        try:
+            dt = datetime.fromisoformat(gts).astimezone(timezone.utc)
+            hrs = (datetime.now(timezone.utc) - dt).total_seconds() / 3600
+            if hrs > 36:
+                stale_hint = f"約 {hrs / 24:.0f} 天前"
+        except (ValueError, TypeError):
+            pass
+    else:
+        try:
+            age = (date.today() - date.fromisoformat(gen)).days
+            if age >= 3:
+                stale_hint = f"{age} 天前"
+        except (ValueError, TypeError):
+            pass
+    if stale_hint:
+        st.error(f"⚠️ 資料可能未更新：最後更新 {gen}（{stale_hint}）。"
+                 f"夜間同步可能失敗，以下數字請當「舊資料」看。")
 
     # ── 昨日快照（老闆最常問「昨天做多少」）──
     yday, _ = _latest_two_dates(daily, stores)
