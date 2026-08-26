@@ -1,19 +1,11 @@
 {
- "generated_at": "2026-08-24",
+ "generated_at": "2026-08-25",
  "stores": [
   "Azusa",
   "Southridge"
  ],
  "daily": {
   "Azusa": [
-   {
-    "date": "2026-05-26",
-    "sales": 459.94,
-    "cups": 31,
-    "food": 53,
-    "tc": 34,
-    "labor": 16
-   },
    {
     "date": "2026-05-27",
     "sales": 483.89,
@@ -725,17 +717,17 @@
     "food": 63,
     "tc": 52,
     "labor": 16
+   },
+   {
+    "date": "2026-08-24",
+    "sales": 547.42,
+    "cups": 64,
+    "food": 29,
+    "tc": 32,
+    "labor": 16
    }
   ],
   "Southridge": [
-   {
-    "date": "2026-05-26",
-    "sales": 589.46,
-    "cups": 45,
-    "food": 44,
-    "tc": 45,
-    "labor": 22
-   },
    {
     "date": "2026-05-27",
     "sales": 548.6,
@@ -1447,6 +1439,14 @@
     "food": 89,
     "tc": 116,
     "labor": null
+   },
+   {
+    "date": "2026-08-24",
+    "sales": 681.81,
+    "cups": 53,
+    "food": 46,
+    "tc": 57,
+    "labor": null
    }
   ]
  },
@@ -1584,244 +1584,31 @@
    }
   ]
  },
- "top_items_week": {
-  "Azusa": {
-   "drinks": [
-    {
-     "item": "2 Ladies Milk Tea",
-     "qty": 42,
-     "pct": 9.4
-    },
-    {
-     "item": "Pearl Milk Tea",
-     "qty": 41,
-     "pct": 9.2
-    },
-    {
-     "item": "Brown Sugar Pearl with Milk",
-     "qty": 27,
-     "pct": 6.0
-    },
-    {
-     "item": "Taro",
-     "qty": 24,
-     "pct": 5.4
-    },
-    {
-     "item": "Thai Milk Tea",
-     "qty": 17,
-     "pct": 3.8
-    },
-    {
-     "item": "Rainbow Passion Fruit Green Tea",
-     "qty": 17,
-     "pct": 3.8
-    },
-    {
-     "item": "Taro Slush",
-     "qty": 15,
-     "pct": 3.3
-    },
-    {
-     "item": "Passion Fruit & Mango Slush",
-     "qty": 15,
-     "pct": 3.3
-    },
-    {
-     "item": "Mango Rainbow",
-     "qty": 13,
-     "pct": 2.9
-    },
-    {
-     "item": "Jasmine Brown Sugar Pearl Milk Tea",
-     "qty": 12,
-     "pct": 2.7
-    }
-   ],
-   "food": [
-    {
-     "item": "Cheddar Hotdog",
-     "qty": 36,
-     "pct": 15.9
-    },
-    {
-     "item": "Mozza & Hotdog",
-     "qty": 32,
-     "pct": 14.1
-    },
-    {
-     "item": "Potato Mozzarella",
-     "qty": 31,
-     "pct": 13.7
-    },
-    {
-     "item": "All Mozzarella",
-     "qty": 22,
-     "pct": 9.7
-    },
-    {
-     "item": "Jumbo Beef Hotdog",
-     "qty": 19,
-     "pct": 8.4
-    },
-    {
-     "item": "Cheesy Hot Cheetos Dog",
-     "qty": 15,
-     "pct": 6.6
-    },
-    {
-     "item": "Original Hotdog",
-     "qty": 12,
-     "pct": 5.3
-    },
-    {
-     "item": "Mozzarella & Cheddar",
-     "qty": 11,
-     "pct": 4.8
-    },
-    {
-     "item": "Potato Hotdog",
-     "qty": 8,
-     "pct": 3.5
-    },
-    {
-     "item": "Crunchy Fries",
-     "qty": 7,
-     "pct": 3.1
-    }
-   ]
-  },
-  "Southridge": {
-   "drinks": [
-    {
-     "item": "Brown Sugar Pearl with Fresh Milk",
-     "qty": 50,
-     "pct": 9.1
-    },
-    {
-     "item": "Pearl Milk Tea",
-     "qty": 48,
-     "pct": 8.8
-    },
-    {
-     "item": "Popping Blue Moon",
-     "qty": 42,
-     "pct": 7.7
-    },
-    {
-     "item": "Mango Rainbow",
-     "qty": 36,
-     "pct": 6.6
-    },
-    {
-     "item": "Strawberry Smoothie",
-     "qty": 26,
-     "pct": 4.8
-    },
-    {
-     "item": "Tropical Special",
-     "qty": 24,
-     "pct": 4.4
-    },
-    {
-     "item": "Passion Fruit & Mango Slush",
-     "qty": 21,
-     "pct": 3.8
-    },
-    {
-     "item": "Matcha Strawberry Love",
-     "qty": 21,
-     "pct": 3.8
-    },
-    {
-     "item": "Pearl Chocolate",
-     "qty": 21,
-     "pct": 3.8
-    },
-    {
-     "item": "Chunky Mango Slush",
-     "qty": 16,
-     "pct": 2.9
-    }
-   ],
-   "food": [
-    {
-     "item": "All Mozzarella",
-     "qty": 121,
-     "pct": 24.9
-    },
-    {
-     "item": "Mozza Hotdog",
-     "qty": 110,
-     "pct": 22.6
-    },
-    {
-     "item": "Original Hotdog",
-     "qty": 55,
-     "pct": 11.3
-    },
-    {
-     "item": "Potato Mozzarella",
-     "qty": 51,
-     "pct": 10.5
-    },
-    {
-     "item": "Cheesy Hot Cheetos Hotdog",
-     "qty": 33,
-     "pct": 6.8
-    },
-    {
-     "item": "Potato Hotdog",
-     "qty": 23,
-     "pct": 4.7
-    },
-    {
-     "item": "Mozzarella & Cheddar",
-     "qty": 23,
-     "pct": 4.7
-    },
-    {
-     "item": "Crunchy Fries",
-     "qty": 20,
-     "pct": 4.1
-    },
-    {
-     "item": "Cheddar Hotdog",
-     "qty": 14,
-     "pct": 2.9
-    },
-    {
-     "item": "Jumbo Beef Hotdog",
-     "qty": 12,
-     "pct": 2.5
-    }
-   ]
-  }
- },
+ "top_items_week": {},
  "week": {
   "this": {
    "Azusa": {
-    "sales": 3955.7,
-    "cups": 448,
-    "food": 227,
-    "tc": 253,
+    "sales": 4080.56,
+    "cups": 457,
+    "food": 235,
+    "tc": 256,
     "labor": 125.5,
     "days": 7,
     "labor_days": 7
    },
    "Southridge": {
-    "sales": 6958.33,
-    "cups": 547,
-    "food": 486,
-    "tc": 591,
+    "sales": 6927.63,
+    "cups": 533,
+    "food": 493,
+    "tc": 588,
     "labor": null,
     "days": 7,
     "labor_days": 0
    },
    "total": {
-    "sales": 10914.03,
-    "cups": 995,
-    "food": 713,
+    "sales": 11008.19,
+    "cups": 990,
+    "food": 728,
     "tc": 844,
     "labor": null,
     "days": 7,
@@ -1830,58 +1617,33 @@
   },
   "last": {
    "Azusa": {
-    "sales": 3493.5,
-    "cups": 374,
-    "food": 222,
-    "tc": 229,
+    "sales": 3427.43,
+    "cups": 372,
+    "food": 214,
+    "tc": 227,
     "labor": 122.5,
     "days": 7,
     "labor_days": 7
    },
    "Southridge": {
-    "sales": 7171.89,
-    "cups": 572,
-    "food": 478,
-    "tc": 588,
+    "sales": 7031.47,
+    "cups": 573,
+    "food": 461,
+    "tc": 572,
     "labor": null,
     "days": 7,
     "labor_days": 0
    },
    "total": {
-    "sales": 10665.39,
-    "cups": 946,
-    "food": 700,
-    "tc": 817,
+    "sales": 10458.9,
+    "cups": 945,
+    "food": 675,
+    "tc": 799,
     "labor": null,
     "days": 7,
     "labor_days": 7
    }
   }
  },
- "channel_mix": {
-  "Azusa": {
-   "this": {
-    "Dine In": 100,
-    "Pickup": 93,
-    "Delivery": 54
-   },
-   "last": {
-    "Dine In": 86,
-    "Pickup": 92,
-    "Delivery": 50
-   }
-  },
-  "Southridge": {
-   "this": {
-    "Dine In": 462,
-    "Pickup": 108,
-    "Delivery": 21
-   },
-   "last": {
-    "Dine In": 473,
-    "Pickup": 90,
-    "Delivery": 25
-   }
-  }
- }
+ "channel_mix": {}
 }
