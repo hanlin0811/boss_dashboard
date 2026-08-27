@@ -219,21 +219,21 @@ def render():
         lw_today = (date.fromisoformat(today_d) - timedelta(days=7)).isoformat()
         lw_yest = (date.fromisoformat(yest_d) - timedelta(days=7)).isoformat()
 
-        # 今日（至今）：乾淨數字，不放會誤導的「半天 vs 整天」比較
+        # 最新日（至今）：乾淨數字，不放會誤導的「半天 vs 整天」比較
         cur_today = _day_row(daily, stores, today_d)
-        st.subheader(f"今日 Today（{today_d} 週{_wd(today_d)} · 至今）")
+        st.subheader(f"{today_d}（週{_wd(today_d)}）")
         _kpi_cards(_snap_items(cur_today, None, with_delta=False))
         lw_t = _day_row(daily, stores, lw_today)["total"]
         if lw_t["sales"]:
             st.caption(f"上週同日（整天）合計 ${lw_t['sales']:,.2f}・來客 {lw_t['tc']:,}"
-                       f"　— 供對照今日進度")
+                       f"　— 供對照進度")
 
-        # 昨日（完整）：vs 上週同日
+        # 前一日（完整）：vs 上週同日
         cur_yest = _day_row(daily, stores, yest_d)
         if cur_yest["total"]["sales"] or any(cur_yest.get(s) for s in stores):
             prev_yest = _day_row(daily, stores, lw_yest)
-            st.markdown(f'<div class="ch-store">昨日 Yesterday（{yest_d} 週{_wd(yest_d)}）'
-                        f'· vs 上週同日</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="ch-store">{yest_d}（週{_wd(yest_d)}）· vs 上週同日</div>',
+                        unsafe_allow_html=True)
             _kpi_cards(_snap_items(cur_yest, prev_yest, with_delta=True),
                        cmp_label="vs 上週同日")
         st.divider()
