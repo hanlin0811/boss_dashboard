@@ -86,11 +86,13 @@ def _delta_pct(cur, prev):
 
 
 def _kpi_cards(items, cmp_label="vs 上週"):
-    """items: [{label, value, delta(pct or None)}] → 響應式卡片格。"""
+    """items: [{label, value, delta}] → 響應式卡片格。
+    無 'delta' 鍵＝不顯示比較行；delta=None＝顯示「—」。"""
     cards = []
     for it in items:
-        dp = it.get("delta")
-        if dp is None:
+        if "delta" not in it:
+            dh = ""
+        elif (dp := it["delta"]) is None:
             dh = '<span class="k-d k-na">—</span>'
         else:
             cls, arr = ("k-up", "▲") if dp >= 0 else ("k-dn", "▼")
@@ -183,31 +185,57 @@ def render():
         st.error(f"⚠️ 資料可能未更新：最後更新 {gen}（{stale_hint}）。"
                  f"夜間同步可能失敗，以下數字請當「舊資料」看。")
 
-    # ── 昨日快照（老闆最常問「昨天做多少」）──
-    yday, _ = _latest_two_dates(daily, stores)
-    if yday:
-        # 同日比較：跟上週同一天比（餐飲看星期別才準）
-        pday = (date.fromisoformat(yday) - timedelta(days=7)).isoformat()
-        wd = "一二三四五六日"[date.fromisoformat(yday).weekday()]
-        cur = _day_row(daily, stores, yday)
-        prev = _day_row(daily, stores, pday)
-        st.subheader(f"昨日 Yesterday（{yday} 週{wd}）")
+    # ── 今日（至今）+ 昨日（完整）快照 ──
+    def _wd(iso):
+        return "一二三四五六日"[date.fromisoformat(iso).weekday()]
+
+    def _snap_items(cur, prev, with_delta):
+        """組快照卡片。with_delta=False → 不放比較行（今日至今用，避免半天比整天）。"""
         t = cur["total"]
         tp = prev["total"] if prev else None
-        items = [{"label": "營業額 合計", "value": f"${t['sales']:,.0f}",
-                  "delta": _delta_pct(t["sales"], tp["sales"]) if tp else None}]
+
+        def cell(label, value, cur_v, prev_v):
+            it = {"label": label, "value": value}
+            if with_delta:
+                it["delta"] = _delta_pct(cur_v, prev_v) if prev_v else None
+            return it
+        items = [cell("營業額 合計", f"${t['sales']:,.0f}", t["sales"],
+                      tp["sales"] if tp else None)]
         for s in stores:
             sv = cur[s]["sales"] if cur.get(s) else 0
             spv = prev[s]["sales"] if prev and prev.get(s) else None
-            items.append({"label": f"營業額 {s}", "value": f"${sv:,.0f}",
-                          "delta": _delta_pct(sv, spv) if spv else None})
-        items.append({"label": "來客 合計", "value": f"{t['tc']:,}",
-                      "delta": _delta_pct(t["tc"], tp["tc"]) if tp else None})
+            items.append(cell(f"營業額 {s}", f"${sv:,.0f}", sv, spv))
+        items.append(cell("來客 合計", f"{t['tc']:,}", t["tc"],
+                          tp["tc"] if tp else None))
         at = t["sales"] / t["tc"] if t["tc"] else 0
         atp = tp["sales"] / tp["tc"] if tp and tp["tc"] else None
-        items.append({"label": "客單價 合計", "value": f"${at:,.2f}",
-                      "delta": _delta_pct(at, atp) if atp else None})
-        _kpi_cards(items, cmp_label="vs 上週同日")
+        items.append(cell("客單價 合計", f"${at:,.2f}", at, atp))
+        return items
+
+    latest, _ = _latest_two_dates(daily, stores)
+    if latest:
+        today_d = latest
+        yest_d = (date.fromisoformat(today_d) - timedelta(days=1)).isoformat()
+        lw_today = (date.fromisoformat(today_d) - timedelta(days=7)).isoformat()
+        lw_yest = (date.fromisoformat(yest_d) - timedelta(days=7)).isoformat()
+
+        # 今日（至今）：乾淨數字，不放會誤導的「半天 vs 整天」比較
+        cur_today = _day_row(daily, stores, today_d)
+        st.subheader(f"今日 Today（{today_d} 週{_wd(today_d)} · 至今）")
+        _kpi_cards(_snap_items(cur_today, None, with_delta=False))
+        lw_t = _day_row(daily, stores, lw_today)["total"]
+        if lw_t["sales"]:
+            st.caption(f"上週同日（整天）合計 ${lw_t['sales']:,.0f}・來客 {lw_t['tc']:,}"
+                       f"　— 供對照今日進度")
+
+        # 昨日（完整）：vs 上週同日
+        cur_yest = _day_row(daily, stores, yest_d)
+        if cur_yest["total"]["sales"] or any(cur_yest.get(s) for s in stores):
+            prev_yest = _day_row(daily, stores, lw_yest)
+            st.markdown(f'<div class="ch-store">昨日 Yesterday（{yest_d} 週{_wd(yest_d)}）'
+                        f'· vs 上週同日</div>', unsafe_allow_html=True)
+            _kpi_cards(_snap_items(cur_yest, prev_yest, with_delta=True),
+                       cmp_label="vs 上週同日")
         st.divider()
 
     # ── 本週 KPI（合計＋各店，含週比較）──
