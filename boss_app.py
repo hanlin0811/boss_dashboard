@@ -141,7 +141,7 @@ def find_alerts(daily, stores, lookback=10, hist_days=28):
                 alerts.append((r["date"], store, "amber", "食物份數 0（可能漏記錄）"))
             if med and r["sales"] and r["sales"] < 0.6 * med:
                 alerts.append((r["date"], store, "amber",
-                               f"營業額 ${r['sales']:,.0f}，低於近月中位 ${med:,.0f} 的 6 成"))
+                               f"營業額 ${r['sales']:,.2f}，低於近月中位 ${med:,.2f} 的 6 成"))
     alerts.sort(key=lambda a: a[0], reverse=True)
     return alerts
 
@@ -199,12 +199,12 @@ def render():
             if with_delta:
                 it["delta"] = _delta_pct(cur_v, prev_v) if prev_v else None
             return it
-        items = [cell("營業額 合計", f"${t['sales']:,.0f}", t["sales"],
+        items = [cell("營業額 合計", f"${t['sales']:,.2f}", t["sales"],
                       tp["sales"] if tp else None)]
         for s in stores:
             sv = cur[s]["sales"] if cur.get(s) else 0
             spv = prev[s]["sales"] if prev and prev.get(s) else None
-            items.append(cell(f"營業額 {s}", f"${sv:,.0f}", sv, spv))
+            items.append(cell(f"營業額 {s}", f"${sv:,.2f}", sv, spv))
         items.append(cell("來客 合計", f"{t['tc']:,}", t["tc"],
                           tp["tc"] if tp else None))
         at = t["sales"] / t["tc"] if t["tc"] else 0
@@ -225,7 +225,7 @@ def render():
         _kpi_cards(_snap_items(cur_today, None, with_delta=False))
         lw_t = _day_row(daily, stores, lw_today)["total"]
         if lw_t["sales"]:
-            st.caption(f"上週同日（整天）合計 ${lw_t['sales']:,.0f}・來客 {lw_t['tc']:,}"
+            st.caption(f"上週同日（整天）合計 ${lw_t['sales']:,.2f}・來客 {lw_t['tc']:,}"
                        f"　— 供對照今日進度")
 
         # 昨日（完整）：vs 上週同日
@@ -250,7 +250,7 @@ def render():
     def kpi_row(this_d, last_d):
         at, atl = _avg_ticket(this_d), _avg_ticket(last_d)
         items = [
-            {"label": "營業額", "value": f"${this_d['sales']:,.0f}",
+            {"label": "營業額", "value": f"${this_d['sales']:,.2f}",
              "delta": _delta_pct(this_d['sales'], last_d['sales'])},
             {"label": "杯數", "value": f"{this_d['cups']:,}",
              "delta": _delta_pct(this_d['cups'], last_d['cups'])},
@@ -352,7 +352,7 @@ def render():
                             scale=alt.Scale(domain=list(STORE_COLOR.keys()),
                                             range=list(STORE_COLOR.values()))),
             tooltip=[alt.Tooltip("date:T", title="日期", format="%m/%d"),
-                     "store:N", alt.Tooltip("sales:Q", title="營業額", format="$,.0f")],
+                     "store:N", alt.Tooltip("sales:Q", title="營業額", format="$,.2f")],
         ).properties(height=320)
         st.altair_chart(chart, use_container_width=True)
 
@@ -373,12 +373,12 @@ def render():
             y=alt.Y("營業額:Q", title="營業額 $"),
             color=alt.Color("店別:N", scale=alt.Scale(domain=list(STORE_COLOR.keys()),
                                                       range=list(STORE_COLOR.values()))),
-            tooltip=["月份", "店別", alt.Tooltip("營業額:Q", format="$,.0f"), "杯數", "來客"],
+            tooltip=["月份", "店別", alt.Tooltip("營業額:Q", format="$,.2f"), "杯數", "來客"],
         ).properties(height=300)
         st.altair_chart(mbar, use_container_width=True)
         pivot = mdf.pivot_table(index="月份", columns="店別", values="營業額",
                                 aggfunc="sum").fillna(0)
-        st.dataframe(pivot.style.format("${:,.0f}"), use_container_width=True)
+        st.dataframe(pivot.style.format("${:,.2f}"), use_container_width=True)
 
     # ── 同比 YoY（今年 vs 去年同月）──
     yrows = []
@@ -394,7 +394,7 @@ def render():
         ydf = pd.DataFrame(yrows)
 
         def _money(v):
-            return "—" if v is None or pd.isna(v) else f"${v:,.0f}"
+            return "—" if v is None or pd.isna(v) else f"${v:,.2f}"
 
         def _yoy_text(v):
             if v is None or pd.isna(v):
