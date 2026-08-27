@@ -1,6 +1,6 @@
 {
  "generated_at": "2026-08-26",
- "generated_ts": "2026-08-26T22:58:37-07:00",
+ "generated_ts": "2026-08-26T23:16:41-07:00",
  "stores": [
   "Azusa",
   "Southridge"
@@ -1585,7 +1585,220 @@
    }
   ]
  },
- "top_items_week": {},
+ "top_items_week": {
+  "Azusa": {
+   "drinks": [
+    {
+     "item": "2 Ladies Milk Tea",
+     "qty": 40,
+     "pct": 9.4
+    },
+    {
+     "item": "Pearl Milk Tea",
+     "qty": 40,
+     "pct": 9.4
+    },
+    {
+     "item": "Taro",
+     "qty": 24,
+     "pct": 5.6
+    },
+    {
+     "item": "Brown Sugar Pearl with Milk",
+     "qty": 24,
+     "pct": 5.6
+    },
+    {
+     "item": "Thai Milk Tea",
+     "qty": 19,
+     "pct": 4.4
+    },
+    {
+     "item": "Rainbow Passion Fruit Green Tea",
+     "qty": 17,
+     "pct": 4.0
+    },
+    {
+     "item": "Taro Slush",
+     "qty": 13,
+     "pct": 3.0
+    },
+    {
+     "item": "Passion Fruit & Mango Slush",
+     "qty": 13,
+     "pct": 3.0
+    },
+    {
+     "item": "Chunky Mango Coconut Milk Tea",
+     "qty": 13,
+     "pct": 3.0
+    },
+    {
+     "item": "Mango Rainbow",
+     "qty": 13,
+     "pct": 3.0
+    }
+   ],
+   "food": [
+    {
+     "item": "Cheddar Hotdog",
+     "qty": 34,
+     "pct": 15.0
+    },
+    {
+     "item": "Mozza & Hotdog",
+     "qty": 31,
+     "pct": 13.7
+    },
+    {
+     "item": "Potato Mozzarella",
+     "qty": 29,
+     "pct": 12.8
+    },
+    {
+     "item": "Cheesy Hot Cheetos Dog",
+     "qty": 21,
+     "pct": 9.3
+    },
+    {
+     "item": "All Mozzarella",
+     "qty": 20,
+     "pct": 8.8
+    },
+    {
+     "item": "Jumbo Beef Hotdog",
+     "qty": 17,
+     "pct": 7.5
+    },
+    {
+     "item": "Mozzarella & Cheddar",
+     "qty": 15,
+     "pct": 6.6
+    },
+    {
+     "item": "Original Hotdog",
+     "qty": 13,
+     "pct": 5.7
+    },
+    {
+     "item": "Potato Hotdog",
+     "qty": 7,
+     "pct": 3.1
+    },
+    {
+     "item": "Waffle Fries",
+     "qty": 6,
+     "pct": 2.6
+    }
+   ]
+  },
+  "Southridge": {
+   "drinks": [
+    {
+     "item": "Brown Sugar Pearl with Fresh Milk",
+     "qty": 60,
+     "pct": 11.2
+    },
+    {
+     "item": "Pearl Milk Tea",
+     "qty": 50,
+     "pct": 9.3
+    },
+    {
+     "item": "Popping Blue Moon",
+     "qty": 39,
+     "pct": 7.3
+    },
+    {
+     "item": "Mango Rainbow",
+     "qty": 36,
+     "pct": 6.7
+    },
+    {
+     "item": "Tropical Special",
+     "qty": 27,
+     "pct": 5.0
+    },
+    {
+     "item": "Passion Fruit & Mango Slush",
+     "qty": 25,
+     "pct": 4.7
+    },
+    {
+     "item": "Strawberry Smoothie",
+     "qty": 24,
+     "pct": 4.5
+    },
+    {
+     "item": "Matcha Strawberry Love",
+     "qty": 23,
+     "pct": 4.3
+    },
+    {
+     "item": "Pearl Chocolate",
+     "qty": 19,
+     "pct": 3.6
+    },
+    {
+     "item": "Strawberry Candy Pop",
+     "qty": 14,
+     "pct": 2.6
+    }
+   ],
+   "food": [
+    {
+     "item": "All Mozzarella",
+     "qty": 122,
+     "pct": 25.1
+    },
+    {
+     "item": "Mozza Hotdog",
+     "qty": 119,
+     "pct": 24.5
+    },
+    {
+     "item": "Potato Mozzarella",
+     "qty": 53,
+     "pct": 10.9
+    },
+    {
+     "item": "Original Hotdog",
+     "qty": 48,
+     "pct": 9.9
+    },
+    {
+     "item": "Cheesy Hot Cheetos Hotdog",
+     "qty": 31,
+     "pct": 6.4
+    },
+    {
+     "item": "Crunchy Fries",
+     "qty": 24,
+     "pct": 4.9
+    },
+    {
+     "item": "Potato Hotdog",
+     "qty": 24,
+     "pct": 4.9
+    },
+    {
+     "item": "Mozzarella & Cheddar",
+     "qty": 17,
+     "pct": 3.5
+    },
+    {
+     "item": "Cheddar Hotdog",
+     "qty": 14,
+     "pct": 2.9
+    },
+    {
+     "item": "Jumbo Beef Hotdog",
+     "qty": 14,
+     "pct": 2.9
+    }
+   ]
+  }
+ },
  "week": {
   "this": {
    "Azusa": {
@@ -1646,5 +1859,30 @@
    }
   }
  },
- "channel_mix": {}
+ "channel_mix": {
+  "Azusa": {
+   "this": {
+    "Dine In": 87,
+    "Pickup": 106,
+    "Delivery": 59
+   },
+   "last": {
+    "Dine In": 98,
+    "Pickup": 85,
+    "Delivery": 48
+   }
+  },
+  "Southridge": {
+   "this": {
+    "Dine In": 464,
+    "Pickup": 102,
+    "Delivery": 16
+   },
+   "last": {
+    "Dine In": 448,
+    "Pickup": 97,
+    "Delivery": 28
+   }
+  }
+ }
 }
