@@ -1,6 +1,6 @@
 {
  "generated_at": "2026-08-28",
- "generated_ts": "2026-08-28T14:04:34-07:00",
+ "generated_ts": "2026-08-28T14:10:51-07:00",
  "stores": [
   "Azusa",
   "Southridge"
@@ -1696,8 +1696,8 @@
    "drinks": [
     {
      "item": "Brown Sugar Pearl with Fresh Milk",
-     "qty": 69,
-     "pct": 13.4
+     "qty": 70,
+     "pct": 13.6
     },
     {
      "item": "Pearl Milk Tea",
@@ -1722,7 +1722,7 @@
     {
      "item": "Popping Blue Moon",
      "qty": 26,
-     "pct": 5.1
+     "pct": 5.0
     },
     {
      "item": "Matcha Strawberry Love",
@@ -1748,48 +1748,48 @@
    "food": [
     {
      "item": "All Mozzarella",
-     "qty": 110,
-     "pct": 25.3
+     "qty": 113,
+     "pct": 25.5
     },
     {
      "item": "Mozza Hotdog",
-     "qty": 102,
-     "pct": 23.5
+     "qty": 105,
+     "pct": 23.7
     },
     {
      "item": "Potato Mozzarella",
-     "qty": 50,
-     "pct": 11.5
+     "qty": 53,
+     "pct": 12.0
     },
     {
      "item": "Original Hotdog",
      "qty": 38,
-     "pct": 8.8
+     "pct": 8.6
     },
     {
      "item": "Cheesy Hot Cheetos Hotdog",
      "qty": 25,
-     "pct": 5.8
+     "pct": 5.6
     },
     {
      "item": "Mozzarella & Cheddar",
      "qty": 25,
-     "pct": 5.8
+     "pct": 5.6
     },
     {
      "item": "Potato Hotdog",
      "qty": 21,
-     "pct": 4.8
+     "pct": 4.7
     },
     {
      "item": "Crunchy Fries",
      "qty": 19,
-     "pct": 4.4
+     "pct": 4.3
     },
     {
      "item": "Jumbo Beef Hotdog",
      "qty": 16,
-     "pct": 3.7
+     "pct": 3.6
     },
     {
      "item": "Cheddar Hotdog",
@@ -1804,28 +1804,96 @@
    "qty_new": 32,
    "qty_all": 552,
    "amt_new": 221.15,
-   "amt_all": 3233.07
+   "amt_all": 3233.07,
+   "detail": [
+    {
+     "item": "Chunky Mango Coconut Milk Tea",
+     "qty": 13,
+     "amt": 75.14,
+     "pct": 2.4
+    },
+    {
+     "item": "Chunky Mango Slush",
+     "qty": 8,
+     "amt": 60.91,
+     "pct": 1.4
+    },
+    {
+     "item": "Mango Pomelo Crystal Smoothie",
+     "qty": 4,
+     "amt": 30.0,
+     "pct": 0.7
+    },
+    {
+     "item": "Peach & Strawberry Iced Tea",
+     "qty": 4,
+     "amt": 32.95,
+     "pct": 0.7
+    },
+    {
+     "item": "Peach Smoothie",
+     "qty": 2,
+     "amt": 15.1,
+     "pct": 0.4
+    },
+    {
+     "item": "Peach Milk Tea",
+     "qty": 1,
+     "amt": 7.05,
+     "pct": 0.2
+    }
+   ]
   },
   "Southridge": {
    "qty_new": 43,
-   "qty_all": 948,
+   "qty_all": 958,
    "amt_new": 279.15,
-   "amt_all": 6404.73
+   "amt_all": 6471.94,
+   "detail": [
+    {
+     "item": "Peach Smoothie",
+     "qty": 11,
+     "amt": 80.77,
+     "pct": 1.1
+    },
+    {
+     "item": "Chunky Mango Slush",
+     "qty": 7,
+     "amt": 49.0,
+     "pct": 0.7
+    },
+    {
+     "item": "Mango Pomelo Crystal Smoothie",
+     "qty": 7,
+     "amt": 52.2,
+     "pct": 0.7
+    },
+    {
+     "item": "Peach Milk Tea",
+     "qty": 7,
+     "amt": 36.75,
+     "pct": 0.7
+    },
+    {
+     "item": "Peach & Strawberry Iced Tea",
+     "qty": 6,
+     "amt": 26.43,
+     "pct": 0.6
+    },
+    {
+     "item": "Chunky Mango Coconut Milk Tea",
+     "qty": 5,
+     "amt": 34.0,
+     "pct": 0.5
+    }
+   ]
   },
   "total": {
    "qty_new": 75,
-   "qty_all": 1500,
+   "qty_all": 1510,
    "amt_new": 500.3,
-   "amt_all": 9637.8
-  },
-  "items": [
-   "Chunky Mango Coconut Milk Tea",
-   "Chunky Mango Slush",
-   "Mango Pomelo Crystal Smoothie",
-   "Peach & Strawberry Iced Tea",
-   "Peach Milk Tea",
-   "Peach Smoothie"
-  ]
+   "amt_all": 9705.01
+  }
  },
  "week": {
   "this": {
@@ -1903,7 +1971,7 @@
   "Southridge": {
    "this": {
     "Dine In": 436,
-    "Pickup": 86,
+    "Pickup": 87,
     "Delivery": 22
    },
    "last": {
