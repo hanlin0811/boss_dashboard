@@ -419,6 +419,35 @@ def render():
 
     st.divider()
 
+    # ── 新品佔比（本週，數量＋銷售額）──
+    ns = d.get("new_items_share", {})
+    if ns and ns.get("total") and ns["total"].get("qty_all"):
+        st.subheader("新品佔比 New Items（本週）")
+
+        def _pct(n, a):
+            return n / a * 100 if a else 0
+
+        t = ns["total"]
+        _kpi_cards([
+            {"label": "數量佔比 合計", "value": f"{_pct(t['qty_new'], t['qty_all']):.1f}%"},
+            {"label": "銷售額佔比 合計", "value": f"{_pct(t['amt_new'], t['amt_all']):.1f}%"},
+        ])
+        for store in stores:
+            x = ns.get(store)
+            if not x:
+                continue
+            qp, ap = _pct(x["qty_new"], x["qty_all"]), _pct(x["amt_new"], x["amt_all"])
+            st.markdown(
+                f'<div class="ch-detail"><b>{store}</b>　數量 {qp:.1f}%'
+                f'（{x["qty_new"]:,}/{x["qty_all"]:,}）　·　銷售額 {ap:.1f}%'
+                f'（${x["amt_new"]:,.2f}/${x["amt_all"]:,.2f}）</div>',
+                unsafe_allow_html=True)
+        hits = ns.get("items", [])
+        if hits:
+            st.caption("本週有賣的新品：" + "、".join(hits))
+        st.caption("新品清單手動維護（換季/上新改 new_items.json）；佔比＝新品 ÷ 全品項（同店同期）。")
+        st.divider()
+
     # ── 本週熱銷品項：兩店分開、食物/飲料分開，含佔同類百分比 ──
     tw_items = d.get("top_items_week", {})
     st.subheader("本週熱銷品項 Top Sellers This Week（近 7 天）")
