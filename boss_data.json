@@ -1,6 +1,6 @@
 {
  "generated_at": "2026-08-28",
- "generated_ts": "2026-08-28T14:10:51-07:00",
+ "generated_ts": "2026-08-28T15:00:07-07:00",
  "stores": [
   "Azusa",
   "Southridge"
@@ -1585,556 +1585,6 @@
    }
   ]
  },
- "new_items_share": {
-  "7d": {
-   "Azusa": {
-    "qty_new": 33,
-    "qty_all": 556,
-    "amt_new": 229.55,
-    "amt_all": 3261.83,
-    "detail": [
-     {
-      "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 13,
-      "amt": 75.14,
-      "pct": 2.3
-     },
-     {
-      "item": "Chunky Mango Slush",
-      "qty": 9,
-      "amt": 69.31,
-      "pct": 1.6
-     },
-     {
-      "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 4,
-      "amt": 30.0,
-      "pct": 0.7
-     },
-     {
-      "item": "Peach & Strawberry Iced Tea",
-      "qty": 4,
-      "amt": 32.95,
-      "pct": 0.7
-     },
-     {
-      "item": "Peach Smoothie",
-      "qty": 2,
-      "amt": 15.1,
-      "pct": 0.4
-     },
-     {
-      "item": "Peach Milk Tea",
-      "qty": 1,
-      "amt": 7.05,
-      "pct": 0.2
-     }
-    ]
-   },
-   "Southridge": {
-    "qty_new": 43,
-    "qty_all": 966,
-    "amt_new": 279.15,
-    "amt_all": 6528.04,
-    "detail": [
-     {
-      "item": "Peach Smoothie",
-      "qty": 11,
-      "amt": 80.77,
-      "pct": 1.1
-     },
-     {
-      "item": "Chunky Mango Slush",
-      "qty": 7,
-      "amt": 49.0,
-      "pct": 0.7
-     },
-     {
-      "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 7,
-      "amt": 52.2,
-      "pct": 0.7
-     },
-     {
-      "item": "Peach Milk Tea",
-      "qty": 7,
-      "amt": 36.75,
-      "pct": 0.7
-     },
-     {
-      "item": "Peach & Strawberry Iced Tea",
-      "qty": 6,
-      "amt": 26.43,
-      "pct": 0.6
-     },
-     {
-      "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 5,
-      "amt": 34.0,
-      "pct": 0.5
-     }
-    ]
-   },
-   "total": {
-    "qty_new": 76,
-    "qty_all": 1522,
-    "amt_new": 508.7,
-    "amt_all": 9789.87
-   }
-  },
-  "14d": {
-   "Azusa": {
-    "qty_new": 76,
-    "qty_all": 1206,
-    "amt_new": 538.65,
-    "amt_all": 7044.2,
-    "detail": [
-     {
-      "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 20,
-      "amt": 116.62,
-      "pct": 1.7
-     },
-     {
-      "item": "Chunky Mango Slush",
-      "qty": 18,
-      "amt": 138.56,
-      "pct": 1.5
-     },
-     {
-      "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 16,
-      "amt": 112.07,
-      "pct": 1.3
-     },
-     {
-      "item": "Peach & Strawberry Iced Tea",
-      "qty": 11,
-      "amt": 88.55,
-      "pct": 0.9
-     },
-     {
-      "item": "Peach Smoothie",
-      "qty": 6,
-      "amt": 46.05,
-      "pct": 0.5
-     },
-     {
-      "item": "Peach Milk Tea",
-      "qty": 5,
-      "amt": 36.8,
-      "pct": 0.4
-     }
-    ]
-   },
-   "Southridge": {
-    "qty_new": 86,
-    "qty_all": 2011,
-    "amt_new": 563.35,
-    "amt_all": 13624.09,
-    "detail": [
-     {
-      "item": "Chunky Mango Slush",
-      "qty": 19,
-      "amt": 134.5,
-      "pct": 0.9
-     },
-     {
-      "item": "Peach Smoothie",
-      "qty": 16,
-      "amt": 110.97,
-      "pct": 0.8
-     },
-     {
-      "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 15,
-      "amt": 102.0,
-      "pct": 0.7
-     },
-     {
-      "item": "Peach & Strawberry Iced Tea",
-      "qty": 15,
-      "amt": 81.53,
-      "pct": 0.7
-     },
-     {
-      "item": "Peach Milk Tea",
-      "qty": 11,
-      "amt": 59.65,
-      "pct": 0.5
-     },
-     {
-      "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 10,
-      "amt": 74.7,
-      "pct": 0.5
-     }
-    ]
-   },
-   "total": {
-    "qty_new": 162,
-    "qty_all": 3217,
-    "amt_new": 1102.0,
-    "amt_all": 20668.29
-   }
-  },
-  "30d": {
-   "Azusa": {
-    "qty_new": 168,
-    "qty_all": 2677,
-    "amt_new": 1220.8,
-    "amt_all": 15895.97,
-    "detail": [
-     {
-      "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 42,
-      "amt": 262.82,
-      "pct": 1.6
-     },
-     {
-      "item": "Chunky Mango Slush",
-      "qty": 41,
-      "amt": 314.06,
-      "pct": 1.5
-     },
-     {
-      "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 38,
-      "amt": 277.82,
-      "pct": 1.4
-     },
-     {
-      "item": "Peach & Strawberry Iced Tea",
-      "qty": 25,
-      "amt": 200.53,
-      "pct": 0.9
-     },
-     {
-      "item": "Peach Smoothie",
-      "qty": 12,
-      "amt": 93.85,
-      "pct": 0.4
-     },
-     {
-      "item": "Peach Milk Tea",
-      "qty": 10,
-      "amt": 71.72,
-      "pct": 0.4
-     }
-    ]
-   },
-   "Southridge": {
-    "qty_new": 146,
-    "qty_all": 4296,
-    "amt_new": 981.5,
-    "amt_all": 29202.64,
-    "detail": [
-     {
-      "item": "Chunky Mango Slush",
-      "qty": 45,
-      "amt": 308.75,
-      "pct": 1.0
-     },
-     {
-      "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 37,
-      "amt": 256.77,
-      "pct": 0.9
-     },
-     {
-      "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 22,
-      "amt": 163.83,
-      "pct": 0.5
-     },
-     {
-      "item": "Peach Smoothie",
-      "qty": 16,
-      "amt": 110.97,
-      "pct": 0.4
-     },
-     {
-      "item": "Peach & Strawberry Iced Tea",
-      "qty": 15,
-      "amt": 81.53,
-      "pct": 0.3
-     },
-     {
-      "item": "Peach Milk Tea",
-      "qty": 11,
-      "amt": 59.65,
-      "pct": 0.3
-     }
-    ]
-   },
-   "total": {
-    "qty_new": 314,
-    "qty_all": 6973,
-    "amt_new": 2202.3,
-    "amt_all": 45098.61
-   }
-  },
-  "last_week": {
-   "Azusa": {
-    "qty_new": 43,
-    "qty_all": 675,
-    "amt_new": 306.68,
-    "amt_all": 3955.7,
-    "detail": [
-     {
-      "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 10,
-      "amt": 67.5,
-      "pct": 1.5
-     },
-     {
-      "item": "Chunky Mango Slush",
-      "qty": 9,
-      "amt": 68.91,
-      "pct": 1.3
-     },
-     {
-      "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 8,
-      "amt": 46.92,
-      "pct": 1.2
-     },
-     {
-      "item": "Peach & Strawberry Iced Tea",
-      "qty": 7,
-      "amt": 56.35,
-      "pct": 1.0
-     },
-     {
-      "item": "Peach Milk Tea",
-      "qty": 5,
-      "amt": 36.8,
-      "pct": 0.7
-     },
-     {
-      "item": "Peach Smoothie",
-      "qty": 4,
-      "amt": 30.2,
-      "pct": 0.6
-     }
-    ]
-   },
-   "Southridge": {
-    "qty_new": 66,
-    "qty_all": 1033,
-    "amt_new": 417.55,
-    "amt_all": 6958.33,
-    "detail": [
-     {
-      "item": "Chunky Mango Slush",
-      "qty": 16,
-      "amt": 113.5,
-      "pct": 1.5
-     },
-     {
-      "item": "Peach & Strawberry Iced Tea",
-      "qty": 13,
-      "amt": 66.43,
-      "pct": 1.3
-     },
-     {
-      "item": "Peach Smoothie",
-      "qty": 13,
-      "amt": 88.32,
-      "pct": 1.3
-     },
-     {
-      "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 11,
-      "amt": 74.8,
-      "pct": 1.1
-     },
-     {
-      "item": "Peach Milk Tea",
-      "qty": 8,
-      "amt": 37.0,
-      "pct": 0.8
-     },
-     {
-      "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 5,
-      "amt": 37.5,
-      "pct": 0.5
-     }
-    ]
-   },
-   "total": {
-    "qty_new": 109,
-    "qty_all": 1708,
-    "amt_new": 724.23,
-    "amt_all": 10914.03
-   }
-  },
-  "last_month": {
-   "Azusa": {
-    "qty_new": 148,
-    "qty_all": 2784,
-    "amt_new": 1004.91,
-    "amt_all": 16750.88,
-    "detail": [
-     {
-      "item": "Chunky Mango Slush",
-      "qty": 33,
-      "amt": 224.77,
-      "pct": 1.2
-     },
-     {
-      "item": "Peach & Strawberry Iced Tea",
-      "qty": 33,
-      "amt": 258.35,
-      "pct": 1.2
-     },
-     {
-      "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 31,
-      "amt": 155.72,
-      "pct": 1.1
-     },
-     {
-      "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 23,
-      "amt": 162.75,
-      "pct": 0.8
-     },
-     {
-      "item": "Peach Milk Tea",
-      "qty": 15,
-      "amt": 100.86,
-      "pct": 0.5
-     },
-     {
-      "item": "Peach Smoothie",
-      "qty": 13,
-      "amt": 102.46,
-      "pct": 0.5
-     }
-    ]
-   },
-   "Southridge": {
-    "qty_new": 5,
-    "qty_all": 3806,
-    "amt_new": 35.85,
-    "amt_all": 26149.13,
-    "detail": [
-     {
-      "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 2,
-      "amt": 13.6,
-      "pct": 0.1
-     },
-     {
-      "item": "Chunky Mango Slush",
-      "qty": 2,
-      "amt": 14.75,
-      "pct": 0.1
-     },
-     {
-      "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 1,
-      "amt": 7.5,
-      "pct": 0.0
-     }
-    ]
-   },
-   "total": {
-    "qty_new": 153,
-    "qty_all": 6590,
-    "amt_new": 1040.76,
-    "amt_all": 42900.01
-   }
-  }
- },
- "week": {
-  "this": {
-   "Azusa": {
-    "sales": 3179.25,
-    "cups": 358,
-    "food": 186,
-    "tc": 209,
-    "labor": 110.0,
-    "days": 6,
-    "labor_days": 6
-   },
-   "Southridge": {
-    "sales": 5867.29,
-    "cups": 474,
-    "food": 396,
-    "tc": 488,
-    "labor": null,
-    "days": 6,
-    "labor_days": 0
-   },
-   "total": {
-    "sales": 9046.54,
-    "cups": 832,
-    "food": 582,
-    "tc": 697,
-    "labor": null,
-    "days": 6,
-    "labor_days": 6
-   }
-  },
-  "last": {
-   "Azusa": {
-    "sales": 3782.37,
-    "cups": 429,
-    "food": 221,
-    "tc": 244,
-    "labor": 126.5,
-    "days": 7,
-    "labor_days": 7
-   },
-   "Southridge": {
-    "sales": 7096.05,
-    "cups": 555,
-    "food": 490,
-    "tc": 600,
-    "labor": null,
-    "days": 7,
-    "labor_days": 0
-   },
-   "total": {
-    "sales": 10878.42,
-    "cups": 984,
-    "food": 711,
-    "tc": 844,
-    "labor": null,
-    "days": 7,
-    "labor_days": 7
-   }
-  }
- },
- "channel_mix": {
-  "Azusa": {
-   "this": {
-    "Dine In": 79,
-    "Pickup": 87,
-    "Delivery": 65
-   },
-   "last": {
-    "Dine In": 101,
-    "Pickup": 95,
-    "Delivery": 47
-   }
-  },
-  "Southridge": {
-   "this": {
-    "Dine In": 436,
-    "Pickup": 87,
-    "Delivery": 22
-   },
-   "last": {
-    "Dine In": 463,
-    "Pickup": 105,
-    "Delivery": 25
-   }
-  }
- },
  "top_items": {
   "7d": {
    "Azusa": {
@@ -3204,6 +2654,470 @@
       "pct": 3.1
      }
     ]
+   }
+  }
+ },
+ "new_items_share": {
+  "7d": {
+   "Azusa": {
+    "qty_new": 33,
+    "qty_all": 556,
+    "amt_new": 229.55,
+    "amt_all": 3261.83,
+    "detail": [
+     {
+      "item": "Chunky Mango Coconut Milk Tea",
+      "qty": 13,
+      "amt": 75.14,
+      "pct": 2.3
+     },
+     {
+      "item": "Chunky Mango Slush",
+      "qty": 9,
+      "amt": 69.31,
+      "pct": 1.6
+     },
+     {
+      "item": "Mango Pomelo Crystal Smoothie",
+      "qty": 4,
+      "amt": 30.0,
+      "pct": 0.7
+     },
+     {
+      "item": "Peach & Strawberry Iced Tea",
+      "qty": 4,
+      "amt": 32.95,
+      "pct": 0.7
+     },
+     {
+      "item": "Peach Smoothie",
+      "qty": 2,
+      "amt": 15.1,
+      "pct": 0.4
+     },
+     {
+      "item": "Peach Milk Tea",
+      "qty": 1,
+      "amt": 7.05,
+      "pct": 0.2
+     }
+    ]
+   },
+   "Southridge": {
+    "qty_new": 43,
+    "qty_all": 966,
+    "amt_new": 279.15,
+    "amt_all": 6528.04,
+    "detail": [
+     {
+      "item": "Peach Smoothie",
+      "qty": 11,
+      "amt": 80.77,
+      "pct": 1.1
+     },
+     {
+      "item": "Chunky Mango Slush",
+      "qty": 7,
+      "amt": 49.0,
+      "pct": 0.7
+     },
+     {
+      "item": "Mango Pomelo Crystal Smoothie",
+      "qty": 7,
+      "amt": 52.2,
+      "pct": 0.7
+     },
+     {
+      "item": "Peach Milk Tea",
+      "qty": 7,
+      "amt": 36.75,
+      "pct": 0.7
+     },
+     {
+      "item": "Peach & Strawberry Iced Tea",
+      "qty": 6,
+      "amt": 26.43,
+      "pct": 0.6
+     },
+     {
+      "item": "Chunky Mango Coconut Milk Tea",
+      "qty": 5,
+      "amt": 34.0,
+      "pct": 0.5
+     }
+    ]
+   },
+   "total": {
+    "qty_new": 76,
+    "qty_all": 1522,
+    "amt_new": 508.7,
+    "amt_all": 9789.87
+   }
+  },
+  "14d": {
+   "Azusa": {
+    "qty_new": 76,
+    "qty_all": 1206,
+    "amt_new": 538.65,
+    "amt_all": 7044.2,
+    "detail": [
+     {
+      "item": "Chunky Mango Coconut Milk Tea",
+      "qty": 20,
+      "amt": 116.62,
+      "pct": 1.7
+     },
+     {
+      "item": "Chunky Mango Slush",
+      "qty": 18,
+      "amt": 138.56,
+      "pct": 1.5
+     },
+     {
+      "item": "Mango Pomelo Crystal Smoothie",
+      "qty": 16,
+      "amt": 112.07,
+      "pct": 1.3
+     },
+     {
+      "item": "Peach & Strawberry Iced Tea",
+      "qty": 11,
+      "amt": 88.55,
+      "pct": 0.9
+     },
+     {
+      "item": "Peach Smoothie",
+      "qty": 6,
+      "amt": 46.05,
+      "pct": 0.5
+     },
+     {
+      "item": "Peach Milk Tea",
+      "qty": 5,
+      "amt": 36.8,
+      "pct": 0.4
+     }
+    ]
+   },
+   "Southridge": {
+    "qty_new": 86,
+    "qty_all": 2011,
+    "amt_new": 563.35,
+    "amt_all": 13624.09,
+    "detail": [
+     {
+      "item": "Chunky Mango Slush",
+      "qty": 19,
+      "amt": 134.5,
+      "pct": 0.9
+     },
+     {
+      "item": "Peach Smoothie",
+      "qty": 16,
+      "amt": 110.97,
+      "pct": 0.8
+     },
+     {
+      "item": "Chunky Mango Coconut Milk Tea",
+      "qty": 15,
+      "amt": 102.0,
+      "pct": 0.7
+     },
+     {
+      "item": "Peach & Strawberry Iced Tea",
+      "qty": 15,
+      "amt": 81.53,
+      "pct": 0.7
+     },
+     {
+      "item": "Peach Milk Tea",
+      "qty": 11,
+      "amt": 59.65,
+      "pct": 0.5
+     },
+     {
+      "item": "Mango Pomelo Crystal Smoothie",
+      "qty": 10,
+      "amt": 74.7,
+      "pct": 0.5
+     }
+    ]
+   },
+   "total": {
+    "qty_new": 162,
+    "qty_all": 3217,
+    "amt_new": 1102.0,
+    "amt_all": 20668.29
+   }
+  },
+  "30d": {
+   "Azusa": {
+    "qty_new": 168,
+    "qty_all": 2677,
+    "amt_new": 1220.8,
+    "amt_all": 15895.97,
+    "detail": [
+     {
+      "item": "Chunky Mango Coconut Milk Tea",
+      "qty": 42,
+      "amt": 262.82,
+      "pct": 1.6
+     },
+     {
+      "item": "Chunky Mango Slush",
+      "qty": 41,
+      "amt": 314.06,
+      "pct": 1.5
+     },
+     {
+      "item": "Mango Pomelo Crystal Smoothie",
+      "qty": 38,
+      "amt": 277.82,
+      "pct": 1.4
+     },
+     {
+      "item": "Peach & Strawberry Iced Tea",
+      "qty": 25,
+      "amt": 200.53,
+      "pct": 0.9
+     },
+     {
+      "item": "Peach Smoothie",
+      "qty": 12,
+      "amt": 93.85,
+      "pct": 0.4
+     },
+     {
+      "item": "Peach Milk Tea",
+      "qty": 10,
+      "amt": 71.72,
+      "pct": 0.4
+     }
+    ]
+   },
+   "Southridge": {
+    "qty_new": 146,
+    "qty_all": 4296,
+    "amt_new": 981.5,
+    "amt_all": 29202.64,
+    "detail": [
+     {
+      "item": "Chunky Mango Slush",
+      "qty": 45,
+      "amt": 308.75,
+      "pct": 1.0
+     },
+     {
+      "item": "Chunky Mango Coconut Milk Tea",
+      "qty": 37,
+      "amt": 256.77,
+      "pct": 0.9
+     },
+     {
+      "item": "Mango Pomelo Crystal Smoothie",
+      "qty": 22,
+      "amt": 163.83,
+      "pct": 0.5
+     },
+     {
+      "item": "Peach Smoothie",
+      "qty": 16,
+      "amt": 110.97,
+      "pct": 0.4
+     },
+     {
+      "item": "Peach & Strawberry Iced Tea",
+      "qty": 15,
+      "amt": 81.53,
+      "pct": 0.3
+     },
+     {
+      "item": "Peach Milk Tea",
+      "qty": 11,
+      "amt": 59.65,
+      "pct": 0.3
+     }
+    ]
+   },
+   "total": {
+    "qty_new": 314,
+    "qty_all": 6973,
+    "amt_new": 2202.3,
+    "amt_all": 45098.61
+   }
+  },
+  "last_week": {
+   "Azusa": {
+    "qty_new": 43,
+    "qty_all": 675,
+    "amt_new": 306.68,
+    "amt_all": 3955.7,
+    "detail": [
+     {
+      "item": "Mango Pomelo Crystal Smoothie",
+      "qty": 10,
+      "amt": 67.5,
+      "pct": 1.5
+     },
+     {
+      "item": "Chunky Mango Slush",
+      "qty": 9,
+      "amt": 68.91,
+      "pct": 1.3
+     },
+     {
+      "item": "Chunky Mango Coconut Milk Tea",
+      "qty": 8,
+      "amt": 46.92,
+      "pct": 1.2
+     },
+     {
+      "item": "Peach & Strawberry Iced Tea",
+      "qty": 7,
+      "amt": 56.35,
+      "pct": 1.0
+     },
+     {
+      "item": "Peach Milk Tea",
+      "qty": 5,
+      "amt": 36.8,
+      "pct": 0.7
+     },
+     {
+      "item": "Peach Smoothie",
+      "qty": 4,
+      "amt": 30.2,
+      "pct": 0.6
+     }
+    ]
+   },
+   "Southridge": {
+    "qty_new": 66,
+    "qty_all": 1033,
+    "amt_new": 417.55,
+    "amt_all": 6958.33,
+    "detail": [
+     {
+      "item": "Chunky Mango Slush",
+      "qty": 16,
+      "amt": 113.5,
+      "pct": 1.5
+     },
+     {
+      "item": "Peach & Strawberry Iced Tea",
+      "qty": 13,
+      "amt": 66.43,
+      "pct": 1.3
+     },
+     {
+      "item": "Peach Smoothie",
+      "qty": 13,
+      "amt": 88.32,
+      "pct": 1.3
+     },
+     {
+      "item": "Chunky Mango Coconut Milk Tea",
+      "qty": 11,
+      "amt": 74.8,
+      "pct": 1.1
+     },
+     {
+      "item": "Peach Milk Tea",
+      "qty": 8,
+      "amt": 37.0,
+      "pct": 0.8
+     },
+     {
+      "item": "Mango Pomelo Crystal Smoothie",
+      "qty": 5,
+      "amt": 37.5,
+      "pct": 0.5
+     }
+    ]
+   },
+   "total": {
+    "qty_new": 109,
+    "qty_all": 1708,
+    "amt_new": 724.23,
+    "amt_all": 10914.03
+   }
+  },
+  "last_month": {
+   "Azusa": {
+    "qty_new": 148,
+    "qty_all": 2784,
+    "amt_new": 1004.91,
+    "amt_all": 16750.88,
+    "detail": [
+     {
+      "item": "Chunky Mango Slush",
+      "qty": 33,
+      "amt": 224.77,
+      "pct": 1.2
+     },
+     {
+      "item": "Peach & Strawberry Iced Tea",
+      "qty": 33,
+      "amt": 258.35,
+      "pct": 1.2
+     },
+     {
+      "item": "Chunky Mango Coconut Milk Tea",
+      "qty": 31,
+      "amt": 155.72,
+      "pct": 1.1
+     },
+     {
+      "item": "Mango Pomelo Crystal Smoothie",
+      "qty": 23,
+      "amt": 162.75,
+      "pct": 0.8
+     },
+     {
+      "item": "Peach Milk Tea",
+      "qty": 15,
+      "amt": 100.86,
+      "pct": 0.5
+     },
+     {
+      "item": "Peach Smoothie",
+      "qty": 13,
+      "amt": 102.46,
+      "pct": 0.5
+     }
+    ]
+   },
+   "Southridge": {
+    "qty_new": 5,
+    "qty_all": 3806,
+    "amt_new": 35.85,
+    "amt_all": 26149.13,
+    "detail": [
+     {
+      "item": "Chunky Mango Coconut Milk Tea",
+      "qty": 2,
+      "amt": 13.6,
+      "pct": 0.1
+     },
+     {
+      "item": "Chunky Mango Slush",
+      "qty": 2,
+      "amt": 14.75,
+      "pct": 0.1
+     },
+     {
+      "item": "Mango Pomelo Crystal Smoothie",
+      "qty": 1,
+      "amt": 7.5,
+      "pct": 0.0
+     }
+    ]
+   },
+   "total": {
+    "qty_new": 153,
+    "qty_all": 6590,
+    "amt_new": 1040.76,
+    "amt_all": 42900.01
    }
   }
  },
@@ -39372,5 +39286,91 @@
    "peach milk tea",
    "peach smoothie"
   ]
+ },
+ "week": {
+  "this": {
+   "Azusa": {
+    "sales": 3179.25,
+    "cups": 358,
+    "food": 186,
+    "tc": 209,
+    "labor": 110.0,
+    "days": 6,
+    "labor_days": 6
+   },
+   "Southridge": {
+    "sales": 5867.29,
+    "cups": 474,
+    "food": 396,
+    "tc": 488,
+    "labor": null,
+    "days": 6,
+    "labor_days": 0
+   },
+   "total": {
+    "sales": 9046.54,
+    "cups": 832,
+    "food": 582,
+    "tc": 697,
+    "labor": null,
+    "days": 6,
+    "labor_days": 6
+   }
+  },
+  "last": {
+   "Azusa": {
+    "sales": 3782.37,
+    "cups": 429,
+    "food": 221,
+    "tc": 244,
+    "labor": 126.5,
+    "days": 7,
+    "labor_days": 7
+   },
+   "Southridge": {
+    "sales": 7096.05,
+    "cups": 555,
+    "food": 490,
+    "tc": 600,
+    "labor": null,
+    "days": 7,
+    "labor_days": 0
+   },
+   "total": {
+    "sales": 10878.42,
+    "cups": 984,
+    "food": 711,
+    "tc": 844,
+    "labor": null,
+    "days": 7,
+    "labor_days": 7
+   }
+  }
+ },
+ "channel_mix": {
+  "Azusa": {
+   "this": {
+    "Dine In": 79,
+    "Pickup": 87,
+    "Delivery": 65
+   },
+   "last": {
+    "Dine In": 101,
+    "Pickup": 95,
+    "Delivery": 47
+   }
+  },
+  "Southridge": {
+   "this": {
+    "Dine In": 436,
+    "Pickup": 87,
+    "Delivery": 22
+   },
+   "last": {
+    "Dine In": 463,
+    "Pickup": 105,
+    "Delivery": 25
+   }
+  }
  }
 }
