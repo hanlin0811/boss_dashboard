@@ -77,6 +77,11 @@ _KPI_CSS = """
 .ch-detail{font-size:.76rem;color:#6b5f52;margin:.2rem 0 .1rem}
 .ch-dot{display:inline-block;width:9px;height:9px;border-radius:2px;
         margin:0 .25rem 0 .7rem;vertical-align:middle}
+.ni-table{width:100%;border-collapse:collapse;font-size:.78rem;margin:.1rem 0 .3rem}
+.ni-table th{text-align:left;color:#8a7d6d;font-weight:600;
+        padding:.25rem .35rem;border-bottom:1px solid #eadfce}
+.ni-table td{padding:.28rem .35rem;border-bottom:1px solid #f2ece1;color:#2a2320}
+.ni-table th.num,.ni-table td.num{text-align:right;white-space:nowrap}
 </style>
 """
 
@@ -440,12 +445,16 @@ def render():
             col.markdown(f"##### {store}　數量 {qp:.1f}%・銷售額 {ap:.1f}%")
             detail = x.get("detail", [])
             if detail:
-                ndf = pd.DataFrame(detail)
-                ndf["銷售額"] = ndf["amt"].map(lambda v: f"${v:,.2f}")
-                ndf["佔比"] = ndf["pct"].map(lambda p: f"{p:.1f}%")
-                ndf = ndf.rename(columns={"item": "品項", "qty": "數量"})
-                col.dataframe(ndf[["品項", "數量", "銷售額", "佔比"]],
-                              hide_index=True, use_container_width=True)
+                # 用 HTML 表格（st.dataframe 在手機分欄會塌成空白）
+                rows = "".join(
+                    f'<tr><td>{it["item"]}</td><td class="num">{it["qty"]:,}</td>'
+                    f'<td class="num">${it["amt"]:,.2f}</td>'
+                    f'<td class="num">{it["pct"]:.1f}%</td></tr>' for it in detail)
+                col.markdown(
+                    '<table class="ni-table"><thead><tr><th>品項</th>'
+                    '<th class="num">數量</th><th class="num">銷售額</th>'
+                    f'<th class="num">佔比</th></tr></thead><tbody>{rows}</tbody></table>',
+                    unsafe_allow_html=True)
             else:
                 col.caption("本週無新品銷售")
         st.caption("每支新品的本週數量、銷售額；佔比＝該新品數量佔全店本週總數量。"
