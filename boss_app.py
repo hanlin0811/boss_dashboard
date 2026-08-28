@@ -419,25 +419,33 @@ def render():
 
     st.divider()
 
-    # ── 品項期間選單（同時控制新品佔比 + 熱銷品項）──
+    # ── 品項期間：新品與熱銷各一組選單，標題帶出實際日期範圍 ──
     PERIOD_LABELS = {"7d": "近 7 天", "14d": "近 14 天", "30d": "近 30 天",
                      "last_week": "上週", "last_month": "上個月"}
     top_all = d.get("top_items", {})
     new_all = d.get("new_items_share", {})
+    pdates = d.get("period_dates", {})
+
+    def _md(iso):
+        p = iso.split("-")
+        return f"{int(p[1])}/{int(p[2])}" if len(p) == 3 else iso
+
+    def _plabel(k):
+        r = pdates.get(k)
+        return (f"{PERIOD_LABELS[k]} {_md(r[0])}-{_md(r[1])}"
+                if r and len(r) == 2 else PERIOD_LABELS[k])
+
+    def _pct(n, a):
+        return n / a * 100 if a else 0
+
     avail = [k for k in PERIOD_LABELS if k in top_all or k in new_all]
     if avail:
-        period = st.radio("品項期間 Period", avail, horizontal=True,
-                          format_func=lambda k: PERIOD_LABELS[k], key="item_period")
-        plabel = PERIOD_LABELS[period]
-
-        # 新品佔比（數量＋銷售額）
-        ns = new_all.get(period, {})
+        # 新品佔比（自己的期間選單）
+        p_new = st.radio("新品期間 Period", avail, horizontal=True,
+                         format_func=lambda k: PERIOD_LABELS[k], key="new_period")
+        ns = new_all.get(p_new, {})
+        st.subheader(f"新品佔比 New Items（{_plabel(p_new)}）")
         if ns and ns.get("total") and ns["total"].get("qty_all"):
-            st.subheader(f"新品佔比 New Items（{plabel}）")
-
-            def _pct(n, a):
-                return n / a * 100 if a else 0
-
             t = ns["total"]
             _kpi_cards([
                 {"label": "數量佔比 合計", "value": f"{_pct(t['qty_new'], t['qty_all']):.1f}%"},
@@ -459,13 +467,17 @@ def render():
                                   hide_index=True, use_container_width=True)
                 else:
                     col.caption("無新品銷售")
-            st.caption(f"每支新品的{plabel}數量、銷售額；佔比＝該新品數量佔全店同期總數量。"
+            st.caption("每支新品的數量、銷售額；佔比＝該新品數量佔全店同期總數量。"
                        "新品清單手動維護（兩店分開，改 new_items.json）。")
-            st.divider()
+        else:
+            st.caption("此期間無新品銷售。")
+        st.divider()
 
-        # 熱銷品項：兩店分開、食物/飲料分開，含佔同類百分比
-        ti = top_all.get(period, {})
-        st.subheader(f"熱銷品項 Top Sellers（{plabel}）")
+        # 熱銷品項（自己的期間選單）
+        p_top = st.radio("熱銷期間 Period", avail, horizontal=True,
+                         format_func=lambda k: PERIOD_LABELS[k], key="top_period")
+        ti = top_all.get(p_top, {})
+        st.subheader(f"熱銷品項 Top Sellers（{_plabel(p_top)}）")
         if not ti:
             st.caption("品項資料暫無（下次資料更新後顯示）。")
         else:
@@ -484,7 +496,7 @@ def render():
                                       use_container_width=True)
                     else:
                         col.caption("—")
-            st.caption(f"佔比＝該品項佔同店同類（飲料或食物）{plabel}總數量的百分比。")
+            st.caption("佔比＝該品項佔同店同類（飲料或食物）同期總數量的百分比。")
 
     st.caption(f"CrunCheese × CoCo · 資料更新於 {gen} · 每日自動更新")
 
