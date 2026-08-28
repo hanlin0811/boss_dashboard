@@ -432,20 +432,24 @@ def render():
             {"label": "數量佔比 合計", "value": f"{_pct(t['qty_new'], t['qty_all']):.1f}%"},
             {"label": "銷售額佔比 合計", "value": f"{_pct(t['amt_new'], t['amt_all']):.1f}%"},
         ])
-        for store in stores:
-            x = ns.get(store)
-            if not x:
-                continue
-            qp, ap = _pct(x["qty_new"], x["qty_all"]), _pct(x["amt_new"], x["amt_all"])
-            st.markdown(
-                f'<div class="ch-detail"><b>{store}</b>　數量 {qp:.1f}%'
-                f'（{x["qty_new"]:,}/{x["qty_all"]:,}）　·　銷售額 {ap:.1f}%'
-                f'（${x["amt_new"]:,.2f}/${x["amt_all"]:,.2f}）</div>',
-                unsafe_allow_html=True)
-        hits = ns.get("items", [])
-        if hits:
-            st.caption("本週有賣的新品：" + "、".join(hits))
-        st.caption("新品清單手動維護（換季/上新改 new_items.json）；佔比＝新品 ÷ 全品項（同店同期）。")
+        cols = st.columns(len(stores))
+        for col, store in zip(cols, stores):
+            x = ns.get(store) or {}
+            qp, ap = _pct(x.get("qty_new", 0), x.get("qty_all", 0)), \
+                _pct(x.get("amt_new", 0), x.get("amt_all", 0))
+            col.markdown(f"##### {store}　數量 {qp:.1f}%・銷售額 {ap:.1f}%")
+            detail = x.get("detail", [])
+            if detail:
+                ndf = pd.DataFrame(detail)
+                ndf["銷售額"] = ndf["amt"].map(lambda v: f"${v:,.2f}")
+                ndf["佔比"] = ndf["pct"].map(lambda p: f"{p:.1f}%")
+                ndf = ndf.rename(columns={"item": "品項", "qty": "數量"})
+                col.dataframe(ndf[["品項", "數量", "銷售額", "佔比"]],
+                              hide_index=True, use_container_width=True)
+            else:
+                col.caption("本週無新品銷售")
+        st.caption("每支新品的本週數量、銷售額；佔比＝該新品數量佔全店本週總數量。"
+                   "新品清單手動維護（換季/上新改 new_items.json）。")
         st.divider()
 
     # ── 本週熱銷品項：兩店分開、食物/飲料分開，含佔同類百分比 ──
