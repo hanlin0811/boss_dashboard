@@ -1589,9 +1589,9 @@
   "7d": {
    "Azusa": {
     "qty_new": 33,
-    "qty_all": 554,
+    "qty_all": 555,
     "amt_new": 229.55,
-    "amt_all": 3248.73,
+    "amt_all": 3255.53,
     "detail": [
      {
       "item": "Chunky Mango Coconut Milk Tea",
@@ -1633,9 +1633,9 @@
    },
    "Southridge": {
     "qty_new": 43,
-    "qty_all": 960,
+    "qty_all": 965,
     "amt_new": 279.15,
-    "amt_all": 6487.29,
+    "amt_all": 6521.49,
     "detail": [
      {
       "item": "Peach Smoothie",
@@ -1677,17 +1677,17 @@
    },
    "total": {
     "qty_new": 76,
-    "qty_all": 1514,
+    "qty_all": 1520,
     "amt_new": 508.7,
-    "amt_all": 9736.02
+    "amt_all": 9777.02
    }
   },
   "14d": {
    "Azusa": {
     "qty_new": 76,
-    "qty_all": 1204,
+    "qty_all": 1205,
     "amt_new": 538.65,
-    "amt_all": 7031.1,
+    "amt_all": 7037.9,
     "detail": [
      {
       "item": "Chunky Mango Coconut Milk Tea",
@@ -1729,9 +1729,9 @@
    },
    "Southridge": {
     "qty_new": 86,
-    "qty_all": 2005,
+    "qty_all": 2010,
     "amt_new": 563.35,
-    "amt_all": 13583.34,
+    "amt_all": 13617.54,
     "detail": [
      {
       "item": "Chunky Mango Slush",
@@ -1773,17 +1773,17 @@
    },
    "total": {
     "qty_new": 162,
-    "qty_all": 3209,
+    "qty_all": 3215,
     "amt_new": 1102.0,
-    "amt_all": 20614.44
+    "amt_all": 20655.44
    }
   },
   "30d": {
    "Azusa": {
     "qty_new": 168,
-    "qty_all": 2675,
+    "qty_all": 2676,
     "amt_new": 1220.8,
-    "amt_all": 15882.87,
+    "amt_all": 15889.67,
     "detail": [
      {
       "item": "Chunky Mango Coconut Milk Tea",
@@ -1825,9 +1825,9 @@
    },
    "Southridge": {
     "qty_new": 146,
-    "qty_all": 4290,
+    "qty_all": 4295,
     "amt_new": 981.5,
-    "amt_all": 29161.89,
+    "amt_all": 29196.09,
     "detail": [
      {
       "item": "Chunky Mango Slush",
@@ -1869,9 +1869,9 @@
    },
    "total": {
     "qty_new": 314,
-    "qty_all": 6965,
+    "qty_all": 6971,
     "amt_new": 2202.3,
-    "amt_all": 45044.76
+    "amt_all": 45085.76
    }
   },
   "last_week": {
@@ -2142,12 +2142,12 @@
      {
       "item": "2 Ladies Milk Tea",
       "qty": 48,
-      "pct": 13.1
+      "pct": 13.0
      },
      {
       "item": "Pearl Milk Tea",
       "qty": 27,
-      "pct": 7.4
+      "pct": 7.3
      },
      {
       "item": "Taro",
@@ -2175,12 +2175,12 @@
       "pct": 3.8
      },
      {
-      "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 13,
-      "pct": 3.5
+      "item": "Jasmine Brown Sugar Pearl Milk Tea",
+      "qty": 14,
+      "pct": 3.8
      },
      {
-      "item": "Jasmine Brown Sugar Pearl Milk Tea",
+      "item": "Chunky Mango Coconut Milk Tea",
       "qty": 13,
       "pct": 3.5
      },
@@ -2248,12 +2248,12 @@
      {
       "item": "Brown Sugar Pearl with Fresh Milk",
       "qty": 71,
-      "pct": 13.7
+      "pct": 13.6
      },
      {
       "item": "Pearl Milk Tea",
       "qty": 47,
-      "pct": 9.1
+      "pct": 9.0
      },
      {
       "item": "Mango Rainbow",
@@ -2272,28 +2272,28 @@
      },
      {
       "item": "Popping Blue Moon",
-      "qty": 26,
-      "pct": 5.0
+      "qty": 27,
+      "pct": 5.2
      },
      {
       "item": "Matcha Strawberry Love",
       "qty": 22,
-      "pct": 4.3
+      "pct": 4.2
      },
      {
       "item": "Pearl Chocolate",
-      "qty": 20,
-      "pct": 3.9
+      "qty": 21,
+      "pct": 4.0
      },
      {
       "item": "Mango Smoothie",
       "qty": 20,
-      "pct": 3.9
+      "pct": 3.8
      },
      {
       "item": "Tropical Special",
       "qty": 20,
-      "pct": 3.9
+      "pct": 3.8
      }
     ],
     "food": [
@@ -2305,12 +2305,12 @@
      {
       "item": "Mozza Hotdog",
       "qty": 105,
-      "pct": 23.7
+      "pct": 23.6
      },
      {
       "item": "Potato Mozzarella",
       "qty": 53,
-      "pct": 12.0
+      "pct": 11.9
      },
      {
       "item": "Original Hotdog",
@@ -2394,14 +2394,14 @@
       "pct": 3.3
      },
      {
-      "item": "Mango Rainbow",
+      "item": "Jasmine Brown Sugar Pearl Milk Tea",
       "qty": 25,
       "pct": 3.1
      },
      {
-      "item": "Jasmine Brown Sugar Pearl Milk Tea",
-      "qty": 24,
-      "pct": 3.0
+      "item": "Mango Rainbow",
+      "qty": 25,
+      "pct": 3.1
      }
     ],
     "food": [
@@ -2462,7 +2462,7 @@
      {
       "item": "Brown Sugar Pearl with Fresh Milk",
       "qty": 125,
-      "pct": 11.7
+      "pct": 11.6
      },
      {
       "item": "Pearl Milk Tea",
@@ -2471,8 +2471,8 @@
      },
      {
       "item": "Popping Blue Moon",
-      "qty": 69,
-      "pct": 6.4
+      "qty": 70,
+      "pct": 6.5
      },
      {
       "item": "Mango Rainbow",
@@ -2482,12 +2482,12 @@
      {
       "item": "Passion Fruit & Mango Slush",
       "qty": 65,
-      "pct": 6.1
+      "pct": 6.0
      },
      {
       "item": "Pearl Chocolate",
-      "qty": 45,
-      "pct": 4.2
+      "qty": 46,
+      "pct": 4.3
      },
      {
       "item": "Strawberry Smoothie",
@@ -2614,8 +2614,8 @@
      },
      {
       "item": "Jasmine Brown Sugar Pearl Milk Tea",
-      "qty": 44,
-      "pct": 2.6
+      "qty": 45,
+      "pct": 2.7
      }
     ],
     "food": [
@@ -2685,7 +2685,7 @@
      },
      {
       "item": "Popping Blue Moon",
-      "qty": 157,
+      "qty": 158,
       "pct": 6.7
      },
      {
@@ -2706,12 +2706,12 @@
      {
       "item": "Strawberry Smoothie",
       "qty": 95,
-      "pct": 4.1
+      "pct": 4.0
      },
      {
       "item": "Pearl Chocolate",
-      "qty": 92,
-      "pct": 3.9
+      "qty": 93,
+      "pct": 4.0
      },
      {
       "item": "Matcha Strawberry Love",
@@ -3206,5 +3206,27 @@
     ]
    }
   }
+ },
+ "period_dates": {
+  "7d": [
+   "2026-08-22",
+   "2026-08-28"
+  ],
+  "14d": [
+   "2026-08-15",
+   "2026-08-28"
+  ],
+  "30d": [
+   "2026-07-30",
+   "2026-08-28"
+  ],
+  "last_week": [
+   "2026-08-17",
+   "2026-08-23"
+  ],
+  "last_month": [
+   "2026-07-01",
+   "2026-07-31"
+  ]
  }
 }
