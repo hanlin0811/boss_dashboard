@@ -197,6 +197,67 @@ def _newshare_from_df(sub, stores, new_list):
     return out
 
 
+def _fmt_chg(v):
+    if v is None or (isinstance(v, float) and pd.isna(v)):
+        return "新"
+    return f"{'▲' if v >= 0 else '▼'} {abs(v):.0f}%"
+
+
+def _color_chg(v):
+    if v is None or (isinstance(v, float) and pd.isna(v)):
+        return "color:#d9822b;font-weight:600"
+    return "color:#1a9850;font-weight:700" if v >= 0 else "color:#d73027;font-weight:700"
+
+
+def _item_change(df, stores, s, e):
+    """每支品項 vs 上一期（同長度、緊接在前）的數量變化%。
+    回 ({store: {item: pct or None}}, has_prev)。has_prev=False：前一期超出資料範圍。"""
+    L = (e - s).days + 1
+    ps, pe = s - timedelta(days=L), s - timedelta(days=1)
+    dmin = df["date"].min() if not df.empty else None
+    has_prev = dmin is not None and ps >= dmin
+    cur = df[(df["date"] >= s) & (df["date"] <= e)]
+    prv = df[(df["date"] >= ps) & (df["date"] <= pe)]
+    out = {}
+    for store in stores:
+        c = cur[cur["store"] == store].groupby("item")["qty"].sum()
+        p = prv[prv["store"] == store].groupby("item")["qty"].sum()
+        out[store] = {it: ((int(cq) - int(p.get(it, 0))) / int(p.get(it, 0)) * 100
+                           if int(p.get(it, 0)) else None) for it, cq in c.items()}
+    return out, has_prev
+
+
+def _new_table(col, detail, chg):
+    """新品明細表；chg=該店 {item:變化%}，None 則不顯示變化欄。"""
+    items = [r["item"] for r in detail]
+    ndf = pd.DataFrame(detail).rename(
+        columns={"item": "品項", "qty": "數量", "amt": "銷售額", "pct": "佔比"})
+    show = ["品項", "數量", "銷售額", "佔比"]
+    fmt = {"銷售額": lambda v: f"${v:,.2f}", "佔比": lambda v: f"{v:.1f}%"}
+    if chg is not None:
+        ndf["變化"] = [chg.get(it) for it in items]
+        show.append("變化"); fmt["變化"] = _fmt_chg
+    sty = ndf[show].style.format(fmt)
+    if chg is not None:
+        sty = sty.map(_color_chg, subset=["變化"])
+    col.dataframe(sty, hide_index=True, use_container_width=True)
+
+
+def _top_table(col, rows, chg):
+    """熱銷表；chg=該店 {item:變化%}，None 則不顯示變化欄。"""
+    items = [r["item"] for r in rows]
+    tdf = pd.DataFrame(rows).rename(columns={"item": "品項", "qty": "數量", "pct": "佔比"})
+    show = ["品項", "數量", "佔比"]
+    fmt = {"佔比": lambda v: f"{v:.1f}%"}
+    if chg is not None:
+        tdf["變化"] = [chg.get(it) for it in items]
+        show.append("變化"); fmt["變化"] = _fmt_chg
+    sty = tdf[show].style.format(fmt)
+    if chg is not None:
+        sty = sty.map(_color_chg, subset=["變化"])
+    col.dataframe(sty, hide_index=True, use_container_width=True)
+
+
 def render():
     try:
         d = load_data()
@@ -491,13 +552,20 @@ def render():
     def _pct(n, a):
         return n / a * 100 if a else 0
 
+    idf = _item_daily_df(d.get("item_daily", []))
+
     def _resolve(key):
-        """畫期間選單（含自訂區間），回 (plabel, ns, ti)；自訂尚未選完回 None。"""
+        """畫期間選單（含自訂區間），回 (plabel, ns, ti, s, e)；自訂尚未選完回 None。"""
         opts = avail + (["custom"] if has_custom else [])
         sel = st.radio("期間 Period", opts, horizontal=True, key=key + "_p",
                        format_func=lambda k: "自訂 Custom" if k == "custom" else PERIOD_LABELS[k])
         if sel != "custom":
-            return _plabel(sel), new_all.get(sel, {}), top_all.get(sel, {})
+            r = pdates.get(sel) or []
+            try:
+                s, e = date.fromisoformat(r[0]), date.fromisoformat(r[1])
+            except (ValueError, IndexError):
+                s = e = None
+            return _plabel(sel), new_all.get(sel, {}), top_all.get(sel, {}), s, e
         rng = d.get("item_daily_range") or []
         try:
             dmin, dmax = date.fromisoformat(rng[0]), date.fromisoformat(rng[1])
@@ -511,17 +579,22 @@ def render():
             st.info("請選擇結束日期。")
             return None
         s, e = picked
-        sub = _item_daily_df(d.get("item_daily", []))
-        sub = sub[(sub["date"] >= s) & (sub["date"] <= e)]
+        sub = idf[(idf["date"] >= s) & (idf["date"] <= e)]
         return (f"{_md(s.isoformat())}-{_md(e.isoformat())}",
                 _newshare_from_df(sub, stores, d.get("new_items_list", {})),
-                _top_from_df(sub, stores))
+                _top_from_df(sub, stores), s, e)
+
+    def _chg_for(s, e):
+        if s and e and not idf.empty:
+            return _item_change(idf, stores, s, e)
+        return {}, False
 
     if avail:
         # 新品佔比（自己的期間選單）
         r = _resolve("new")
         if r:
-            plabel, ns, _ti = r
+            plabel, ns, _ti, s, e = r
+            chg, has_prev = _chg_for(s, e)
             st.subheader(f"新品佔比 New Items（{plabel}）")
             if ns and ns.get("total") and ns["total"].get("qty_all"):
                 t = ns["total"]
@@ -537,16 +610,13 @@ def render():
                     col.markdown(f"##### {store}　數量 {qp:.1f}%・銷售額 {ap:.1f}%")
                     detail = x.get("detail", [])
                     if detail:
-                        ndf = pd.DataFrame(detail)
-                        ndf["銷售額"] = ndf["amt"].map(lambda v: f"${v:,.2f}")
-                        ndf["佔比"] = ndf["pct"].map(lambda p: f"{p:.1f}%")
-                        ndf = ndf.rename(columns={"item": "品項", "qty": "數量"})
-                        col.dataframe(ndf[["品項", "數量", "銷售額", "佔比"]],
-                                      hide_index=True, use_container_width=True)
+                        _new_table(col, detail, chg.get(store) if has_prev else None)
                     else:
                         col.caption("無新品銷售")
-                st.caption("每支新品的數量、銷售額；佔比＝該新品數量佔全店同期總數量。"
-                           "新品清單手動維護（兩店分開，改 new_items.json）。")
+                cap = "每支新品的數量、銷售額；佔比＝該新品數量佔全店同期總數量。"
+                cap += ("變化＝數量 vs 上一期（同長度、緊接在前），▲綠▼紅、「新」＝前期無此品項。"
+                        if has_prev else "（前一期資料不足，未顯示變化）")
+                st.caption(cap + "新品清單手動維護（兩店分開，改 new_items.json）。")
             else:
                 st.caption("此期間無新品銷售。")
         st.divider()
@@ -554,8 +624,9 @@ def render():
         # 熱銷品項（自己的期間選單）
         r2 = _resolve("top")
         if r2:
-            _pl2, _ns2, ti = r2
-            st.subheader(f"熱銷品項 Top Sellers（{_pl2}）")
+            plabel2, _ns2, ti, s2, e2 = r2
+            chg2, has_prev2 = _chg_for(s2, e2)
+            st.subheader(f"熱銷品項 Top Sellers（{plabel2}）")
             if not ti:
                 st.caption("品項資料暫無（下次資料更新後顯示）。")
             else:
@@ -567,14 +638,11 @@ def render():
                         col.caption(label)
                         rows = ti.get(store, {}).get(cat_key, [])
                         if rows:
-                            tdf = pd.DataFrame(rows)
-                            tdf["佔比"] = tdf["pct"].map(lambda p: f"{p:.1f}%")
-                            tdf = tdf.rename(columns={"item": "品項", "qty": "數量"})
-                            col.dataframe(tdf[["品項", "數量", "佔比"]], hide_index=True,
-                                          use_container_width=True)
+                            _top_table(col, rows, chg2.get(store) if has_prev2 else None)
                         else:
                             col.caption("—")
-                st.caption("佔比＝該品項佔同店同類（飲料或食物）同期總數量的百分比。")
+                cap = "佔比＝該品項佔同店同類（飲料或食物）同期總數量的百分比。"
+                st.caption(cap + ("　變化＝數量 vs 上一期，▲綠▼紅。" if has_prev2 else ""))
 
     st.caption(f"CrunCheese × CoCo · 資料更新於 {gen} · 每日自動更新")
 
