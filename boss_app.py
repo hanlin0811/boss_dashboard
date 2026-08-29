@@ -381,13 +381,6 @@ def render():
              "delta": _delta_pct(this_d['tc'], last_d['tc'])},
             {"label": "客單價", "value": f"${at:,.2f}", "delta": _delta_pct(at, atl)},
         ]
-        lab, labl = this_d.get("labor"), last_d.get("labor")
-        if lab:
-            splh = this_d["sales"] / lab
-            items.append({"label": "人效 $/工時", "value": f"${splh:,.1f}",
-                          "delta": _delta_pct(splh, last_d["sales"] / labl) if labl else None})
-        else:
-            items.append({"label": "人效 $/工時", "value": "未匯入", "delta": None})
         _kpi_cards(items)
 
     # ── 🚦 紅燈警示（近 10 天異常）──
