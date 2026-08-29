@@ -146,11 +146,13 @@ def find_alerts(daily, stores, lookback=10, hist_days=28):
     return alerts
 
 
-def _item_daily_df(records):
-    """把 item_daily records 轉 DataFrame（date 轉 date 物件）。"""
-    if not records:
+@st.cache_data(show_spinner=False)
+def _item_daily_df(_records, sig=""):
+    """把 item_daily records 轉 DataFrame（date 轉 date 物件）。
+    以 sig（generated_ts）當快取鍵；_records 不參與雜湊，避免每次切期間重解析 ~萬筆。"""
+    if not _records:
         return pd.DataFrame(columns=["date", "store", "item", "category", "qty", "amt"])
-    df = pd.DataFrame(records)
+    df = pd.DataFrame(_records)
     df["date"] = pd.to_datetime(df["date"]).dt.date
     return df
 
@@ -227,6 +229,13 @@ def _item_change(df, stores, s, e):
     return out, has_prev
 
 
+def _col_cfg(show):
+    """欄寬設定：品項稍寬、數字欄窄，讓手機關鍵欄留在畫面內。"""
+    cfg = {c: st.column_config.Column(width="small") for c in show if c != "品項"}
+    cfg["品項"] = st.column_config.Column(width="medium")
+    return cfg
+
+
 def _new_table(col, detail, chg):
     """新品明細表；chg=該店 {item:變化%}，None 則不顯示變化欄。"""
     items = [r["item"] for r in detail]
@@ -236,11 +245,11 @@ def _new_table(col, detail, chg):
     fmt = {"銷售額": lambda v: f"${v:,.2f}", "佔比": lambda v: f"{v:.1f}%"}
     if chg is not None:
         ndf["變化"] = [chg.get(it) for it in items]
-        show.append("變化"); fmt["變化"] = _fmt_chg
+        show.insert(2, "變化"); fmt["變化"] = _fmt_chg  # 變化緊接數量後
     sty = ndf[show].style.format(fmt)
     if chg is not None:
         sty = sty.map(_color_chg, subset=["變化"])
-    col.dataframe(sty, hide_index=True, use_container_width=True)
+    col.dataframe(sty, hide_index=True, use_container_width=True, column_config=_col_cfg(show))
 
 
 def _top_table(col, rows, chg):
@@ -251,11 +260,11 @@ def _top_table(col, rows, chg):
     fmt = {"佔比": lambda v: f"{v:.1f}%"}
     if chg is not None:
         tdf["變化"] = [chg.get(it) for it in items]
-        show.append("變化"); fmt["變化"] = _fmt_chg
+        show.insert(2, "變化"); fmt["變化"] = _fmt_chg  # 變化緊接數量後
     sty = tdf[show].style.format(fmt)
     if chg is not None:
         sty = sty.map(_color_chg, subset=["變化"])
-    col.dataframe(sty, hide_index=True, use_container_width=True)
+    col.dataframe(sty, hide_index=True, use_container_width=True, column_config=_col_cfg(show))
 
 
 def render():
@@ -552,7 +561,7 @@ def render():
     def _pct(n, a):
         return n / a * 100 if a else 0
 
-    idf = _item_daily_df(d.get("item_daily", []))
+    idf = _item_daily_df(d.get("item_daily", []), d.get("generated_ts", ""))
 
     def _resolve(key):
         """畫期間選單（含自訂區間），回 (plabel, ns, ti, s, e)；自訂尚未選完回 None。"""
