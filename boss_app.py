@@ -229,13 +229,6 @@ def _item_change(df, stores, s, e):
     return out, has_prev
 
 
-def _col_cfg(show):
-    """欄寬設定：品項稍寬、數字欄窄，讓手機關鍵欄留在畫面內。"""
-    cfg = {c: st.column_config.Column(width="small") for c in show if c != "品項"}
-    cfg["品項"] = st.column_config.Column(width="medium")
-    return cfg
-
-
 def _new_table(col, detail, chg):
     """新品明細表；chg=該店 {item:變化%}，None 則不顯示變化欄。"""
     items = [r["item"] for r in detail]
@@ -249,7 +242,7 @@ def _new_table(col, detail, chg):
     sty = ndf[show].style.format(fmt)
     if chg is not None:
         sty = sty.map(_color_chg, subset=["變化"])
-    col.dataframe(sty, hide_index=True, use_container_width=True, column_config=_col_cfg(show))
+    col.dataframe(sty, hide_index=True, use_container_width=True)
 
 
 def _top_table(col, rows, chg):
@@ -264,7 +257,7 @@ def _top_table(col, rows, chg):
     sty = tdf[show].style.format(fmt)
     if chg is not None:
         sty = sty.map(_color_chg, subset=["變化"])
-    col.dataframe(sty, hide_index=True, use_container_width=True, column_config=_col_cfg(show))
+    col.dataframe(sty, hide_index=True, use_container_width=True)
 
 
 def render():
