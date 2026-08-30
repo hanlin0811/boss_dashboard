@@ -340,14 +340,12 @@ def render():
         lw_today = (date.fromisoformat(today_d) - timedelta(days=7)).isoformat()
         lw_yest = (date.fromisoformat(yest_d) - timedelta(days=7)).isoformat()
 
-        # 最新日（至今）：乾淨數字，不放會誤導的「半天 vs 整天」比較
+        # 最新完整日：vs 上週同日（已是完整營業日，同日比較才公平）
         cur_today = _day_row(daily, stores, today_d)
-        st.subheader(f"{today_d}（週{_wd(today_d)}）")
-        _kpi_cards(_snap_items(cur_today, None, with_delta=False))
-        lw_t = _day_row(daily, stores, lw_today)["total"]
-        if lw_t["sales"]:
-            st.caption(f"上週同日（整天）合計 ${lw_t['sales']:,.2f}・來客 {lw_t['tc']:,}"
-                       f"　— 供對照進度")
+        prev_today = _day_row(daily, stores, lw_today)
+        st.subheader(f"{today_d}（週{_wd(today_d)}）· vs 上週同日")
+        _kpi_cards(_snap_items(cur_today, prev_today, with_delta=True),
+                   cmp_label="vs 上週同日")
 
         # 前一日（完整）：vs 上週同日
         cur_yest = _day_row(daily, stores, yest_d)
