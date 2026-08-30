@@ -234,11 +234,13 @@ def _new_table(col, detail, chg):
     items = [r["item"] for r in detail]
     ndf = pd.DataFrame(detail).rename(
         columns={"item": "品項", "qty": "數量", "amt": "銷售額", "pct": "佔比"})
-    show = ["品項", "數量", "銷售額", "佔比"]
     fmt = {"銷售額": lambda v: f"${v:,.2f}", "佔比": lambda v: f"{v:.1f}%"}
     if chg is not None:
         ndf["變化"] = [chg.get(it) for it in items]
-        show.insert(2, "變化"); fmt["變化"] = _fmt_chg  # 變化緊接數量後
+        fmt["變化"] = _fmt_chg
+        show = ["品項", "數量", "佔比", "變化", "銷售額"]
+    else:
+        show = ["品項", "數量", "佔比", "銷售額"]
     sty = ndf[show].style.format(fmt)
     if chg is not None:
         sty = sty.map(_color_chg, subset=["變化"])
@@ -249,11 +251,13 @@ def _top_table(col, rows, chg):
     """熱銷表；chg=該店 {item:變化%}，None 則不顯示變化欄。"""
     items = [r["item"] for r in rows]
     tdf = pd.DataFrame(rows).rename(columns={"item": "品項", "qty": "數量", "pct": "佔比"})
-    show = ["品項", "數量", "佔比"]
     fmt = {"佔比": lambda v: f"{v:.1f}%"}
     if chg is not None:
         tdf["變化"] = [chg.get(it) for it in items]
-        show.insert(2, "變化"); fmt["變化"] = _fmt_chg  # 變化緊接數量後
+        fmt["變化"] = _fmt_chg
+        show = ["品項", "數量", "佔比", "變化"]
+    else:
+        show = ["品項", "數量", "佔比"]
     sty = tdf[show].style.format(fmt)
     if chg is not None:
         sty = sty.map(_color_chg, subset=["變化"])
