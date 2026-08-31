@@ -1,6 +1,6 @@
 {
  "generated_at": "2026-08-30",
- "generated_ts": "2026-08-30T18:10:51-07:00",
+ "generated_ts": "2026-08-30T21:00:13-07:00",
  "stores": [
   "Azusa",
   "Southridge"
@@ -636,6 +636,13 @@
     "cups": 63,
     "food": 83,
     "tc": 44
+   },
+   {
+    "date": "2026-08-30",
+    "sales": 783.94,
+    "cups": 68,
+    "food": 54,
+    "tc": 44
    }
   ],
   "Southridge": [
@@ -1268,6 +1275,13 @@
     "cups": 136,
     "food": 118,
     "tc": 142
+   },
+   {
+    "date": "2026-08-30",
+    "sales": 1510.68,
+    "cups": 131,
+    "food": 88,
+    "tc": 120
    }
   ]
  },
@@ -59882,42 +59896,42 @@
  "week": {
   "this": {
    "Azusa": {
-    "sales": 4273.28,
-    "cups": 449,
-    "food": 287,
-    "tc": 274
+    "sales": 4152.34,
+    "cups": 431,
+    "food": 278,
+    "tc": 266
    },
    "Southridge": {
-    "sales": 7313.6,
-    "cups": 566,
-    "food": 496,
-    "tc": 602
+    "sales": 7491.98,
+    "cups": 590,
+    "food": 495,
+    "tc": 606
    },
    "total": {
-    "sales": 11586.88,
-    "cups": 1015,
-    "food": 783,
-    "tc": 876
+    "sales": 11644.32,
+    "cups": 1021,
+    "food": 773,
+    "tc": 872
    }
   },
   "last": {
    "Azusa": {
-    "sales": 3555.68,
-    "cups": 412,
-    "food": 197,
-    "tc": 232
+    "sales": 3955.7,
+    "cups": 448,
+    "food": 227,
+    "tc": 253
    },
    "Southridge": {
-    "sales": 6993.0,
-    "cups": 561,
-    "food": 476,
-    "tc": 588
+    "sales": 6958.33,
+    "cups": 547,
+    "food": 486,
+    "tc": 591
    },
    "total": {
-    "sales": 10548.68,
-    "cups": 973,
-    "food": 673,
-    "tc": 820
+    "sales": 10914.03,
+    "cups": 995,
+    "food": 713,
+    "tc": 844
    }
   }
  },
