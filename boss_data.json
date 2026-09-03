@@ -1,6 +1,6 @@
 {
  "generated_at": "2026-09-03",
- "generated_ts": "2026-09-03T12:02:29-07:00",
+ "generated_ts": "2026-09-03T12:02:45-07:00",
  "stores": [
   "Azusa",
   "Southridge"
@@ -1427,33 +1427,28 @@
     "drinks": [
      {
       "item": "2 Ladies Milk Tea",
-      "qty": 40,
-      "pct": 9.2
+      "qty": 47,
+      "pct": 10.8
      },
      {
       "item": "Pearl Milk Tea",
-      "qty": 37,
-      "pct": 8.5
-     },
-     {
-      "item": "Rainbow Passion Fruit Green Tea",
-      "qty": 27,
-      "pct": 6.2
+      "qty": 42,
+      "pct": 9.7
      },
      {
       "item": "Brown Sugar Pearl with Milk",
-      "qty": 24,
-      "pct": 5.5
+      "qty": 25,
+      "pct": 5.8
      },
      {
-      "item": "Taro Slush",
-      "qty": 22,
-      "pct": 5.0
+      "item": "Rainbow Passion Fruit Green Tea",
+      "qty": 23,
+      "pct": 5.3
      },
      {
       "item": "Thai Milk Tea",
-      "qty": 19,
-      "pct": 4.4
+      "qty": 20,
+      "pct": 4.6
      },
      {
       "item": "Tropical Special",
@@ -1462,70 +1457,75 @@
      },
      {
       "item": "Milk Tea",
+      "qty": 18,
+      "pct": 4.1
+     },
+     {
+      "item": "Taro Slush",
       "qty": 17,
       "pct": 3.9
      },
      {
       "item": "Jasmine Brown Sugar Pearl Milk Tea",
-      "qty": 16,
-      "pct": 3.7
+      "qty": 17,
+      "pct": 3.9
      },
      {
       "item": "Taro",
-      "qty": 14,
-      "pct": 3.2
+      "qty": 13,
+      "pct": 3.0
      }
     ],
     "food": [
      {
       "item": "Mozza & Hotdog",
-      "qty": 44,
-      "pct": 12.9
+      "qty": 41,
+      "pct": 12.8
      },
      {
       "item": "Potato Mozzarella",
-      "qty": 38,
-      "pct": 11.2
+      "qty": 32,
+      "pct": 10.0
      },
      {
       "item": "Mozzarella & Cheddar",
-      "qty": 30,
-      "pct": 8.8
-     },
-     {
-      "item": "Cheddar Hotdog",
       "qty": 29,
-      "pct": 8.5
+      "pct": 9.0
      },
      {
       "item": "Original Hotdog",
-      "qty": 28,
-      "pct": 8.2
+      "qty": 29,
+      "pct": 9.0
+     },
+     {
+      "item": "Jumbo Beef Hotdog",
+      "qty": 27,
+      "pct": 8.4
+     },
+     {
+      "item": "Cheddar Hotdog",
+      "qty": 26,
+      "pct": 8.1
      },
      {
       "item": "All Mozzarella",
       "qty": 26,
-      "pct": 7.6
-     },
-     {
-      "item": "Jumbo Beef Hotdog",
-      "qty": 25,
-      "pct": 7.4
+      "pct": 8.1
      },
      {
       "item": "Cheesy Hot Cheetos Dog",
       "qty": 21,
-      "pct": 6.2
+      "pct": 6.5
      },
      {
       "item": "Potato Hotdog",
       "qty": 12,
-      "pct": 3.5
+      "pct": 3.7
      },
      {
-      "item": "Rice Cake",
-      "qty": 11,
-      "pct": 3.2
+      "item": "Fried Chicken Wings",
+      "qty": 9,
+      "pct": 2.8
      }
     ]
    },
@@ -1533,105 +1533,105 @@
     "drinks": [
      {
       "item": "Brown Sugar Pearl with Fresh Milk",
-      "qty": 61,
-      "pct": 10.8
-     },
-     {
-      "item": "Popping Blue Moon",
-      "qty": 44,
-      "pct": 7.8
-     },
-     {
-      "item": "Mango Rainbow",
-      "qty": 38,
-      "pct": 6.7
+      "qty": 72,
+      "pct": 12.1
      },
      {
       "item": "Pearl Milk Tea",
-      "qty": 38,
-      "pct": 6.7
+      "qty": 46,
+      "pct": 7.7
      },
      {
-      "item": "Passion Fruit & Mango Slush",
-      "qty": 36,
-      "pct": 6.4
+      "item": "Popping Blue Moon",
+      "qty": 45,
+      "pct": 7.5
+     },
+     {
+      "item": "Mango Rainbow",
+      "qty": 39,
+      "pct": 6.5
      },
      {
       "item": "Strawberry Smoothie",
-      "qty": 30,
-      "pct": 5.3
+      "qty": 31,
+      "pct": 5.2
      },
      {
-      "item": "Matcha Strawberry Love",
-      "qty": 25,
-      "pct": 4.4
+      "item": "Passion Fruit & Mango Slush",
+      "qty": 31,
+      "pct": 5.2
      },
      {
       "item": "Mango Smoothie",
-      "qty": 22,
+      "qty": 24,
+      "pct": 4.0
+     },
+     {
+      "item": "Matcha Strawberry Love",
+      "qty": 23,
       "pct": 3.9
      },
      {
       "item": "Tropical Special",
-      "qty": 21,
+      "qty": 22,
       "pct": 3.7
      },
      {
       "item": "Taro",
-      "qty": 18,
-      "pct": 3.2
+      "qty": 20,
+      "pct": 3.4
      }
     ],
     "food": [
      {
       "item": "All Mozzarella",
-      "qty": 134,
-      "pct": 27.8
+      "qty": 136,
+      "pct": 26.4
      },
      {
       "item": "Mozza Hotdog",
-      "qty": 95,
-      "pct": 19.7
+      "qty": 104,
+      "pct": 20.2
      },
      {
       "item": "Potato Mozzarella",
-      "qty": 61,
-      "pct": 12.7
+      "qty": 62,
+      "pct": 12.0
      },
      {
       "item": "Original Hotdog",
-      "qty": 37,
-      "pct": 7.7
+      "qty": 46,
+      "pct": 8.9
      },
      {
       "item": "Cheesy Hot Cheetos Hotdog",
-      "qty": 35,
-      "pct": 7.3
+      "qty": 36,
+      "pct": 7.0
+     },
+     {
+      "item": "Mozzarella & Cheddar",
+      "qty": 26,
+      "pct": 5.0
      },
      {
       "item": "Crunchy Fries",
       "qty": 23,
-      "pct": 4.8
-     },
-     {
-      "item": "Mozzarella & Cheddar",
-      "qty": 22,
-      "pct": 4.6
+      "pct": 4.5
      },
      {
       "item": "Potato Hotdog",
-      "qty": 20,
-      "pct": 4.1
+      "qty": 22,
+      "pct": 4.3
+     },
+     {
+      "item": "Jumbo Beef Hotdog",
+      "qty": 12,
+      "pct": 2.3
      },
      {
       "item": "Cheddar Hotdog",
       "qty": 12,
-      "pct": 2.5
-     },
-     {
-      "item": "Jumbo Beef Hotdog",
-      "qty": 9,
-      "pct": 1.9
+      "pct": 2.3
      }
     ]
    }
@@ -1642,37 +1642,37 @@
      {
       "item": "2 Ladies Milk Tea",
       "qty": 87,
-      "pct": 10.2
+      "pct": 10.1
      },
      {
       "item": "Pearl Milk Tea",
-      "qty": 75,
-      "pct": 8.8
+      "qty": 82,
+      "pct": 9.5
      },
      {
       "item": "Brown Sugar Pearl with Milk",
-      "qty": 45,
-      "pct": 5.3
+      "qty": 49,
+      "pct": 5.7
      },
      {
       "item": "Rainbow Passion Fruit Green Tea",
       "qty": 40,
-      "pct": 4.7
+      "pct": 4.6
      },
      {
       "item": "Thai Milk Tea",
       "qty": 39,
-      "pct": 4.6
-     },
-     {
-      "item": "Taro",
-      "qty": 38,
       "pct": 4.5
      },
      {
+      "item": "Taro",
+      "qty": 37,
+      "pct": 4.3
+     },
+     {
       "item": "Taro Slush",
-      "qty": 34,
-      "pct": 4.0
+      "qty": 30,
+      "pct": 3.5
      },
      {
       "item": "Jasmine Brown Sugar Pearl Milk Tea",
@@ -1681,65 +1681,65 @@
      },
      {
       "item": "Tropical Special",
-      "qty": 28,
-      "pct": 3.3
+      "qty": 26,
+      "pct": 3.0
      },
      {
       "item": "Milk Tea",
-      "qty": 26,
-      "pct": 3.0
+      "qty": 24,
+      "pct": 2.8
      }
     ],
     "food": [
      {
       "item": "Mozza & Hotdog",
-      "qty": 70,
-      "pct": 12.7
+      "qty": 72,
+      "pct": 13.1
      },
      {
       "item": "Potato Mozzarella",
-      "qty": 63,
-      "pct": 11.4
+      "qty": 61,
+      "pct": 11.1
      },
      {
       "item": "Cheddar Hotdog",
-      "qty": 63,
-      "pct": 11.4
+      "qty": 60,
+      "pct": 10.9
+     },
+     {
+      "item": "All Mozzarella",
+      "qty": 46,
+      "pct": 8.4
      },
      {
       "item": "Mozzarella & Cheddar",
-      "qty": 43,
-      "pct": 7.8
+      "qty": 44,
+      "pct": 8.0
      },
      {
       "item": "Jumbo Beef Hotdog",
-      "qty": 42,
-      "pct": 7.6
+      "qty": 44,
+      "pct": 8.0
      },
      {
       "item": "Cheesy Hot Cheetos Dog",
       "qty": 42,
-      "pct": 7.6
-     },
-     {
-      "item": "All Mozzarella",
-      "qty": 42,
-      "pct": 7.6
+      "pct": 7.7
      },
      {
       "item": "Original Hotdog",
-      "qty": 38,
-      "pct": 6.9
+      "qty": 42,
+      "pct": 7.7
      },
      {
       "item": "Potato Hotdog",
       "qty": 19,
-      "pct": 3.4
+      "pct": 3.5
      },
      {
-      "item": "Rice Cake",
-      "qty": 14,
-      "pct": 2.5
+      "item": "Fried Chicken Wings",
+      "qty": 12,
+      "pct": 2.2
      }
     ]
    },
@@ -1747,105 +1747,105 @@
     "drinks": [
      {
       "item": "Brown Sugar Pearl with Fresh Milk",
-      "qty": 136,
-      "pct": 12.2
+      "qty": 132,
+      "pct": 11.7
      },
      {
       "item": "Pearl Milk Tea",
-      "qty": 89,
-      "pct": 8.0
+      "qty": 96,
+      "pct": 8.5
      },
      {
       "item": "Popping Blue Moon",
       "qty": 84,
-      "pct": 7.6
+      "pct": 7.4
      },
      {
       "item": "Mango Rainbow",
-      "qty": 79,
-      "pct": 7.1
+      "qty": 75,
+      "pct": 6.6
      },
      {
       "item": "Passion Fruit & Mango Slush",
-      "qty": 60,
-      "pct": 5.4
+      "qty": 56,
+      "pct": 4.9
      },
      {
       "item": "Strawberry Smoothie",
       "qty": 55,
-      "pct": 5.0
-     },
-     {
-      "item": "Matcha Strawberry Love",
-      "qty": 48,
-      "pct": 4.3
+      "pct": 4.9
      },
      {
       "item": "Tropical Special",
+      "qty": 49,
+      "pct": 4.3
+     },
+     {
+      "item": "Matcha Strawberry Love",
       "qty": 46,
       "pct": 4.1
      },
      {
       "item": "Pearl Chocolate",
-      "qty": 36,
-      "pct": 3.2
+      "qty": 37,
+      "pct": 3.3
      },
      {
       "item": "Mango Smoothie",
-      "qty": 35,
+      "qty": 36,
       "pct": 3.2
      }
     ],
     "food": [
      {
       "item": "All Mozzarella",
-      "qty": 257,
-      "pct": 26.4
+      "qty": 258,
+      "pct": 25.7
      },
      {
       "item": "Mozza Hotdog",
-      "qty": 213,
-      "pct": 21.9
+      "qty": 223,
+      "pct": 22.3
      },
      {
       "item": "Potato Mozzarella",
-      "qty": 114,
-      "pct": 11.7
+      "qty": 115,
+      "pct": 11.5
      },
      {
       "item": "Original Hotdog",
-      "qty": 90,
-      "pct": 9.2
+      "qty": 94,
+      "pct": 9.4
      },
      {
       "item": "Cheesy Hot Cheetos Hotdog",
-      "qty": 63,
-      "pct": 6.5
+      "qty": 67,
+      "pct": 6.7
      },
      {
       "item": "Crunchy Fries",
-      "qty": 45,
-      "pct": 4.6
+      "qty": 47,
+      "pct": 4.7
      },
      {
       "item": "Potato Hotdog",
-      "qty": 43,
-      "pct": 4.4
+      "qty": 46,
+      "pct": 4.6
      },
      {
       "item": "Mozzarella & Cheddar",
-      "qty": 42,
+      "qty": 43,
       "pct": 4.3
      },
      {
       "item": "Cheddar Hotdog",
       "qty": 26,
-      "pct": 2.7
+      "pct": 2.6
      },
      {
       "item": "Jumbo Beef Hotdog",
       "qty": 26,
-      "pct": 2.7
+      "pct": 2.6
      }
     ]
    }
@@ -1856,104 +1856,104 @@
      {
       "item": "Pearl Milk Tea",
       "qty": 160,
-      "pct": 9.1
+      "pct": 9.2
      },
      {
       "item": "2 Ladies Milk Tea",
       "qty": 152,
-      "pct": 8.6
+      "pct": 8.7
      },
      {
       "item": "Brown Sugar Pearl with Milk",
-      "qty": 112,
-      "pct": 6.3
+      "qty": 115,
+      "pct": 6.6
      },
      {
       "item": "Rainbow Passion Fruit Green Tea",
-      "qty": 79,
-      "pct": 4.5
-     },
-     {
-      "item": "Taro Slush",
-      "qty": 68,
-      "pct": 3.9
-     },
-     {
-      "item": "Taro",
-      "qty": 65,
-      "pct": 3.7
+      "qty": 75,
+      "pct": 4.3
      },
      {
       "item": "Thai Milk Tea",
+      "qty": 63,
+      "pct": 3.6
+     },
+     {
+      "item": "Taro Slush",
+      "qty": 63,
+      "pct": 3.6
+     },
+     {
+      "item": "Taro",
       "qty": 62,
-      "pct": 3.5
+      "pct": 3.6
      },
      {
       "item": "Passion Fruit & Mango Slush",
+      "qty": 55,
+      "pct": 3.2
+     },
+     {
+      "item": "Jasmine Brown Sugar Pearl Milk Tea",
       "qty": 51,
       "pct": 2.9
      },
      {
-      "item": "Jasmine Brown Sugar Pearl Milk Tea",
-      "qty": 50,
-      "pct": 2.8
-     },
-     {
       "item": "Tropical Special",
-      "qty": 47,
-      "pct": 2.7
+      "qty": 45,
+      "pct": 2.6
      }
     ],
     "food": [
      {
       "item": "Mozza & Hotdog",
-      "qty": 164,
+      "qty": 162,
       "pct": 15.1
      },
      {
-      "item": "Cheddar Hotdog",
+      "item": "All Mozzarella",
       "qty": 116,
-      "pct": 10.7
+      "pct": 10.8
      },
      {
-      "item": "All Mozzarella",
-      "qty": 114,
-      "pct": 10.5
+      "item": "Cheddar Hotdog",
+      "qty": 112,
+      "pct": 10.4
      },
      {
       "item": "Potato Mozzarella",
-      "qty": 111,
-      "pct": 10.2
+      "qty": 108,
+      "pct": 10.1
      },
      {
       "item": "Jumbo Beef Hotdog",
       "qty": 91,
-      "pct": 8.4
+      "pct": 8.5
      },
      {
       "item": "Mozzarella & Cheddar",
-      "qty": 79,
-      "pct": 7.3
+      "qty": 81,
+      "pct": 7.5
      },
      {
       "item": "Original Hotdog",
-      "qty": 78,
+      "qty": 77,
       "pct": 7.2
      },
      {
       "item": "Cheesy Hot Cheetos Dog",
-      "qty": 62,
-      "pct": 5.7
+      "qty": 64,
+      "pct": 6.0
      },
      {
       "item": "Potato Hotdog",
-      "qty": 41,
-      "pct": 3.8
+      "qty": 43,
+      "pct": 4.0
      },
      {
-      "item": "Rice Cake",
-      "qty": 24,
-      "pct": 2.2
+      "item": "Crunchy Fries",
+      "qty": 22,
+      "pct": 2.0
      }
     ]
    },
@@ -1961,105 +1961,105 @@
     "drinks": [
      {
       "item": "Brown Sugar Pearl with Fresh Milk",
-      "qty": 273,
+      "qty": 276,
       "pct": 11.6
      },
      {
       "item": "Pearl Milk Tea",
-      "qty": 185,
-      "pct": 7.8
+      "qty": 188,
+      "pct": 7.9
      },
      {
       "item": "Popping Blue Moon",
-      "qty": 172,
-      "pct": 7.3
+      "qty": 173,
+      "pct": 7.2
      },
      {
       "item": "Passion Fruit & Mango Slush",
-      "qty": 148,
-      "pct": 6.3
+      "qty": 143,
+      "pct": 6.0
      },
      {
       "item": "Mango Rainbow",
       "qty": 141,
-      "pct": 6.0
+      "pct": 5.9
      },
      {
       "item": "Tropical Special",
-      "qty": 102,
-      "pct": 4.3
+      "qty": 104,
+      "pct": 4.4
      },
      {
       "item": "Strawberry Smoothie",
       "qty": 96,
-      "pct": 4.1
+      "pct": 4.0
      },
      {
       "item": "Matcha Strawberry Love",
       "qty": 89,
-      "pct": 3.8
+      "pct": 3.7
      },
      {
       "item": "Pearl Chocolate",
-      "qty": 87,
+      "qty": 88,
       "pct": 3.7
      },
      {
       "item": "Mango Smoothie",
-      "qty": 73,
+      "qty": 74,
       "pct": 3.1
      }
     ],
     "food": [
      {
       "item": "All Mozzarella",
-      "qty": 514,
-      "pct": 26.5
+      "qty": 515,
+      "pct": 26.1
      },
      {
       "item": "Mozza Hotdog",
-      "qty": 418,
+      "qty": 425,
       "pct": 21.5
      },
      {
       "item": "Potato Mozzarella",
-      "qty": 230,
-      "pct": 11.8
+      "qty": 231,
+      "pct": 11.7
      },
      {
       "item": "Original Hotdog",
-      "qty": 195,
-      "pct": 10.0
+      "qty": 202,
+      "pct": 10.2
      },
      {
       "item": "Cheesy Hot Cheetos Hotdog",
-      "qty": 112,
+      "qty": 114,
       "pct": 5.8
      },
      {
-      "item": "Crunchy Fries",
-      "qty": 86,
-      "pct": 4.4
+      "item": "Potato Hotdog",
+      "qty": 89,
+      "pct": 4.5
      },
      {
-      "item": "Potato Hotdog",
+      "item": "Crunchy Fries",
       "qty": 85,
-      "pct": 4.4
+      "pct": 4.3
      },
      {
       "item": "Mozzarella & Cheddar",
-      "qty": 74,
-      "pct": 3.8
+      "qty": 78,
+      "pct": 3.9
      },
      {
       "item": "Cheddar Hotdog",
-      "qty": 61,
+      "qty": 62,
       "pct": 3.1
      },
      {
       "item": "Jumbo Beef Hotdog",
-      "qty": 51,
-      "pct": 2.6
+      "qty": 53,
+      "pct": 2.7
      }
     ]
    }
@@ -2496,10 +2496,10 @@
  "new_items_share": {
   "7d": {
    "Azusa": {
-    "qty_new": 51,
-    "qty_all": 776,
-    "amt_new": 389.68,
-    "amt_all": 4658.09,
+    "qty_new": 49,
+    "qty_all": 755,
+    "amt_new": 370.85,
+    "amt_all": 4496.55,
     "detail": [
      {
       "item": "Chunky Mango Coconut Milk Tea",
@@ -2515,15 +2515,15 @@
      },
      {
       "item": "Peach & Strawberry Iced Tea",
-      "qty": 9,
-      "amt": 68.67,
-      "pct": 1.2
+      "qty": 7,
+      "amt": 53.57,
+      "pct": 0.9
      },
      {
       "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 7,
-      "amt": 55.5,
-      "pct": 0.9
+      "qty": 6,
+      "amt": 48.0,
+      "pct": 0.8
      },
      {
       "item": "Milk Tea Cookies Cream Swirl Smoothie",
@@ -2533,9 +2533,9 @@
      },
      {
       "item": "Matcha Cookies Cream Swirl Smoothie",
-      "qty": 4,
-      "amt": 33.21,
-      "pct": 0.5
+      "qty": 5,
+      "amt": 36.98,
+      "pct": 0.7
      },
      {
       "item": "Peach Milk Tea",
@@ -2545,34 +2545,28 @@
      },
      {
       "item": "Peach Smoothie",
-      "qty": 2,
-      "amt": 15.85,
-      "pct": 0.3
-     },
-     {
-      "item": "Lemon Pie Cream Swirl Smoothie",
-      "qty": 1,
-      "amt": 7.55,
-      "pct": 0.1
+      "qty": 3,
+      "amt": 23.4,
+      "pct": 0.4
      }
     ]
    },
    "Southridge": {
-    "qty_new": 30,
-    "qty_all": 1046,
-    "amt_new": 229.68,
-    "amt_all": 7228.39,
+    "qty_new": 29,
+    "qty_all": 1113,
+    "amt_new": 219.06,
+    "amt_all": 7687.89,
     "detail": [
      {
       "item": "Peach Smoothie",
-      "qty": 11,
-      "amt": 86.81,
-      "pct": 1.1
+      "qty": 10,
+      "amt": 77.75,
+      "pct": 0.9
      },
      {
       "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 5,
-      "amt": 37.5,
+      "qty": 6,
+      "amt": 45.0,
       "pct": 0.5
      },
      {
@@ -2589,9 +2583,9 @@
      },
      {
       "item": "Peach & Strawberry Iced Tea",
-      "qty": 4,
-      "amt": 33.96,
-      "pct": 0.4
+      "qty": 3,
+      "amt": 24.9,
+      "pct": 0.3
      },
      {
       "item": "Peach Milk Tea",
@@ -2602,23 +2596,23 @@
     ]
    },
    "total": {
-    "qty_new": 81,
-    "qty_all": 1822,
-    "amt_new": 619.36,
-    "amt_all": 11886.48
+    "qty_new": 78,
+    "qty_all": 1868,
+    "amt_new": 589.91,
+    "amt_all": 12184.44
    }
   },
   "14d": {
    "Azusa": {
-    "qty_new": 104,
-    "qty_all": 1405,
-    "amt_new": 771.68,
-    "amt_all": 8408.43,
+    "qty_new": 108,
+    "qty_all": 1409,
+    "amt_new": 795.55,
+    "amt_all": 8390.46,
     "detail": [
      {
       "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 23,
-      "amt": 143.21,
+      "qty": 22,
+      "amt": 136.41,
       "pct": 1.6
      },
      {
@@ -2628,22 +2622,22 @@
       "pct": 1.4
      },
      {
-      "item": "Peach & Strawberry Iced Tea",
+      "item": "Mango Pomelo Crystal Smoothie",
       "qty": 14,
-      "amt": 108.92,
+      "amt": 100.5,
       "pct": 1.0
      },
      {
-      "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 12,
-      "amt": 89.25,
+      "item": "Matcha Cookies Cream Swirl Smoothie",
+      "qty": 13,
+      "amt": 99.77,
       "pct": 0.9
      },
      {
-      "item": "Matcha Cookies Cream Swirl Smoothie",
-      "qty": 10,
-      "amt": 80.9,
-      "pct": 0.7
+      "item": "Peach & Strawberry Iced Tea",
+      "qty": 12,
+      "amt": 93.82,
+      "pct": 0.9
      },
      {
       "item": "Milk Tea Cookies Cream Swirl Smoothie",
@@ -2652,54 +2646,54 @@
       "pct": 0.6
      },
      {
+      "item": "Peach Milk Tea",
+      "qty": 7,
+      "amt": 54.71,
+      "pct": 0.5
+     },
+     {
       "item": "Peach Smoothie",
-      "qty": 6,
-      "amt": 46.05,
-      "pct": 0.4
+      "qty": 7,
+      "amt": 53.6,
+      "pct": 0.5
      },
      {
       "item": "Lemon Pie Cream Swirl Smoothie",
-      "qty": 5,
-      "amt": 40.01,
-      "pct": 0.4
-     },
-     {
-      "item": "Peach Milk Tea",
-      "qty": 5,
-      "amt": 39.06,
-      "pct": 0.4
+      "qty": 4,
+      "amt": 32.46,
+      "pct": 0.3
      }
     ]
    },
    "Southridge": {
-    "qty_new": 87,
-    "qty_all": 2084,
-    "amt_new": 589.18,
-    "amt_all": 14239.64,
+    "qty_new": 94,
+    "qty_all": 2134,
+    "amt_new": 628.31,
+    "amt_all": 14572.6,
     "detail": [
      {
       "item": "Peach Smoothie",
-      "qty": 24,
-      "amt": 175.13,
-      "pct": 1.2
+      "qty": 23,
+      "amt": 166.07,
+      "pct": 1.1
      },
      {
       "item": "Chunky Mango Slush",
-      "qty": 15,
-      "amt": 105.75,
-      "pct": 0.7
+      "qty": 18,
+      "amt": 127.5,
+      "pct": 0.8
      },
      {
       "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 13,
-      "amt": 89.76,
-      "pct": 0.6
+      "qty": 16,
+      "amt": 110.16,
+      "pct": 0.7
      },
      {
       "item": "Peach & Strawberry Iced Tea",
-      "qty": 13,
-      "amt": 76.24,
-      "pct": 0.6
+      "qty": 15,
+      "amt": 82.28,
+      "pct": 0.7
      },
      {
       "item": "Mango Pomelo Crystal Smoothie",
@@ -2716,24 +2710,24 @@
     ]
    },
    "total": {
-    "qty_new": 191,
-    "qty_all": 3489,
-    "amt_new": 1360.86,
-    "amt_all": 22648.07
+    "qty_new": 202,
+    "qty_all": 3543,
+    "amt_new": 1423.86,
+    "amt_all": 22963.06
    }
   },
   "30d": {
    "Azusa": {
-    "qty_new": 222,
-    "qty_all": 2848,
-    "amt_new": 1610.66,
-    "amt_all": 16883.61,
+    "qty_new": 221,
+    "qty_all": 2818,
+    "amt_new": 1594.51,
+    "amt_all": 16712.55,
     "detail": [
      {
       "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 38,
-      "amt": 242.49,
-      "pct": 1.3
+      "qty": 40,
+      "amt": 252.69,
+      "pct": 1.4
      },
      {
       "item": "Chunky Mango Slush",
@@ -2743,8 +2737,8 @@
      },
      {
       "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 37,
-      "amt": 275.57,
+      "qty": 36,
+      "amt": 264.32,
       "pct": 1.3
      },
      {
@@ -2755,8 +2749,8 @@
      },
      {
       "item": "Peach & Strawberry Iced Tea",
-      "qty": 27,
-      "amt": 214.35,
+      "qty": 25,
+      "amt": 199.25,
       "pct": 0.9
      },
      {
@@ -2773,24 +2767,30 @@
      },
      {
       "item": "Peach Smoothie",
-      "qty": 11,
-      "amt": 86.05,
+      "qty": 12,
+      "amt": 93.6,
       "pct": 0.4
      },
      {
       "item": "Lemon Pie Cream Swirl Smoothie",
-      "qty": 7,
-      "amt": 55.86,
+      "qty": 6,
+      "amt": 48.31,
       "pct": 0.2
      }
     ]
    },
    "Southridge": {
     "qty_new": 155,
-    "qty_all": 4302,
-    "amt_new": 1059.33,
-    "amt_all": 29456.74,
+    "qty_all": 4363,
+    "amt_new": 1055.51,
+    "amt_all": 29809.12,
     "detail": [
+     {
+      "item": "Chunky Mango Coconut Milk Tea",
+      "qty": 39,
+      "amt": 271.73,
+      "pct": 0.9
+     },
      {
       "item": "Chunky Mango Slush",
       "qty": 39,
@@ -2798,27 +2798,21 @@
       "pct": 0.9
      },
      {
-      "item": "Chunky Mango Coconut Milk Tea",
-      "qty": 38,
-      "amt": 264.93,
-      "pct": 0.9
-     },
-     {
-      "item": "Peach Smoothie",
-      "qty": 25,
-      "amt": 182.68,
+      "item": "Mango Pomelo Crystal Smoothie",
+      "qty": 24,
+      "amt": 178.83,
       "pct": 0.6
      },
      {
-      "item": "Mango Pomelo Crystal Smoothie",
-      "qty": 23,
-      "amt": 171.33,
-      "pct": 0.5
+      "item": "Peach Smoothie",
+      "qty": 24,
+      "amt": 173.62,
+      "pct": 0.6
      },
      {
       "item": "Peach & Strawberry Iced Tea",
-      "qty": 19,
-      "amt": 115.49,
+      "qty": 18,
+      "amt": 106.43,
       "pct": 0.4
      },
      {
@@ -2830,10 +2824,10 @@
     ]
    },
    "total": {
-    "qty_new": 377,
-    "qty_all": 7150,
-    "amt_new": 2669.99,
-    "amt_all": 46340.35
+    "qty_new": 376,
+    "qty_all": 7181,
+    "amt_new": 2650.02,
+    "amt_all": 46521.67
    }
   },
   "last_week": {
@@ -3067,16 +3061,16 @@
  },
  "period_dates": {
   "7d": [
-   "2026-08-27",
-   "2026-09-02"
+   "2026-08-26",
+   "2026-09-01"
   ],
   "14d": [
-   "2026-08-20",
-   "2026-09-02"
+   "2026-08-19",
+   "2026-09-01"
   ],
   "30d": [
-   "2026-08-04",
-   "2026-09-02"
+   "2026-08-03",
+   "2026-09-01"
   ],
   "last_week": [
    "2026-08-24",
@@ -3089,6 +3083,53 @@
  },
  "item_daily": {
   "date": [
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
    "2026-05-03",
    "2026-05-03",
    "2026-05-03",
@@ -7875,53 +7916,51 @@
    "2026-09-01",
    "2026-09-01",
    "2026-09-01",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
+   "2026-05-02",
    "2026-05-03",
    "2026-05-03",
    "2026-05-03",
@@ -12549,29 +12588,7 @@
    "2026-09-01",
    "2026-09-01",
    "2026-09-01",
-   "2026-09-01",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02",
-   "2026-09-02"
+   "2026-09-01"
   ],
   "store": [
    "Azusa",
@@ -22056,9 +22073,79 @@
    "Southridge",
    "Southridge",
    "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
+   "Southridge",
    "Southridge"
   ],
   "item": [
+   "Spring Roll (2 pieces)",
+   "Cheddar Hotdog",
+   "Squid-Ink Mozz-Hotdog",
+   "Mozza & Hotdog",
+   "Original Hotdog",
+   "Passion Fruit Green Tea",
+   "Potato Mozzarella",
+   "Jumbo Beef Hotdog",
+   "Popping Red Mars",
+   "Black Tea",
+   "Crème Brûlée Milk Tea",
+   "Brown Sugar Pearl with Milk",
+   "Potato Hotdog",
+   "Pearl Milk Tea",
+   "2 Ladies Milk Tea",
+   "Strawberry Smoothie",
+   "Passion Fruit Black Tea",
+   "Strawberry Black Tea",
+   "Taro Slush",
+   "Matcha Latte",
+   "All Mozzarella",
+   "Popping Blue Moon",
+   "Mozzarella & Cheddar",
+   "Passion Fruit & Mango Slush",
+   "Thai Milk Tea",
+   "Jasmine Brown Sugar Pearl Milk Tea",
+   "Green Tea",
+   "Jasmine Milk Tea",
+   "Tropical Special",
+   "Mango Rainbow",
+   "Strawberry Black Tea on Cloud",
+   "Bubble Waffle",
+   "Coca Cola",
+   "Fried Chicken Wings",
+   "Mango Smoothie",
+   "Matcha Strawberry Smoothie",
+   "Strawberry Candy Pop",
+   "Chocolate Slush",
+   "Taro",
+   "Potstickers",
+   "Pearl Chocolate",
+   "Crème Brûlée Brown Sugar Pearl Latte",
+   "Cheesy Hot Cheetos Dog",
+   "Pudding Milk Tea",
+   "Spring Roll (5 pieces)",
+   "Matcha Strawberry Love",
+   "Milk Tea",
    "Strawberry Black Tea on Cloud",
    "Potato Mozzarella",
    "Cheddar Hotdog",
@@ -26809,22 +26896,22 @@
    "Mango Green Tea",
    "Chocolate",
    "Delivery Fees",
-   "Mango Green Tea",
    "Potato Mozzarella",
+   "Mango Green Tea",
    "All Mozzarella",
-   "Spring Roll (5 pieces)",
    "Mozzarella Sticks",
    "Brown Sugar Pearl Matcha Smoothie",
+   "Spring Roll (5 pieces)",
    "Sweet Potato Fries",
    "Jasmine Brown Sugar Pearl Milk Tea",
-   "Original Hotdog",
    "Mozzarella & Cheddar",
+   "Original Hotdog",
    "Pudding Milk Tea",
    "Cheddar Hotdog",
    "Mozza & Hotdog",
    "Jasmine Milk Tea",
-   "Fried Chicken Wings",
    "Bubble Waffle",
+   "Fried Chicken Wings",
    "2 Ladies Chocolate",
    "Brown Sugar Pearl with Milk",
    "Milk Tea",
@@ -26839,59 +26926,57 @@
    "Cheesy Hot Cheetos Dog",
    "Peach Milk Tea",
    "Chocolate with Choco Crumbs",
-   "Lemon Black Tea",
    "Matcha Latte",
+   "Lemon Black Tea",
    "Taro Slush",
    "Crunchy Fries",
    "Rainbow Passion Fruit Green Tea",
    "Boneless Chicken Wings",
-   "Taro",
-   "Taro Slush",
-   "Potato Mozzarella",
-   "Matcha",
-   "Chunky Mango Coconut Milk Tea",
-   "Rice Cake",
-   "Lemon Green Tea",
-   "Peach & Strawberry Iced Tea",
-   "Rainbow Lemon Black Tea",
-   "Cheddar Hotdog",
-   "Green Tea with Salty Cream",
-   "Chocolate with Choco Crumbs",
-   "Squid-Ink Mozz-Hotdog",
-   "Thai Milk Tea",
-   "Mango Rainbow",
-   "Mango Pomelo Crystal Smoothie",
-   "Caramel Dulce Milk Tea",
-   "Tropical Special",
+   "Popping Blue Moon",
+   "Pearl Milk Tea",
    "Passion Fruit Green Tea",
    "Mango Green Tea",
-   "Bubble Gum",
-   "Strawberry Candy Pop",
-   "Green Tea",
-   "Rainbow Passion Fruit Black Tea",
-   "Mozza & Hotdog",
-   "Cheesy Hot Cheetos Dog",
-   "Spring Roll (5 pieces)",
-   "Jasmine Brown Sugar Pearl Milk Tea",
-   "2 Ladies Milk Tea",
-   "Brown Sugar Pearl Cold Brew Latte",
-   "Matcha Strawberry Love",
-   "Popping Blue Moon",
-   "Original Hotdog",
-   "Rainbow Passion Fruit Green Tea",
-   "Pearl Milk Tea",
-   "Mozzarella Sticks",
-   "Sweet Potato Fries",
-   "Lemon Pie Cream Swirl Smoothie",
-   "Mozzarella & Cheddar",
-   "Strawberry Latte",
    "Lychee Mint Lemonade",
    "Waffle Fries",
-   "Milk Tea",
-   "Strawberry Smoothie",
-   "All Mozzarella",
-   "Boneless Chicken Wings",
+   "Cheddar Hotdog",
+   "Taro",
+   "Brown Sugar Pearl with Fresh Milk",
+   "Crunchy Fries",
+   "Chocolate Slush",
    "Mango Smoothie",
+   "Mozzarella & Cheddar",
+   "All Mozzarella",
+   "Original Hotdog",
+   "Mozza Hotdog",
+   "Pearl Chocolate",
+   "Potato Mozzarella",
+   "Crème Brûlée Brown Sugar Pearl Latte",
+   "Passion Fruit & Mango Slush",
+   "Cheesy Hot Cheetos Hotdog",
+   "Mango Rainbow",
+   "Popping Red Mars",
+   "Cheesy Takis Hotdog",
+   "Tropical Special",
+   "Strawberry Latte",
+   "Strawberry Smoothie",
+   "Potato Hotdog",
+   "Strawberry Black Tea on Cloud",
+   "Matcha Strawberry Love",
+   "Bubble Gum",
+   "Bottled Water",
+   "Jasmine Brown Sugar Pearl Milk Tea",
+   "Milk Tea",
+   "Spicy Mango Slush",
+   "2 Ladies Chocolate",
+   "Pudding Milk Tea",
+   "Strawberry Candy Pop",
+   "Lemon Black Tea",
+   "Matcha",
+   "Strawberry Black Tea",
+   "Lemon King",
+   "2 Ladies Milk Tea",
+   "Toppings",
+   "Thai Milk Tea",
    "Mango Rainbow",
    "All Mozzarella",
    "Cheesy Takis Hotdog",
@@ -31491,16 +31576,16 @@
    "All Mozzarella",
    "Strawberry Candy Pop",
    "Brown Sugar Pearl with Fresh Milk",
-   "Mozzarella & Cheddar",
    "Mozza Hotdog",
+   "Mozzarella & Cheddar",
    "Passion Fruit & Mango Slush",
    "Original Hotdog",
    "Potato Mozzarella",
    "Strawberry Smoothie",
    "Taro Slush",
    "Mango Green Tea",
-   "Mango Rainbow",
    "Strawberry Latte",
+   "Mango Rainbow",
    "Pearl Milk Tea",
    "Chunky Mango Coconut Milk Tea",
    "Jasmine Milk Tea",
@@ -31510,40 +31595,65 @@
    "Tropical Special",
    "Popping Blue Moon",
    "Bubble Waffle",
-   "Passion Fruit Black Tea",
    "Waffle Fries",
+   "Passion Fruit Black Tea",
    "Potato Hotdog",
    "Milk Tea",
    "Cheesy Hot Cheetos Hotdog",
-   "Crunchy Fries",
    "Peach Smoothie",
+   "Crunchy Fries",
    "Taro",
    "Crème Brûlée Brown Sugar Pearl Latte",
-   "Strawberry Black Tea",
-   "Passion Fruit & Mango Slush",
-   "Strawberry Black Tea on Cloud",
-   "Mango Rainbow",
-   "Cold Brew Latte",
-   "Jasmine Brown Sugar Pearl Milk Tea",
-   "Mozza Hotdog",
-   "Cheesy Hot Cheetos Hotdog",
-   "Potato Mozzarella",
-   "Popping Blue Moon",
-   "Potato Hotdog",
-   "Matcha Strawberry Love",
-   "Brown Sugar Pearl with Fresh Milk",
-   "Passion Fruit Green Tea",
-   "Strawberry Smoothie",
-   "Crunchy Fries",
-   "Pearl Milk Tea",
-   "All Mozzarella",
-   "Peach Smoothie",
-   "Peach & Strawberry Iced Tea",
-   "Crème Brûlée Brown Sugar Pearl Latte",
-   "Crème Brûlée Milk Tea",
-   "Jasmine Milk Tea"
+   "Strawberry Black Tea"
   ],
   "category": [
+   "Snack",
+   "Hotdog",
+   "Hotdog",
+   "Hotdog",
+   "Hotdog",
+   "Drinks",
+   "Hotdog",
+   "Hotdog",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Hotdog",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Hotdog",
+   "Drinks",
+   "Hotdog",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Snack",
+   "Snack",
+   "Snack",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Snack",
+   "Drinks",
+   "Drinks",
+   "Snack",
+   "Drinks",
+   "Snack",
+   "Drinks",
+   "Drinks",
    "Drinks",
    "Hotdog",
    "Hotdog",
@@ -36294,34 +36404,28 @@
    "Drinks",
    "Drinks",
    "Delivery fee",
-   "Drinks",
    "Hotdog",
+   "Drinks",
    "Hotdog",
    "Snack",
-   "Snack",
-   "Drinks",
-   "Snack",
-   "Drinks",
-   "Hotdog",
-   "Hotdog",
-   "Drinks",
-   "Hotdog",
-   "Hotdog",
    "Drinks",
    "Snack",
    "Snack",
    "Drinks",
-   "Drinks",
-   "Drinks",
    "Hotdog",
    "Hotdog",
    "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
+   "Hotdog",
+   "Hotdog",
    "Drinks",
    "Snack",
+   "Snack",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Hotdog",
+   "Hotdog",
+   "Drinks",
    "Drinks",
    "Drinks",
    "Drinks",
@@ -36329,55 +36433,59 @@
    "Drinks",
    "Snack",
    "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
    "Snack",
    "Drinks",
-   "Drinks",
-   "Hotdog",
-   "Drinks",
-   "Drinks",
-   "Hotdog",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Hotdog",
-   "Drinks",
-   "Drinks",
-   "Hotdog",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Hotdog",
-   "Snack",
    "Snack",
    "Drinks",
    "Drinks",
    "Drinks",
    "Drinks",
    "Drinks",
-   "Hotdog",
+   "Snacks",
+   "Hotdogs",
+   "Drinks",
+   "Drinks",
+   "Snacks",
+   "Drinks",
+   "Drinks",
+   "Hotdogs",
+   "Hotdogs",
+   "Hotdogs",
+   "Hotdogs",
+   "Drinks",
+   "Hotdogs",
+   "Drinks",
+   "Drinks",
+   "Snacks",
+   "Drinks",
+   "Drinks",
+   "Snacks",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Hotdogs",
+   "Drinks",
+   "Drinks",
+   "Drinks",
+   "Snacks",
+   "Drinks",
    "Drinks",
    "Drinks",
-   "Snack",
-   "Snack",
    "Drinks",
-   "Hotdog",
    "Drinks",
    "Drinks",
-   "Snack",
    "Drinks",
    "Drinks",
-   "Hotdog",
-   "Snack",
    "Drinks",
    "Drinks",
+   "Drinks",
+   "Snacks",
+   "Drinks",
+   "Drinks",
    "Hotdogs",
    "Snacks",
    "Snacks",
@@ -40981,7 +41089,6 @@
    "Drinks",
    "Hotdogs",
    "Hotdogs",
-   "Drinks",
    "Drinks",
    "Drinks",
    "Drinks",
@@ -40993,42 +41100,68 @@
    "Drinks",
    "Drinks",
    "Drinks",
-   "Drinks",
-   "Snacks",
    "Drinks",
-   "Snacks",
-   "Hotdogs",
    "Drinks",
-   "Snacks",
    "Snacks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
-   "Hotdogs",
    "Snacks",
-   "Hotdogs",
    "Drinks",
    "Hotdogs",
    "Drinks",
-   "Drinks",
-   "Drinks",
-   "Drinks",
    "Snacks",
    "Drinks",
-   "Hotdogs",
-   "Drinks",
-   "Drinks",
+   "Snacks",
    "Drinks",
    "Drinks",
    "Drinks"
   ],
   "qty": [
+   5,
+   6,
+   1,
+   5,
+   7,
+   2,
+   4,
+   2,
+   1,
+   2,
+   4,
+   9,
+   5,
+   8,
+   5,
+   6,
+   2,
+   3,
+   4,
+   1,
+   5,
+   2,
+   5,
+   2,
+   5,
+   1,
+   1,
+   2,
+   6,
+   6,
+   2,
+   3,
+   1,
+   1,
+   2,
+   1,
+   1,
+   1,
+   1,
+   2,
+   1,
+   1,
+   3,
+   2,
+   1,
+   1,
+   1,
    1,
    8,
    8,
@@ -45779,22 +45912,22 @@
    1,
    1,
    3,
-   1,
    5,
+   1,
    7,
    1,
-   1,
    2,
    1,
+   1,
    2,
-   3,
    5,
+   3,
    3,
    7,
    6,
    3,
-   1,
    3,
+   1,
    1,
    5,
    1,
@@ -45815,46 +45948,38 @@
    1,
    6,
    2,
-   3,
+   7,
+   13,
+   4,
+   1,
+   2,
+   1,
+   6,
+   4,
+   11,
+   6,
+   1,
+   4,
    5,
+   22,
    6,
-   1,
-   1,
+   24,
+   8,
+   10,
+   3,
+   20,
+   8,
+   7,
    4,
-   3,
    2,
-   1,
-   4,
-   1,
-   1,
-   1,
-   2,
-   2,
-   3,
-   1,
-   2,
-   3,
-   1,
-   1,
-   2,
-   1,
-   1,
    6,
-   1,
-   1,
-   1,
    2,
-   1,
-   2,
-   2,
-   1,
+   8,
    4,
    2,
-   3,
+   5,
    1,
-   1,
-   1,
-   1,
+   2,
    1,
    2,
    2,
@@ -45862,6 +45987,12 @@
    1,
    1,
    1,
+   2,
+   1,
+   1,
+   2,
+   1,
+   2,
    4,
    38,
    4,
@@ -50461,16 +50592,16 @@
    5,
    1,
    4,
-   2,
    8,
+   2,
    2,
    5,
    6,
    2,
    1,
    2,
+   2,
    5,
-   2,
    3,
    1,
    1,
@@ -50480,40 +50611,65 @@
    2,
    2,
    1,
-   1,
    2,
+   1,
    1,
    1,
    3,
-   1,
    2,
-   1,
-   1,
-   1,
-   6,
-   2,
-   4,
-   1,
-   1,
-   4,
-   1,
-   3,
-   3,
-   1,
-   3,
-   6,
-   2,
-   1,
-   2,
-   2,
-   8,
-   1,
    1,
    1,
    1,
    1
   ],
   "amt": [
+   11.55,
+   33.55,
+   8.39,
+   33.15,
+   32.94,
+   11.85,
+   33.56,
+   13.98,
+   6.3,
+   11.85,
+   26.95,
+   62.56,
+   34.95,
+   31.06,
+   25.67,
+   43.8,
+   11.85,
+   22.5,
+   27.06,
+   6.6,
+   33.95,
+   12.6,
+   26.87,
+   12.1,
+   33.16,
+   6.8,
+   5.55,
+   14.15,
+   37.8,
+   22.68,
+   15.5,
+   21.25,
+   1.99,
+   8.0,
+   14.35,
+   7.5,
+   6.85,
+   6.05,
+   6.55,
+   13.18,
+   7.3,
+   7.3,
+   22.37,
+   14.52,
+   4.79,
+   7.05,
+   6.8,
    7.75,
    67.12,
    40.74,
@@ -55264,22 +55420,22 @@
    5.55,
    7.35,
    0.0,
-   7.56,
    43.44,
+   7.56,
    56.33,
-   3.6,
    6.75,
    15.88,
+   3.6,
    5.2,
    16.71,
-   11.47,
    27.53,
+   11.47,
    22.33,
    32.36,
    33.14,
    18.9,
-   9.6,
    24.62,
+   9.6,
    9.6,
    33.46,
    6.05,
@@ -55294,59 +55450,57 @@
    15.38,
    7.8,
    9.0,
-   7.3,
    7.35,
+   7.3,
    8.16,
    5.15,
    24.48,
    14.58,
-   13.51,
-   34.25,
-   51.14,
-   6.96,
+   49.1,
+   55.21,
+   26.45,
    6.8,
-   19.96,
-   15.62,
-   15.1,
+   13.9,
+   5.29,
+   37.94,
+   28.71,
+   81.3,
+   25.74,
    6.55,
-   20.97,
-   2.9,
-   6.75,
-   6.99,
-   13.1,
-   9.45,
-   22.5,
-   7.55,
-   11.87,
-   16.63,
-   2.77,
-   7.6,
-   10.28,
-   2.9,
+   30.7,
+   40.45,
+   176.78,
+   19.94,
+   181.76,
+   57.15,
+   79.1,
+   23.4,
+   135.59,
+   55.92,
+   47.6,
+   27.2,
+   13.98,
+   41.55,
+   14.3,
+   63.4,
+   27.96,
+   15.5,
+   37.75,
+   7.05,
+   4.24,
+   8.3,
+   13.35,
+   16.6,
+   14.82,
+   8.1,
+   7.05,
    6.3,
-   26.35,
-   8.39,
-   4.79,
-   6.8,
-   10.08,
-   6.75,
-   14.1,
-   6.3,
-   4.42,
-   16.92,
-   6.06,
-   25.5,
-   2.89,
-   7.55,
-   8.49,
-   9.36,
-   6.75,
-   7.94,
-   9.45,
-   10.58,
-   7.99,
-   8.75,
-   7.55,
+   14.6,
+   7.5,
+   7.3,
+   11.16,
+   0.75,
+   13.35,
    27.2,
    312.62,
    27.96,
@@ -59946,16 +60100,16 @@
    38.64,
    8.46,
    29.2,
-   14.98,
    60.21,
+   14.98,
    13.85,
    32.19,
    47.94,
    15.85,
    7.3,
    12.85,
-   32.52,
    15.05,
+   32.52,
    19.65,
    8.16,
    7.05,
@@ -59965,43 +60119,21 @@
    12.56,
    12.92,
    6.0,
-   6.8,
    10.58,
+   6.8,
    6.99,
    5.8,
    20.97,
-   4.29,
    15.85,
+   4.29,
    7.1,
    7.8,
-   6.75,
-   41.55,
-   14.75,
-   24.22,
-   6.25,
-   7.3,
-   27.14,
-   6.99,
-   23.97,
-   20.4,
-   6.99,
-   22.65,
-   43.8,
-   12.85,
-   7.55,
-   8.58,
-   11.77,
-   59.3,
-   9.06,
-   9.06,
-   7.8,
-   7.55,
-   7.3
+   6.75
   ]
  },
  "item_daily_range": [
-  "2026-05-03",
-  "2026-09-02"
+  "2026-05-02",
+  "2026-09-01"
  ],
  "new_items_list": {
   "Azusa": [
