@@ -1,6 +1,6 @@
 {
  "generated_at": "2026-09-02",
- "generated_ts": "2026-09-02T18:00:53-07:00",
+ "generated_ts": "2026-09-02T21:03:54-07:00",
  "stores": [
   "Azusa",
   "Southridge"
@@ -636,6 +636,13 @@
     "cups": 40,
     "food": 50,
     "tc": 36
+   },
+   {
+    "date": "2026-09-02",
+    "sales": 542.21,
+    "cups": 59,
+    "food": 33,
+    "tc": 42
    }
   ],
   "Southridge": [
@@ -1268,6 +1275,13 @@
     "cups": 39,
     "food": 34,
     "tc": 43
+   },
+   {
+    "date": "2026-09-02",
+    "sales": 386.83,
+    "cups": 36,
+    "food": 19,
+    "tc": 37
    }
   ]
  },
@@ -1339,9 +1353,9 @@
    },
    {
     "month": "2026-09",
-    "sales": 575.89,
-    "cups": 40,
-    "tc": 36,
+    "sales": 1118.1,
+    "cups": 99,
+    "tc": 78,
     "sales_ly": 14963.81,
     "tc_ly": 977
    }
@@ -1413,9 +1427,9 @@
    },
    {
     "month": "2026-09",
-    "sales": 513.73,
-    "cups": 39,
-    "tc": 43,
+    "sales": 900.56,
+    "cups": 75,
+    "tc": 80,
     "sales_ly": 26465.06,
     "tc_ly": 2284
    }
@@ -60162,42 +60176,42 @@
  "week": {
   "this": {
    "Azusa": {
-    "sales": 4496.55,
-    "cups": 434,
-    "food": 318,
-    "tc": 290
+    "sales": 4658.09,
+    "cups": 436,
+    "food": 337,
+    "tc": 299
    },
    "Southridge": {
-    "sales": 7687.89,
-    "cups": 597,
-    "food": 516,
-    "tc": 615
+    "sales": 7228.39,
+    "cups": 564,
+    "food": 482,
+    "tc": 583
    },
    "total": {
-    "sales": 12184.44,
-    "cups": 1031,
-    "food": 834,
-    "tc": 905
+    "sales": 11886.48,
+    "cups": 1000,
+    "food": 819,
+    "tc": 882
    }
   },
   "last": {
    "Azusa": {
-    "sales": 3893.91,
-    "cups": 427,
-    "food": 227,
-    "tc": 244
+    "sales": 3750.34,
+    "cups": 417,
+    "food": 212,
+    "tc": 239
    },
    "Southridge": {
-    "sales": 6884.71,
-    "cups": 535,
-    "food": 486,
-    "tc": 584
+    "sales": 7011.25,
+    "cups": 547,
+    "food": 491,
+    "tc": 594
    },
    "total": {
-    "sales": 10778.62,
-    "cups": 962,
-    "food": 713,
-    "tc": 828
+    "sales": 10761.59,
+    "cups": 964,
+    "food": 703,
+    "tc": 833
    }
   }
  },
