@@ -183,13 +183,22 @@ def _newshare_from_df(sub, stores, new_list):
     for store in stores:
         sdf = sub[sub["store"] == store]
         qa, aa = int(sdf["qty"].sum()), float(sdf["amt"].sum())
+        # 佔比＝佔同類（飲料/食物）同期總數量，與熱銷品項表口徑一致
+        is_drink = sdf["category"].str.lower() == "drinks"
+        cat_total = {True: int(sdf.loc[is_drink, "qty"].sum()),
+                     False: int(sdf.loc[~is_drink, "qty"].sum())}
         ndf = sdf[sdf["item"].str.strip().str.lower().isin(per[store])]
         qn, an = int(ndf["qty"].sum()), float(ndf["amt"].sum())
-        agg = ndf.groupby("item").agg(qty=("qty", "sum"), amt=("amt", "sum")) \
+        agg = ndf.assign(_drink=ndf["category"].str.lower() == "drinks") \
+            .groupby("item").agg(qty=("qty", "sum"), amt=("amt", "sum"),
+                                 drink=("_drink", "max")) \
             .sort_values("qty", ascending=False)
-        detail = [{"item": k, "qty": int(r.qty), "amt": round(float(r.amt), 2),
-                   "pct": round(int(r.qty) / qa * 100, 1) if qa else 0.0}
-                  for k, r in agg.iterrows()]
+        detail = []
+        for k, r in agg.iterrows():
+            ct = cat_total[bool(r.drink)]
+            detail.append({"item": k, "qty": int(r.qty),
+                           "amt": round(float(r.amt), 2),
+                           "pct": round(int(r.qty) / ct * 100, 1) if ct else 0.0})
         out[store] = {"qty_new": qn, "qty_all": qa, "amt_new": round(an, 2),
                       "amt_all": round(aa, 2), "detail": detail}
         tot["qty_new"] += qn; tot["qty_all"] += qa
@@ -610,7 +619,7 @@ def render():
                         _new_table(col, detail, chg.get(store) if has_prev else None)
                     else:
                         col.caption("無新品銷售")
-                cap = "每支新品的數量、銷售額；佔比＝該新品數量佔全店同期總數量。"
+                cap = "每支新品的數量、銷售額；佔比＝該新品佔同店同類（飲料或食物）同期總數量（與熱銷品項表口徑一致）。"
                 cap += ("變化＝數量 vs 上一期（同長度、緊接在前），▲綠▼紅、「新」＝前期無此品項。"
                         if has_prev else "（前一期資料不足，未顯示變化）")
                 st.caption(cap + "新品清單手動維護（兩店分開，改 new_items.json）。")
