@@ -1,6 +1,6 @@
 {
  "generated_at": "2026-09-15",
- "generated_ts": "2026-09-15T18:00:10-07:00",
+ "generated_ts": "2026-09-15T21:17:15-07:00",
  "stores": [
   "Azusa",
   "Southridge"
@@ -636,6 +636,13 @@
     "cups": 48,
     "food": 33,
     "tc": 32
+   },
+   {
+    "date": "2026-09-15",
+    "sales": 411.66,
+    "cups": 40,
+    "food": 28,
+    "tc": 31
    }
   ],
   "Southridge": [
@@ -1268,6 +1275,13 @@
     "cups": 33,
     "food": 34,
     "tc": 36
+   },
+   {
+    "date": "2026-09-15",
+    "sales": 464.63,
+    "cups": 34,
+    "food": 35,
+    "tc": 41
    }
   ]
  },
@@ -1339,9 +1353,9 @@
    },
    {
     "month": "2026-09",
-    "sales": 8169.43,
-    "cups": 768,
-    "tc": 511,
+    "sales": 8581.09,
+    "cups": 808,
+    "tc": 542,
     "sales_ly": 14963.81,
     "tc_ly": 977
    }
@@ -1413,9 +1427,9 @@
    },
    {
     "month": "2026-09",
-    "sales": 11154.06,
-    "cups": 924,
-    "tc": 924,
+    "sales": 11618.69,
+    "cups": 958,
+    "tc": 965,
     "sales_ly": 26465.06,
     "tc_ly": 2284
    }
@@ -60410,42 +60424,42 @@
  "week": {
   "this": {
    "Azusa": {
-    "sales": 4520.86,
-    "cups": 416,
-    "food": 319,
+    "sales": 4536.39,
+    "cups": 412,
+    "food": 322,
     "tc": 264
    },
    "Southridge": {
-    "sales": 5325.15,
-    "cups": 427,
+    "sales": 5265.36,
+    "cups": 416,
     "food": 359,
-    "tc": 444
+    "tc": 442
    },
    "total": {
-    "sales": 9846.01,
-    "cups": 843,
-    "food": 678,
-    "tc": 708
+    "sales": 9801.75,
+    "cups": 828,
+    "food": 681,
+    "tc": 706
    }
   },
   "last": {
    "Azusa": {
-    "sales": 3648.57,
-    "cups": 352,
-    "food": 264,
-    "tc": 247
+    "sales": 3468.81,
+    "cups": 356,
+    "food": 239,
+    "tc": 242
    },
    "Southridge": {
-    "sales": 5828.91,
-    "cups": 497,
-    "food": 357,
+    "sales": 5839.6,
+    "cups": 503,
+    "food": 358,
     "tc": 480
    },
    "total": {
-    "sales": 9477.48,
-    "cups": 849,
-    "food": 621,
-    "tc": 727
+    "sales": 9308.41,
+    "cups": 859,
+    "food": 597,
+    "tc": 722
    }
   }
  },
