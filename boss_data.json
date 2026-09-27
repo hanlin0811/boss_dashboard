@@ -1,19 +1,12 @@
 {
- "generated_at": "2026-09-26",
- "generated_ts": "2026-09-26T23:25:18-07:00",
+ "generated_at": "2026-09-27",
+ "generated_ts": "2026-09-27T11:23:23-07:00",
  "stores": [
   "Azusa",
   "Southridge"
  ],
  "daily": {
   "Azusa": [
-   {
-    "date": "2026-06-28",
-    "sales": 944.07,
-    "cups": 84,
-    "food": 59,
-    "tc": 59
-   },
    {
     "date": "2026-06-29",
     "sales": 452.92,
@@ -646,13 +639,6 @@
    }
   ],
   "Southridge": [
-   {
-    "date": "2026-06-28",
-    "sales": 795.95,
-    "cups": 67,
-    "food": 47,
-    "tc": 59
-   },
    {
     "date": "2026-06-29",
     "sales": 622.68,
@@ -60132,26 +60118,26 @@
  "channel_mix": {
   "Azusa": {
    "this": {
-    "Dine In": 79,
-    "Pickup": 85,
-    "Delivery": 67
+    "Dine In": 76,
+    "Pickup": 79,
+    "Delivery": 80
    },
    "last": {
-    "Dine In": 83,
-    "Pickup": 94,
-    "Delivery": 89
+    "Dine In": 80,
+    "Pickup": 95,
+    "Delivery": 80
    }
   },
   "Southridge": {
    "this": {
-    "Dine In": 407,
-    "Pickup": 75,
-    "Delivery": 27
+    "Dine In": 399,
+    "Pickup": 66,
+    "Delivery": 26
    },
    "last": {
-    "Dine In": 341,
-    "Pickup": 88,
-    "Delivery": 12
+    "Dine In": 357,
+    "Pickup": 82,
+    "Delivery": 17
    }
   }
  }
