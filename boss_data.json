@@ -1,19 +1,12 @@
 {
- "generated_at": "2026-10-02",
- "generated_ts": "2026-10-02T23:05:37-07:00",
+ "generated_at": "2026-10-03",
+ "generated_ts": "2026-10-03T12:00:09-07:00",
  "stores": [
   "Azusa",
   "Southridge"
  ],
  "daily": {
   "Azusa": [
-   {
-    "date": "2026-07-04",
-    "sales": 622.5,
-    "cups": 48,
-    "food": 50,
-    "tc": 29
-   },
    {
     "date": "2026-07-05",
     "sales": 313.45,
@@ -646,13 +639,6 @@
    }
   ],
   "Southridge": [
-   {
-    "date": "2026-07-04",
-    "sales": 415.01,
-    "cups": 34,
-    "food": 28,
-    "tc": 35
-   },
    {
     "date": "2026-07-05",
     "sales": 1119.77,
