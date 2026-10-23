@@ -1,6 +1,6 @@
 {
  "generated_at": "2026-10-23",
- "generated_ts": "2026-10-23T12:17:36-07:00",
+ "generated_ts": "2026-10-23T16:22:37-07:00",
  "stores": [
   "Azusa",
   "Southridge"
@@ -2512,21 +2512,15 @@
  "new_items_share": {
   "7d": {
    "Azusa": {
-    "qty_new": 55,
+    "qty_new": 45,
     "qty_all": 593,
-    "amt_new": 404.89,
+    "amt_new": 320.32,
     "amt_all": 3637.59,
     "detail": [
      {
       "item": "Chunky Mango Coconut Milk Tea",
       "qty": 9,
       "amt": 54.4,
-      "pct": 2.8
-     },
-     {
-      "item": "Milk Tea Cookies Cream Swirl Smoothie",
-      "qty": 9,
-      "amt": 77.02,
       "pct": 2.8
      },
      {
@@ -2572,12 +2566,6 @@
       "pct": 0.3
      },
      {
-      "item": "Lemon Pie Cream Swirl Smoothie",
-      "qty": 1,
-      "amt": 7.55,
-      "pct": 0.3
-     },
-     {
       "item": "Matcha Peach Latte",
       "qty": 1,
       "amt": 6.9,
@@ -2592,9 +2580,9 @@
     ]
    },
    "Southridge": {
-    "qty_new": 44,
+    "qty_new": 41,
     "qty_all": 877,
-    "amt_new": 345.45,
+    "amt_new": 320.29,
     "amt_all": 6062.15,
     "detail": [
      {
@@ -2640,45 +2628,27 @@
       "pct": 0.6
      },
      {
-      "item": "Lemon Pie Cream Swirl Smoothie",
-      "qty": 2,
-      "amt": 16.61,
-      "pct": 0.4
-     },
-     {
       "item": "Peach Milk Tea",
       "qty": 2,
       "amt": 14.1,
       "pct": 0.4
-     },
-     {
-      "item": "Milk Tea Cookies Cream Swirl Smoothie",
-      "qty": 1,
-      "amt": 8.55,
-      "pct": 0.2
      }
     ]
    },
    "total": {
-    "qty_new": 99,
+    "qty_new": 86,
     "qty_all": 1470,
-    "amt_new": 750.34,
+    "amt_new": 640.61,
     "amt_all": 9699.74
    }
   },
   "14d": {
    "Azusa": {
-    "qty_new": 107,
+    "qty_new": 79,
     "qty_all": 1176,
-    "amt_new": 806.38,
+    "amt_new": 575.05,
     "amt_all": 7106.83,
     "detail": [
-     {
-      "item": "Milk Tea Cookies Cream Swirl Smoothie",
-      "qty": 21,
-      "amt": 181.26,
-      "pct": 3.2
-     },
      {
       "item": "Chunky Mango Coconut Milk Tea",
       "qty": 15,
@@ -2728,18 +2698,6 @@
       "pct": 0.8
      },
      {
-      "item": "Matcha Cookies Cream Swirl Smoothie",
-      "qty": 4,
-      "amt": 32.71,
-      "pct": 0.6
-     },
-     {
-      "item": "Lemon Pie Cream Swirl Smoothie",
-      "qty": 3,
-      "amt": 17.36,
-      "pct": 0.5
-     },
-     {
       "item": "Matcha Mango Latte",
       "qty": 3,
       "amt": 22.2,
@@ -2760,9 +2718,9 @@
     ]
    },
    "Southridge": {
-    "qty_new": 93,
+    "qty_new": 85,
     "qty_all": 1681,
-    "amt_new": 727.15,
+    "amt_new": 663.24,
     "amt_all": 11645.6,
     "detail": [
      {
@@ -2812,39 +2770,21 @@
       "qty": 3,
       "amt": 25.5,
       "pct": 0.3
-     },
-     {
-      "item": "Matcha Cookies Cream Swirl Smoothie",
-      "qty": 3,
-      "amt": 22.65,
-      "pct": 0.3
-     },
-     {
-      "item": "Milk Tea Cookies Cream Swirl Smoothie",
-      "qty": 3,
-      "amt": 24.65,
-      "pct": 0.3
-     },
-     {
-      "item": "Lemon Pie Cream Swirl Smoothie",
-      "qty": 2,
-      "amt": 16.61,
-      "pct": 0.2
      }
     ]
    },
    "total": {
-    "qty_new": 200,
+    "qty_new": 164,
     "qty_all": 2857,
-    "amt_new": 1533.53,
+    "amt_new": 1238.29,
     "amt_all": 18752.43
    }
   },
   "30d": {
    "Azusa": {
-    "qty_new": 244,
+    "qty_new": 194,
     "qty_all": 2607,
-    "amt_new": 1828.93,
+    "amt_new": 1424.61,
     "amt_all": 15769.64,
     "detail": [
      {
@@ -2852,12 +2792,6 @@
       "qty": 34,
       "amt": 219.64,
       "pct": 2.3
-     },
-     {
-      "item": "Milk Tea Cookies Cream Swirl Smoothie",
-      "qty": 30,
-      "amt": 254.36,
-      "pct": 2.0
      },
      {
       "item": "Chunky Mango Slush",
@@ -2896,22 +2830,10 @@
       "pct": 1.0
      },
      {
-      "item": "Matcha Cookies Cream Swirl Smoothie",
-      "qty": 13,
-      "amt": 101.4,
-      "pct": 0.9
-     },
-     {
       "item": "Matcha Mango Latte",
       "qty": 9,
       "amt": 67.35,
       "pct": 0.6
-     },
-     {
-      "item": "Lemon Pie Cream Swirl Smoothie",
-      "qty": 7,
-      "amt": 48.56,
-      "pct": 0.5
      },
      {
       "item": "Matcha Strawberry Latte",
@@ -2934,9 +2856,9 @@
     ]
    },
    "Southridge": {
-    "qty_new": 182,
+    "qty_new": 173,
     "qty_all": 3360,
-    "amt_new": 1427.07,
+    "amt_new": 1355.61,
     "amt_all": 23148.0,
     "detail": [
      {
@@ -2986,47 +2908,23 @@
       "qty": 6,
       "amt": 51.0,
       "pct": 0.3
-     },
-     {
-      "item": "Matcha Cookies Cream Swirl Smoothie",
-      "qty": 4,
-      "amt": 30.2,
-      "pct": 0.2
-     },
-     {
-      "item": "Milk Tea Cookies Cream Swirl Smoothie",
-      "qty": 3,
-      "amt": 24.65,
-      "pct": 0.2
-     },
-     {
-      "item": "Lemon Pie Cream Swirl Smoothie",
-      "qty": 2,
-      "amt": 16.61,
-      "pct": 0.1
      }
     ]
    },
    "total": {
-    "qty_new": 426,
+    "qty_new": 367,
     "qty_all": 5967,
-    "amt_new": 3256.0,
+    "amt_new": 2780.22,
     "amt_all": 38917.64
    }
   },
   "last_week": {
    "Azusa": {
-    "qty_new": 57,
+    "qty_new": 41,
     "qty_all": 611,
-    "amt_new": 437.11,
+    "amt_new": 306.45,
     "amt_all": 3675.3,
     "detail": [
-     {
-      "item": "Milk Tea Cookies Cream Swirl Smoothie",
-      "qty": 13,
-      "amt": 111.79,
-      "pct": 3.8
-     },
      {
       "item": "Mango Pomelo Crystal Smoothie",
       "qty": 8,
@@ -3064,12 +2962,6 @@
       "pct": 1.2
      },
      {
-      "item": "Lemon Pie Cream Swirl Smoothie",
-      "qty": 2,
-      "amt": 11.32,
-      "pct": 0.6
-     },
-     {
       "item": "Matcha Mango Latte",
       "qty": 2,
       "amt": 14.55,
@@ -3092,19 +2984,13 @@
       "qty": 2,
       "amt": 17.67,
       "pct": 0.6
-     },
-     {
-      "item": "Matcha Cookies Cream Swirl Smoothie",
-      "qty": 1,
-      "amt": 7.55,
-      "pct": 0.3
      }
     ]
    },
    "Southridge": {
-    "qty_new": 51,
+    "qty_new": 46,
     "qty_all": 869,
-    "amt_new": 398.11,
+    "amt_new": 359.36,
     "amt_all": 6029.7,
     "detail": [
      {
@@ -3154,39 +3040,21 @@
       "qty": 3,
       "amt": 22.65,
       "pct": 0.6
-     },
-     {
-      "item": "Matcha Cookies Cream Swirl Smoothie",
-      "qty": 2,
-      "amt": 15.1,
-      "pct": 0.4
-     },
-     {
-      "item": "Milk Tea Cookies Cream Swirl Smoothie",
-      "qty": 2,
-      "amt": 16.1,
-      "pct": 0.4
-     },
-     {
-      "item": "Lemon Pie Cream Swirl Smoothie",
-      "qty": 1,
-      "amt": 7.55,
-      "pct": 0.2
      }
     ]
    },
    "total": {
-    "qty_new": 108,
+    "qty_new": 87,
     "qty_all": 1480,
-    "amt_new": 835.22,
+    "amt_new": 665.81,
     "amt_all": 9705.0
    }
   },
   "last_month": {
    "Azusa": {
-    "qty_new": 211,
+    "qty_new": 168,
     "qty_all": 2721,
-    "amt_new": 1581.37,
+    "amt_new": 1239.36,
     "amt_all": 16330.83,
     "detail": [
      {
@@ -3214,12 +3082,6 @@
       "pct": 1.7
      },
      {
-      "item": "Matcha Cookies Cream Swirl Smoothie",
-      "qty": 21,
-      "amt": 165.12,
-      "pct": 1.3
-     },
-     {
       "item": "Peach Milk Tea",
       "qty": 17,
       "amt": 131.55,
@@ -3232,12 +3094,6 @@
       "pct": 1.0
      },
      {
-      "item": "Milk Tea Cookies Cream Swirl Smoothie",
-      "qty": 15,
-      "amt": 122.04,
-      "pct": 1.0
-     },
-     {
       "item": "Peach Smoothie",
       "qty": 9,
       "amt": 71.0,
@@ -3247,12 +3103,6 @@
       "item": "Chunky Spicy Mango Slush",
       "qty": 7,
       "amt": 43.2,
-      "pct": 0.4
-     },
-     {
-      "item": "Lemon Pie Cream Swirl Smoothie",
-      "qty": 7,
-      "amt": 54.85,
       "pct": 0.4
      }
     ]
@@ -3314,9 +3164,9 @@
     ]
    },
    "total": {
-    "qty_new": 370,
+    "qty_new": 327,
     "qty_all": 6132,
-    "amt_new": 2796.17,
+    "amt_new": 2454.16,
     "amt_all": 39636.52
    }
   }
@@ -26830,24 +26680,24 @@
    "2 Ladies Chocolate",
    "Taro Slush",
    "Brown Sugar Pearl Cold Brew Latte",
-   "Passion Fruit & Mango Slush",
    "Jumbo Beef Hotdog",
    "2 Ladies Milk Tea",
+   "Passion Fruit & Mango Slush",
    "Mozzarella & Cheddar",
    "Mozza & Hotdog",
    "Strawberry Candy Pop",
    "Peach Milk Tea",
    "Fried Chicken Wings",
-   "Jasmine Brown Sugar Pearl Milk Tea",
    "All Mozzarella",
-   "Taro",
+   "Jasmine Brown Sugar Pearl Milk Tea",
    "Chunky Mango Coconut Milk Tea",
-   "Matcha Strawberry Latte",
+   "Taro",
    "Cheesy Hot Cheetos Dog",
+   "Matcha Strawberry Latte",
    "Potato Mozzarella",
-   "Popping Blue Moon",
    "Potato Hotdog",
    "Potstickers",
+   "Popping Blue Moon",
    "Matcha Strawberry Love",
    "Brown Sugar Pearl with Milk",
    "Chocolate Slush",
@@ -31364,19 +31214,19 @@
    "Jumbo Beef Hotdog",
    "Lemon Black Tea",
    "Passion Fruit & Mango Slush",
-   "Matcha",
    "Strawberry Black Tea",
+   "Matcha",
    "Passion Fruit Green Tea",
-   "Thai Milk Tea",
    "Taro",
+   "Thai Milk Tea",
    "Mozzarella & Cheddar",
    "Original Hotdog",
+   "Brown Sugar Pearl with Fresh Milk",
    "Pearl Chocolate",
    "Chunky Spicy Mango Slush",
-   "Brown Sugar Pearl with Fresh Milk",
    "Mango Rainbow",
-   "Potato Hotdog",
    "Cheesy Hot Cheetos Hotdog",
+   "Potato Hotdog",
    "Potato Mozzarella",
    "Lemon Pie Cream Swirl Smoothie",
    "Mozza Hotdog",
@@ -36181,24 +36031,24 @@
    "Drinks",
    "Drinks",
    "Drinks",
-   "Drinks",
    "Hotdog",
+   "Drinks",
    "Drinks",
    "Hotdog",
    "Hotdog",
    "Drinks",
    "Drinks",
    "Snack",
-   "Drinks",
    "Hotdog",
    "Drinks",
    "Drinks",
    "Drinks",
    "Snack",
-   "Hotdog",
    "Drinks",
    "Hotdog",
+   "Hotdog",
    "Snack",
+   "Drinks",
    "Drinks",
    "Drinks",
    "Drinks",
@@ -40726,8 +40576,8 @@
    "Drinks",
    "Drinks",
    "Drinks",
-   "Hotdogs",
    "Snacks",
+   "Hotdogs",
    "Hotdogs",
    "Drinks",
    "Hotdogs",
@@ -45532,24 +45382,24 @@
    1,
    3,
    2,
-   3,
    8,
    4,
+   3,
    14,
    2,
    1,
    1,
    1,
+   2,
    1,
    2,
    4,
    2,
    1,
-   2,
    5,
    2,
-   2,
    1,
+   2,
    1,
    6,
    1,
@@ -50066,19 +49916,19 @@
    3,
    2,
    4,
-   2,
    1,
+   2,
    1,
    1,
    1,
    4,
    15,
-   3,
-   3,
    6,
-   2,
    3,
+   3,
+   2,
    4,
+   3,
    6,
    1,
    2,
@@ -54883,24 +54733,24 @@
    7.3,
    12.09,
    10.12,
-   14.31,
    33.56,
    16.32,
+   14.31,
    91.7,
    14.86,
    3.43,
    7.8,
    6.16,
-   7.17,
    7.61,
-   17.58,
+   7.17,
    10.2,
-   6.9,
+   17.58,
    13.98,
+   6.9,
    38.35,
-   9.45,
    10.48,
    5.99,
+   9.45,
    7.05,
    42.36,
    6.8,
@@ -59417,19 +59267,19 @@
    13.18,
    7.56,
    26.29,
-   12.6,
    7.5,
+   12.6,
    6.05,
-   7.05,
    6.3,
+   7.05,
    24.77,
    72.46,
+   47.05,
    22.9,
    24.0,
-   47.05,
    12.11,
-   20.97,
    27.96,
+   20.97,
    52.74,
    9.06,
    13.98,
@@ -59458,16 +59308,15 @@
  "new_items_list": {
   "Azusa": [
    "32oz quencher cup",
+   "black tea latte with biscoff® biscuits crumbs",
    "chunky mango coconut milk tea",
    "chunky mango slush",
    "chunky spicy mango slush",
-   "lemon pie cream swirl smoothie",
    "mango pomelo crystal smoothie",
-   "matcha cookies cream swirl smoothie",
    "matcha mango latte",
    "matcha peach latte",
    "matcha strawberry latte",
-   "milk tea cookies cream swirl smoothie",
+   "milk tea frappe with biscoff® biscuits crumbs",
    "peach & strawberry iced tea",
    "peach milk tea",
    "peach smoothie"
@@ -59477,10 +59326,7 @@
    "chunky mango coconut milk tea",
    "chunky mango slush",
    "chunky spicy mango slush",
-   "lemon pie cream swirl smoothie",
    "mango pomelo crystal smoothie",
-   "matcha cookies cream swirl smoothie",
-   "milk tea cookies cream swirl smoothie",
    "peach & strawberry iced tea",
    "peach milk tea",
    "peach smoothie"
