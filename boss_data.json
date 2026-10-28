@@ -1,6 +1,6 @@
 {
  "generated_at": "2026-10-27",
- "generated_ts": "2026-10-27T21:12:24-07:00",
+ "generated_ts": "2026-10-27T23:23:58-07:00",
  "stores": [
   "Azusa",
   "Southridge"
@@ -59678,26 +59678,26 @@
  "channel_mix": {
   "Azusa": {
    "this": {
-    "Dine In": 68,
-    "Pickup": 82,
-    "Delivery": 71
+    "Dine In": 71,
+    "Pickup": 88,
+    "Delivery": 68
    },
    "last": {
-    "Dine In": 103,
-    "Pickup": 99,
+    "Dine In": 99,
+    "Pickup": 100,
     "Delivery": 66
    }
   },
   "Southridge": {
    "this": {
-    "Dine In": 398,
-    "Pickup": 105,
-    "Delivery": 17
+    "Dine In": 404,
+    "Pickup": 108,
+    "Delivery": 16
    },
    "last": {
-    "Dine In": 396,
-    "Pickup": 86,
-    "Delivery": 16
+    "Dine In": 399,
+    "Pickup": 87,
+    "Delivery": 17
    }
   }
  }
