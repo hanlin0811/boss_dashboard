@@ -22,7 +22,10 @@ DATA = Path(__file__).parent / "boss_data.json"
 def check_password() -> bool:
     if st.session_state.get("boss_auth"):
         return True
-    expected = st.secrets.get("boss_password", None)
+    try:
+        expected = st.secrets.get("boss_password", None)
+    except FileNotFoundError:  # 本機沒有 secrets.toml（Streamlit 的 StreamlitSecretNotFoundError 也是此類）
+        expected = None
     st.markdown("### CrunCheese × CoCo 營運")
     if not expected:
         st.info("管理員尚未設定密碼（部署時於 Streamlit Cloud secrets 設定 `boss_password`）。")
