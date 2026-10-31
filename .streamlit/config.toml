@@ -1,6 +1,24 @@
 [theme]
-primaryColor = "#e8873c"
-backgroundColor = "#faf7f2"
-secondaryBackgroundColor = "#fffdf9"
-textColor = "#2a2320"
-font = "sans serif"
+base = "light"
+# 介面黑白灰；顏色只留給店別與漲跌（見 boss_app.py 的 STORE_COLOR）
+primaryColor = "#141414"
+backgroundColor = "#f4f3f1"
+secondaryBackgroundColor = "#eeeeee"
+textColor = "#0a0a0a"
+borderColor = "#e6e6e6"
+dataframeBorderColor = "#f0f0f0"
+dataframeHeaderBackgroundColor = "#ffffff"
+dataframeHeaderTextColor = "#6b6b6b"
+showWidgetBorder = true
+greenTextColor = "#2e7d32"
+redTextColor = "#c4242a"
+# Geist 與 Noto Sans TC 由 boss_app.py 的 CSS 載入
+font = "Geist, 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif"
+headingFont = "Geist, 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif"
+baseFontSize = 14
+headingFontSizes = ["24px", "16px", "16px", "14px", "14px", "14px"]
+headingFontWeights = [700, 500, 500, 500, 500, 500]
+baseRadius = "8px"
+buttonRadius = "6px"
+chartCategoricalColors = ["#c8641e", "#1d5fbf", "#141414", "#8a8a8a"]
+paddingTop = "3.5rem"
