@@ -1,6 +1,7 @@
 """老闆雲端唯讀 Dashboard — CrunCheese × CoCo。
 讀 boss_data.json（由 Mac 每天 push），密碼保護、唯讀顯示兩店營運數字。"""
 
+import html
 import json
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -11,7 +12,9 @@ import streamlit as st
 
 st.set_page_config(page_title="CrunCheese × CoCo 營運", page_icon="🧋", layout="wide")
 
-STORE_COLOR = {"Azusa": "#e07b2a", "Southridge": "#2c8ac9"}
+# 每家店固定一個顏色，所有圖表與列表一致；其餘介面一律黑白灰
+STORE_COLOR = {"Azusa": "#c8641e", "Southridge": "#1d5fbf"}
+FONT = "Geist, 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif"
 DATA = Path(__file__).parent / "boss_data.json"
 
 
@@ -20,7 +23,7 @@ def check_password() -> bool:
     if st.session_state.get("boss_auth"):
         return True
     expected = st.secrets.get("boss_password", None)
-    st.markdown("### 🧋 CrunCheese × CoCo 營運")
+    st.markdown("### CrunCheese × CoCo 營運")
     if not expected:
         st.info("管理員尚未設定密碼（部署時於 Streamlit Cloud secrets 設定 `boss_password`）。")
         return False
@@ -48,59 +51,137 @@ def load_data():
     return _load(sig)
 
 
-def _kpi(col, label, value, delta=None):
-    col.metric(label, value, delta)
-
-
 def _avg_ticket(x):
     return x["sales"] / x["tc"] if x.get("tc") else 0
 
 
-# ── 響應式 KPI 卡片（手機自動換行，桌機一排）────────────────────────
-_KPI_CSS = """
+# ── 樣式：石灰底、白卡、黑字；顏色只用在店別與漲跌 ───────────────────
+_CSS = """
 <style>
-.k-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));
-        gap:.5rem;margin:.2rem 0 .6rem}
-.k-card{background:#fffdf9;border:1px solid #eadfce;border-radius:10px;
-        padding:.5rem .6rem}
-.k-l{font-size:.72rem;color:#8a7d6d;margin-bottom:.1rem;white-space:nowrap}
-.k-v{font-size:1.28rem;font-weight:700;line-height:1.15;color:#2a2320}
-.k-d{font-size:.72rem;font-weight:600;white-space:nowrap}
-.k-d small{color:#a99;font-weight:400}
-.k-up{color:#1a9850}.k-dn{color:#d73027}.k-na{color:#9aa0a6}
-.ch-store{font-size:.82rem;font-weight:700;color:#2a2320;margin:.5rem 0 .2rem}
-.ch-bar{display:flex;height:30px;border-radius:7px;overflow:hidden;
-        font-size:.72rem;font-weight:600;box-shadow:inset 0 0 0 1px rgba(0,0,0,.04)}
-.ch-seg{display:flex;align-items:center;justify-content:center;color:#fff;
-        white-space:nowrap;overflow:hidden}
-.ch-legend{font-size:.72rem;color:#8a7d6d;margin:.1rem 0 .3rem}
-.ch-detail{font-size:.76rem;color:#6b5f52;margin:.2rem 0 .1rem}
-.ch-dot{display:inline-block;width:9px;height:9px;border-radius:2px;
-        margin:0 .25rem 0 .7rem;vertical-align:middle}
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+:root{--ground:#f4f3f1;--surface:#fff;--border:#e6e6e6;--rule:#f0f0f0;
+      --text:#0a0a0a;--ink2:#3d3d3d;--muted:#6b6b6b;--pos:#2e7d32;--neg:#c4242a}
+.stApp{font-variant-numeric:tabular-nums}
+[data-testid="stCaptionContainer"]{color:var(--muted)}
+.stApp [class*="st-key-card"]{background:var(--surface);padding:20px 24px}
+.stApp [class*="st-key-card"] .panel-head{margin-bottom:0}
+.brand{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+.brand b{color:var(--text);font-weight:500}
+.finding{font-size:15px;line-height:22px;color:var(--ink2);margin:0}
+.stamp{font-size:12px;line-height:18px;color:var(--muted);margin:2px 0 8px}
+.notice{background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:13px;
+        line-height:20px;border-radius:8px;padding:10px 14px;margin-top:10px}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 24px;min-width:0}
+.blk{margin-bottom:14px}
+.panel-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;
+            gap:2px 12px;margin-bottom:14px}
+.panel-head h2{white-space:nowrap}
+.panel h2,.panel h3{font-size:16px;font-weight:500;line-height:24px;margin:0;padding:0}
+.meta{font-size:12px;color:var(--muted);white-space:nowrap}
+.d{font-size:12px;line-height:18px;color:var(--muted);white-space:nowrap}
+.up{color:var(--pos);font-weight:500}.dn{color:var(--neg);font-weight:500}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:1px}
+/* 最新一日帳本：兩列同欄位，數字上下對齊 */
+.kp{display:grid;grid-template-columns:1.3fr repeat(4,1fr)}
+.kp>div{padding:0 20px;border-left:1px solid var(--rule)}
+.kp>div:first-child{padding-left:0;border-left:0}
+.kp .l{font-size:12px;line-height:18px;color:var(--muted);white-space:nowrap}
+.kp .v{font-size:22px;line-height:30px;font-weight:500}
+.kp .v.m{font-weight:700}
+.kp .lead .v{font-size:30px;line-height:40px}
+.kp.sub{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule)}
+.kp.sub .v,.kp.sub .lead .v{font-size:16px;line-height:24px}
+.al-h{margin-top:18px;padding-top:14px;border-top:1px solid var(--rule);display:flex;
+      justify-content:space-between;align-items:baseline}
+.al{display:grid;grid-template-columns:auto auto auto 1fr;gap:8px 16px;align-items:center;
+    font-size:14px;line-height:20px;margin-top:10px}
+.pill{display:inline-block;font-size:12px;font-weight:500;line-height:20px;padding:0 8px;
+      border-radius:4px;white-space:nowrap}
+.pill.red{background:#ffedea;color:#831c1e}.pill.amber{background:#fffbeb;color:#92400e}
+.empty{font-size:14px;color:var(--muted);margin-top:8px}
+/* 並排卡片 */
+.duo{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:14px}
+.duo.even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.kp.two{grid-template-columns:repeat(2,max-content);margin:4px 0 12px}
+.scroll{overflow-x:auto}
+table.lg{width:100%;border-collapse:collapse;border:0!important;margin:0}
+.lg tr{border:0!important;background:none!important}
+.lg th,.lg td{border:0!important}
+.lg th{font-size:12px;font-weight:400;color:var(--muted);text-align:right;padding:0 0 8px 16px;white-space:nowrap}
+.lg td{text-align:right;padding:11px 0 11px 16px;border-top:1px solid var(--rule)!important;font-size:14px;
+       line-height:20px;vertical-align:top;white-space:nowrap}
+.lg th:first-child,.lg td:first-child{text-align:left;padding-left:0;position:sticky;left:0;
+       background:var(--surface);padding-right:12px}
+.lg td .d{display:block}
+.lg tr.tot td{font-weight:500}
+.lg .na{color:var(--muted)}
+/* 通路：同一組灰階，色塊即圖例 */
+.ch-key{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--ink2)}
+.ch-key i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+.ch-s{margin-top:16px}
+.ch-n{display:flex;justify-content:space-between;font-size:14px;line-height:20px;margin-bottom:6px}
+.ch-bar{display:flex;gap:2px;height:24px}
+.ch-bar>div{display:flex;align-items:center;justify-content:center;font-size:12px;overflow:hidden;white-space:nowrap}
+.ch-det{font-size:12px;line-height:18px;color:var(--muted);margin-top:6px}
+.ch-det b{font-weight:400;color:var(--text)}
+@media (max-width:860px){
+  .duo,.duo.even{grid-template-columns:minmax(0,1fr)}
+  [data-testid="stMainBlockContainer"]{padding-left:18px!important;padding-right:18px!important}
+}
+@media (max-width:640px){
+  .panel{padding:16px}
+  .kp{grid-template-columns:1fr 1fr;row-gap:12px}
+  .kp>div,.kp>div:first-child{padding:0;border-left:0}
+  .kp .lead{grid-column:1 / -1}
+  .kp.two{grid-template-columns:1fr 1fr}
+  .al{grid-template-columns:auto 1fr;gap:4px 12px}
+  .al .msg{grid-column:1 / -1;margin-bottom:6px}
+}
 </style>
 """
+
+CH_ORDER = ["Dine In", "Pickup", "Delivery"]
+CH_LABEL = {"Dine In": "堂食", "Pickup": "外帶自取", "Delivery": "外送"}
+# (底色, 字色)：深、中、淺三階灰
+CH_TONE = {"Dine In": ("#2b2b2b", "#fff"), "Pickup": ("#6b6b6b", "#fff"),
+           "Delivery": ("#d4d4d4", "#0a0a0a")}
 
 
 def _delta_pct(cur, prev):
     return (cur - prev) / prev * 100 if prev else None
 
 
-def _kpi_cards(items, cmp_label="vs 上週"):
-    """items: [{label, value, delta}] → 響應式卡片格。
-    無 'delta' 鍵＝不顯示比較行；delta=None＝顯示「—」。"""
-    cards = []
-    for it in items:
-        if "delta" not in it:
-            dh = ""
-        elif (dp := it["delta"]) is None:
-            dh = '<span class="k-d k-na">—</span>'
-        else:
-            cls, arr = ("k-up", "▲") if dp >= 0 else ("k-dn", "▼")
-            dh = f'<span class="k-d {cls}">{arr} {abs(dp):.0f}% <small>{cmp_label}</small></span>'
-        cards.append(f'<div class="k-card"><div class="k-l">{it["label"]}</div>'
-                     f'<div class="k-v">{it["value"]}</div>{dh}</div>')
-    st.markdown('<div class="k-grid">' + ''.join(cards) + '</div>',
-                unsafe_allow_html=True)
+def _usd(v):
+    """HTML 用金額；&#36; 避免 Streamlit 把兩個 $ 之間當成 LaTeX 公式。"""
+    return f"&#36;{v:,.2f}"
+
+
+def _dot(store):
+    return f'<span class="dot" style="background:{STORE_COLOR.get(store, "#141414")}"></span>'
+
+
+def _chg_span(dp):
+    """漲綠跌紅；四捨五入為 0 用灰色「±0%」，無基準用灰色「—」。"""
+    if dp is None:
+        return '<span class="na">—</span>'
+    r = round(dp)
+    if r == 0:
+        return "±0%"
+    cls, arr = ("up", "▲") if r > 0 else ("dn", "▼")
+    return f'<span class="{cls}">{arr} {abs(r)}%</span>'
+
+
+def _delta_html(dp, base):
+    return f'<div class="d">{_chg_span(dp)} {base}</div>'
+
+
+def _html(s):
+    st.markdown(s, unsafe_allow_html=True)
+
+
+def _heading(text, meta=""):
+    m = f'<span class="meta">{meta}</span>' if meta else ""
+    return f'<div class="panel-head"><h2>{text}</h2>{m}</div>'
 
 
 def _day_row(daily, stores, target_date):
@@ -211,13 +292,29 @@ def _newshare_from_df(sub, stores, new_list):
 def _fmt_chg(v):
     if v is None or (isinstance(v, float) and pd.isna(v)):
         return "新"
-    return f"{'▲' if v >= 0 else '▼'} {abs(v):.0f}%"
+    if round(v) == 0:
+        return "±0%"
+    return f"{'▲' if v > 0 else '▼'} {abs(v):.0f}%"
 
 
 def _color_chg(v):
     if v is None or (isinstance(v, float) and pd.isna(v)):
-        return "color:#d9822b;font-weight:600"
-    return "color:#1a9850;font-weight:700" if v >= 0 else "color:#d73027;font-weight:700"
+        return "color:#92400e;font-weight:500"
+    if round(v) == 0:
+        return "color:#6b6b6b"
+    return "color:#2e7d32;font-weight:500" if v > 0 else "color:#c4242a;font-weight:500"
+
+
+def _show_table(col, df, show, fmt, chg_vals):
+    """品項表：變化欄先轉成文字（st.dataframe 會把空值畫成 None），顏色依原始數值；數字欄靠右。"""
+    if chg_vals is not None:
+        df = df.assign(變化=[_fmt_chg(v) for v in chg_vals])
+    sty = df[show].style.format(fmt)
+    if chg_vals is not None:
+        sty = sty.apply(lambda _c: [_color_chg(v) for v in chg_vals], subset=["變化"])
+    cfg = {c: st.column_config.Column(alignment="right") for c in show[1:]}
+    cfg[show[0]] = st.column_config.Column(pinned=True)
+    col.dataframe(sty, hide_index=True, width="stretch", column_config=cfg)
 
 
 def _item_change(df, stores, s, e):
@@ -245,15 +342,10 @@ def _new_table(col, detail, chg):
         columns={"item": "品項", "qty": "數量", "amt": "銷售額", "pct": "佔比"})
     fmt = {"銷售額": lambda v: f"${v:,.2f}", "佔比": lambda v: f"{v:.1f}%"}
     if chg is not None:
-        ndf["變化"] = [chg.get(it) for it in items]
-        fmt["變化"] = _fmt_chg
         show = ["品項", "數量", "佔比", "變化", "銷售額"]
     else:
         show = ["品項", "數量", "佔比", "銷售額"]
-    sty = ndf[show].style.format(fmt)
-    if chg is not None:
-        sty = sty.map(_color_chg, subset=["變化"])
-    col.dataframe(sty, hide_index=True, use_container_width=True)
+    _show_table(col, ndf, show, fmt, [chg.get(it) for it in items] if chg is not None else None)
 
 
 def _top_table(col, rows, chg):
@@ -262,15 +354,77 @@ def _top_table(col, rows, chg):
     tdf = pd.DataFrame(rows).rename(columns={"item": "品項", "qty": "數量", "pct": "佔比"})
     fmt = {"佔比": lambda v: f"{v:.1f}%"}
     if chg is not None:
-        tdf["變化"] = [chg.get(it) for it in items]
-        fmt["變化"] = _fmt_chg
         show = ["品項", "數量", "佔比", "變化"]
     else:
         show = ["品項", "數量", "佔比"]
-    sty = tdf[show].style.format(fmt)
-    if chg is not None:
-        sty = sty.map(_color_chg, subset=["變化"])
-    col.dataframe(sty, hide_index=True, use_container_width=True)
+    _show_table(col, tdf, show, fmt, [chg.get(it) for it in items] if chg is not None else None)
+
+
+def _wd(iso):
+    return "一二三四五六日"[date.fromisoformat(iso).weekday()]
+
+
+def _md(iso):
+    p = iso.split("-")
+    return f"{int(p[1])}/{int(p[2])}" if len(p) == 3 else iso
+
+
+def _chart_cfg(ch):
+    """圖表：無外框、淡格線、無 y 軸線、標籤 12px 灰。"""
+    return (ch.configure(font=FONT, background="transparent")
+            .configure_view(stroke=None)
+            .configure_axis(labelColor="#6b6b6b", labelFontSize=12, gridColor="#ececec",
+                            domainColor="#d4d4d4", tickColor="#d4d4d4", labelPadding=6)
+            .configure_axisY(domain=False, ticks=False)
+            .configure_legend(orient="top", direction="horizontal", title=None, labelFontSize=12,
+                              labelColor="#3d3d3d", padding=0, offset=10))
+
+
+def _store_scale(stores):
+    return alt.Scale(domain=list(stores), range=[STORE_COLOR.get(s, "#141414") for s in stores])
+
+
+def _ledger_row(cur, prev, stores, lead_label, base, sub=False):
+    """一列：兩店合計、各店營業額、來客、客單價；delta 對上週同日。"""
+    t = cur["total"]
+    tp = prev["total"] if prev else None
+
+    def cell(label, value, cv, pv, money, lead=False):
+        dp = _delta_pct(cv, pv) if pv else None
+        return (f'<div class="{"lead" if lead else ""}"><div class="l">{label}</div>'
+                f'<div class="v{" m" if money else ""}">{value}</div>{_delta_html(dp, base)}</div>')
+
+    cells = [cell(lead_label, _usd(t["sales"]), t["sales"], tp["sales"] if tp else None, True, True)]
+    for s in stores:
+        sv = cur[s]["sales"] if cur.get(s) else 0
+        spv = prev[s]["sales"] if prev and prev.get(s) else None
+        cells.append(cell(f"{_dot(s)}{html.escape(s)}", _usd(sv), sv, spv, True))
+    cells.append(cell("來客 合計", f"{t['tc']:,}", t["tc"], tp["tc"] if tp else None, False))
+    at = t["sales"] / t["tc"] if t["tc"] else 0
+    atp = tp["sales"] / tp["tc"] if tp and tp["tc"] else None
+    cells.append(cell("客單價", _usd(at), at, atp, True))
+    return (f'<div class="kp{" sub" if sub else ""}" style="--n:{len(cells) - 1}">'
+            + "".join(cells) + "</div>")
+
+
+def _finding(day, cur, prev, stores):
+    """標題下一句：最新一日兩店合計對上週同日，並點出變化最大的店。"""
+    t, tp = cur["total"]["sales"], prev["total"]["sales"]
+    head = f"{_md(day)}（週{_wd(day)}）兩店營業額 {_usd(t)}"
+    if not tp:
+        return head + "。"
+    r = round(_delta_pct(t, tp))
+    if r == 0:
+        return head + f"，和上週{_wd(day)}持平。"
+    word = "多" if r > 0 else "少"
+    moves = [(s, _delta_pct(cur[s]["sales"], prev[s]["sales"])) for s in stores
+             if cur.get(s) and prev.get(s) and prev[s]["sales"]]
+    moves = [m for m in moves if (m[1] > 0) == (r > 0)]
+    tail = ""
+    if moves:
+        s, dp = max(moves, key=lambda m: abs(m[1]))
+        tail = f"，{'主要來自' if r > 0 else '主要是'} {html.escape(s)}（{word} {abs(dp):.0f}%）"
+    return head + f"，比上週{_wd(day)}{word} {abs(r)}%{tail}。"
 
 
 def render():
@@ -281,10 +435,7 @@ def render():
         return
 
     gen = d.get("generated_at", "—")
-    st.markdown(_KPI_CSS, unsafe_allow_html=True)
-    st.title("🧋 營運總覽 Operations")
-    st.caption(f"資料更新於 {gen}　·　唯讀 Read-only")
-
+    _html(_CSS)
     stores = d["stores"]
     daily = d.get("daily", {})
 
@@ -292,11 +443,13 @@ def render():
     # 優先用帶時區的時間戳算「絕對小時」，避免雲端(UTC)與 Mac(PDT)日期偏移誤報；
     # 夜跑每 24h 一次 → 超過 36h 未更新才示警。舊資料無 ts 時退回日期比較（放寬到 3 天）。
     stale_hint = None
+    stamp = gen
     gts = d.get("generated_ts")
     if gts:
         try:
-            dt = datetime.fromisoformat(gts).astimezone(timezone.utc)
-            hrs = (datetime.now(timezone.utc) - dt).total_seconds() / 3600
+            gdt = datetime.fromisoformat(gts)
+            stamp = gdt.strftime("%Y-%m-%d %H:%M")
+            hrs = (datetime.now(timezone.utc) - gdt.astimezone(timezone.utc)).total_seconds() / 3600
             if hrs > 36:
                 stale_hint = f"約 {hrs / 24:.0f} 天前"
         except (ValueError, TypeError):
@@ -308,62 +461,61 @@ def render():
                 stale_hint = f"{age} 天前"
         except (ValueError, TypeError):
             pass
-    if stale_hint:
-        st.error(f"⚠️ 資料可能未更新：最後更新 {gen}（{stale_hint}）。"
-                 f"夜間同步可能失敗，以下數字請當「舊資料」看。")
-
-    # ── 今日（至今）+ 昨日（完整）快照 ──
-    def _wd(iso):
-        return "一二三四五六日"[date.fromisoformat(iso).weekday()]
-
-    def _snap_items(cur, prev, with_delta):
-        """組快照卡片。with_delta=False → 不放比較行（今日至今用，避免半天比整天）。"""
-        t = cur["total"]
-        tp = prev["total"] if prev else None
-
-        def cell(label, value, cur_v, prev_v):
-            it = {"label": label, "value": value}
-            if with_delta:
-                it["delta"] = _delta_pct(cur_v, prev_v) if prev_v else None
-            return it
-        items = [cell("營業額 合計", f"${t['sales']:,.2f}", t["sales"],
-                      tp["sales"] if tp else None)]
-        for s in stores:
-            sv = cur[s]["sales"] if cur.get(s) else 0
-            spv = prev[s]["sales"] if prev and prev.get(s) else None
-            items.append(cell(f"營業額 {s}", f"${sv:,.2f}", sv, spv))
-        items.append(cell("來客 合計", f"{t['tc']:,}", t["tc"],
-                          tp["tc"] if tp else None))
-        at = t["sales"] / t["tc"] if t["tc"] else 0
-        atp = tp["sales"] / tp["tc"] if tp and tp["tc"] else None
-        items.append(cell("客單價 合計", f"${at:,.2f}", at, atp))
-        return items
 
     latest, _ = _latest_two_dates(daily, stores)
+    alerts = find_alerts(daily, stores)
+
+    # ── 標題：品牌、頁名、今天最該知道的一句 ──
+    hues = [STORE_COLOR.get(s, "#141414") for s in stores[:2]] + ["#141414"] * 2
+    mark = ('<svg width="24" height="14" viewBox="0 0 24 14" aria-hidden="true">'
+            f'<circle cx="7" cy="7" r="6" fill="{hues[0]}"/>'
+            f'<circle cx="16" cy="7" r="6" fill="{hues[1]}" stroke="#f4f3f1" stroke-width="2"/></svg>')
+    _html(f'<div class="brand">{mark}<b>CrunCheese × CoCo</b>'
+          f'<span>{" · ".join(html.escape(s) for s in stores)}</span></div>')
+    st.title("營運總覽")
+
+    finding = ""
     if latest:
         today_d = latest
         yest_d = (date.fromisoformat(today_d) - timedelta(days=1)).isoformat()
         lw_today = (date.fromisoformat(today_d) - timedelta(days=7)).isoformat()
         lw_yest = (date.fromisoformat(yest_d) - timedelta(days=7)).isoformat()
-
-        # 最新完整日：vs 上週同日（已是完整營業日，同日比較才公平）
         cur_today = _day_row(daily, stores, today_d)
         prev_today = _day_row(daily, stores, lw_today)
-        st.subheader(f"{today_d}（週{_wd(today_d)}）· vs 上週同日")
-        _kpi_cards(_snap_items(cur_today, prev_today, with_delta=True),
-                   cmp_label="vs 上週同日")
+        finding = _finding(today_d, cur_today, prev_today, stores)
+    if alerts:
+        finding += f"　近 10 天有 {len(alerts)} 筆異常。"
+    notice = (f'<div class="notice">資料可能未更新：最後更新 {gen}（{stale_hint}）。'
+              f'夜間同步可能失敗，以下數字請當「舊資料」看。</div>' if stale_hint else "")
+    _html(f'<p class="finding">{finding}</p>'
+          f'<p class="stamp">資料更新於 {stamp} · 唯讀</p>{notice}')
 
-        # 前一日（完整）：vs 上週同日
+    # ── 最新一日（完整營業日）+ 前一日：各 vs 上週同日；下方接近 10 天異常 ──
+    if alerts:
+        rows = "".join(
+            f'<span class="meta">{dt}</span><span>{_dot(store)}{html.escape(store)}</span>'
+            f'<span class="pill {level}">{"紅燈" if level == "red" else "注意"}</span>'
+            f'<span class="msg">{html.escape(msg).replace("$", "&#36;")}</span>'
+            for dt, store, level, msg in alerts)
+        al = (f'<div class="al-h"><h3>需要注意</h3><span class="meta">近 10 天 · {len(alerts)} 筆</span></div>'
+              f'<div class="al">{rows}</div>')
+    else:
+        al = ('<div class="al-h"><h3>需要注意</h3><span class="meta">近 10 天</span></div>'
+              '<div class="empty">近 10 天沒有異常。</div>')
+    if latest:
+        body = _ledger_row(cur_today, prev_today, stores, "兩店營業額", f"vs 上週{_wd(today_d)}")
         cur_yest = _day_row(daily, stores, yest_d)
         if cur_yest["total"]["sales"] or any(cur_yest.get(s) for s in stores):
             prev_yest = _day_row(daily, stores, lw_yest)
-            st.markdown(f'<div class="ch-store">{yest_d}（週{_wd(yest_d)}）· vs 上週同日</div>',
-                        unsafe_allow_html=True)
-            _kpi_cards(_snap_items(cur_yest, prev_yest, with_delta=True),
-                       cmp_label="vs 上週同日")
-        st.divider()
+            body += _ledger_row(cur_yest, prev_yest, stores,
+                                f"{_md(yest_d)}（週{_wd(yest_d)}）合計",
+                                f"vs 上週{_wd(yest_d)}", sub=True)
+        head = _heading(f"{today_d}（週{_wd(today_d)}）", "最新一日 · 對上週同日")
+        _html(f'<div class="panel blk">{head}{body}{al}</div>')
+    else:
+        _html(f'<div class="panel blk">{al}</div>')
 
-    # ── 本週 KPI（合計＋各店，含週比較）──
+    # ── 本週（近 7 天，合計＋各店）＋ 通路 ──
     tw, lw = d["week"]["this"], d["week"]["last"]
 
     def _side(side, key):
@@ -372,112 +524,76 @@ def render():
             return side.get(key, {"sales": 0, "cups": 0, "tc": 0})
         return side if key == "total" else {"sales": 0, "cups": 0, "tc": 0}
 
-    def kpi_row(this_d, last_d):
-        at, atl = _avg_ticket(this_d), _avg_ticket(last_d)
-        items = [
-            {"label": "營業額", "value": f"${this_d['sales']:,.2f}",
-             "delta": _delta_pct(this_d['sales'], last_d['sales'])},
-            {"label": "杯數", "value": f"{this_d['cups']:,}",
-             "delta": _delta_pct(this_d['cups'], last_d['cups'])},
-            {"label": "食物", "value": f"{this_d.get('food', 0):,}",
-             "delta": _delta_pct(this_d.get('food', 0), last_d.get('food', 0))},
-            {"label": "來客", "value": f"{this_d['tc']:,}",
-             "delta": _delta_pct(this_d['tc'], last_d['tc'])},
-            {"label": "客單價", "value": f"${at:,.2f}", "delta": _delta_pct(at, atl)},
-        ]
-        _kpi_cards(items)
+    cols_def = [("營業額", "sales", True), ("杯數", "cups", False), ("食物", "food", False),
+                ("來客", "tc", False), ("客單價", None, True)]
+    thead = "<tr><th>店</th>" + "".join(f"<th>{c[0]}</th>" for c in cols_def) + "</tr>"
+    tbody = ""
+    for key, label, cls in [("total", "兩店合計", "tot")] + \
+            [(s, f"{_dot(s)}{html.escape(s)}", "") for s in stores]:
+        a, b = _side(tw, key), _side(lw, key)
+        tds = ""
+        for _lbl, k, money in cols_def:
+            cv, pv = (_avg_ticket(a), _avg_ticket(b)) if k is None else (a.get(k, 0), b.get(k, 0))
+            tds += f'<td>{_usd(cv) if money else f"{cv:,}"}{_delta_html(_delta_pct(cv, pv), "")}</td>'
+        tbody += f'<tr class="{cls}"><td>{label}</td>{tds}</tr>'
+    week_html = (f'<div class="panel">{_heading("本週", "近 7 天 · 對上週")}'
+                 f'<div class="scroll"><table class="lg">{thead}{tbody}</table></div></div>')
 
-    # ── 🚦 紅燈警示（近 10 天異常）──
-    alerts = find_alerts(daily, stores)
-    if alerts:
-        st.subheader("🚦 需要注意 Alerts（近 10 天）")
-        for dt, store, level, msg in alerts:
-            icon = "🔴" if level == "red" else "🟠"
-            st.markdown(f"{icon} **{dt}　{store}**　{msg}")
-        st.divider()
-
-    st.subheader("本週 This Week（近 7 天）")
-    st.markdown("**合計 Total（兩店）**")
-    kpi_row(_side(tw, "total"), _side(lw, "total"))
-    for store in d["stores"]:
-        st.markdown(f"**{store}**")
-        kpi_row(_side(tw, store), _side(lw, store))
-
-    st.divider()
-
-    # ── 通路 Channel Mix（本週訂單佔比 + 週變化）──
     cm = d.get("channel_mix", {})
+    ch_html = ""
     if cm:
-        CH_ORDER = ["Dine In", "Pickup", "Delivery"]
-        CH_LABEL = {"Dine In": "堂食", "Pickup": "外帶自取", "Delivery": "外送"}
-        CH_COLOR = {"堂食": "#d9822b", "外帶自取": "#6b8e23", "外送": "#3a7ca5"}
-        st.subheader("通路 Channel Mix（本週訂單）")
-
-        legend = "".join(
-            f'<span class="ch-dot" style="background:{CH_COLOR[CH_LABEL[ch]]}"></span>'
-            f'{CH_LABEL[ch]}' for ch in CH_ORDER)
-        st.markdown(f'<div class="ch-legend">{legend}</div>', unsafe_allow_html=True)
-
+        key_html = "".join(f'<span><i style="background:{CH_TONE[c][0]}"></i>{CH_LABEL[c]}</span>'
+                           for c in CH_ORDER)
+        blocks = ""
         for store in stores:
             twc = cm.get(store, {}).get("this", {})
             lwc = cm.get(store, {}).get("last", {})
-            tot = sum(twc.values()) or 1
-            segs = ""
-            for ch in CH_ORDER:
-                share = twc.get(ch, 0) / tot * 100
-                if share <= 0:
-                    continue
-                lbl = f"{share:.0f}%" if share >= 8 else ""
-                segs += (f'<div class="ch-seg" style="width:{share:.2f}%;'
-                         f'background:{CH_COLOR[CH_LABEL[ch]]}" '
-                         f'title="{CH_LABEL[ch]} {twc.get(ch, 0)} 單（{share:.0f}%）">{lbl}</div>')
-            # 每條 bar 下方一行：各通路訂單數 + 週變化（HTML，手機也穩）
-            parts = []
+            tot = sum(twc.values())
+            segs, parts = "", []
             for ch in CH_ORDER:
                 n, ln = twc.get(ch, 0), lwc.get(ch, 0)
-                wow = (n - ln) / ln * 100 if ln else None
-                if wow is None:
-                    wtag = '<span style="color:#9aa0a6">—</span>'
-                else:
-                    c = "#1a9850" if wow >= 0 else "#d73027"
-                    wtag = (f'<span style="color:{c};font-weight:700">'
-                            f'{"▲" if wow >= 0 else "▼"}{abs(wow):.0f}%</span>')
-                parts.append(f'{CH_LABEL[ch]} {n} {wtag}')
-            st.markdown(f'<div class="ch-store">{store}（{tot} 單）</div>'
-                        f'<div class="ch-bar">{segs}</div>'
-                        f'<div class="ch-detail">{" ・ ".join(parts)}</div>',
-                        unsafe_allow_html=True)
-
-        st.caption("外帶自取＝自助機＋人工外帶（兩店 POS 標籤不同已合併）。"
-                   "每條下方為各通路本週訂單數 + WoW（vs 上週同通路，▲綠/▼紅）。")
-
-        st.divider()
+                parts.append(f'{CH_LABEL[ch]} <b>{n}</b> {_chg_span((n - ln) / ln * 100 if ln else None)}')
+                share = n / tot * 100 if tot else 0
+                if share <= 0:
+                    continue
+                bg, fg = CH_TONE[ch]
+                segs += (f'<div style="flex:{share:.2f} 1 0;background:{bg};color:{fg}" '
+                         f'title="{CH_LABEL[ch]} {n} 單（{share:.0f}%）">'
+                         f'{f"{share:.0f}%" if share >= 10 else ""}</div>')
+            blocks += (f'<div class="ch-s"><div class="ch-n"><span>{_dot(store)}{html.escape(store)}</span>'
+                       f'<span class="meta">{tot:,} 單</span></div><div class="ch-bar">{segs}</div>'
+                       f'<div class="ch-det">{" · ".join(parts)}</div></div>')
+        ch_html = (f'<div class="panel">{_heading("通路", "本週訂單 · 對上週")}'
+                   f'<div class="ch-key">{key_html}</div>{blocks}'
+                   f'<div class="ch-det" style="margin-top:14px">外帶自取＝自助機＋人工外帶'
+                   f'（兩店 POS 標籤不同已合併）。</div></div>')
+    _html(f'<div class="duo blk">{week_html}{ch_html}</div>' if ch_html else f'<div class="blk">{week_html}</div>')
 
     # ── 每日銷售趨勢 ──
-    st.subheader("每日銷售趨勢 Daily Sales")
-    win = st.radio("區間", [30, 60, 90], index=0, horizontal=True,
-                   format_func=lambda x: f"近 {x} 天")
-    rows = []
-    for store in d["stores"]:
-        for r in d["daily"].get(store, [])[-win:]:
-            rows.append({"date": r["date"], "store": store, "sales": r["sales"]})
-    if rows:
-        df = pd.DataFrame(rows)
-        chart = alt.Chart(df).mark_line(point=False).encode(
-            x=alt.X("date:T", title=None, axis=alt.Axis(format="%m/%d")),
-            y=alt.Y("sales:Q", title="營業額 $"),
-            color=alt.Color("store:N", title="店別",
-                            scale=alt.Scale(domain=list(STORE_COLOR.keys()),
-                                            range=list(STORE_COLOR.values()))),
-            tooltip=[alt.Tooltip("date:T", title="日期", format="%m/%d"),
-                     "store:N", alt.Tooltip("sales:Q", title="營業額", format="$,.2f")],
-        ).properties(height=320)
-        st.altair_chart(chart, use_container_width=True)
-
-    st.divider()
+    with st.container(border=True, key="card_daily"):
+        _html(_heading("每日銷售", "各店每日營業額"))
+        win = st.radio("區間", [30, 60, 90], index=0, horizontal=True,
+                       format_func=lambda x: f"近 {x} 天", label_visibility="collapsed")
+        rows = []
+        for store in d["stores"]:
+            for r in d["daily"].get(store, [])[-win:]:
+                rows.append({"date": r["date"], "store": store, "sales": r["sales"]})
+        if rows:
+            df = pd.DataFrame(rows)
+            chart = alt.Chart(df).mark_line(strokeWidth=2).encode(
+                x=alt.X("date:T", title=None,
+                        axis=alt.Axis(format="%m/%d", labelAngle=0, tickCount=6, grid=False)),
+                y=alt.Y("sales:Q", title=None, axis=alt.Axis(format="$,.0f", tickCount=5)),
+                color=alt.Color("store:N", scale=_store_scale(stores)),
+                tooltip=[alt.Tooltip("date:T", title="日期", format="%m/%d"),
+                         alt.Tooltip("store:N", title="店"),
+                         alt.Tooltip("sales:Q", title="營業額", format="$,.2f")],
+            ).properties(height=240)
+            st.altair_chart(_chart_cfg(chart), width="stretch", theme=None)
+        else:
+            st.caption("尚無每日資料。")
 
     # ── 每月總計 ──
-    st.subheader("每月總計 Monthly")
     mrows = []
     for store in d["stores"]:
         for r in d["monthly"].get(store, []):
@@ -485,57 +601,43 @@ def render():
                           "營業額": r["sales"], "杯數": r["cups"], "來客": r["tc"]})
     if mrows:
         mdf = pd.DataFrame(mrows)
-        mbar = alt.Chart(mdf).mark_bar().encode(
-            x=alt.X("月份:N", title=None),
-            xOffset="店別:N",
-            y=alt.Y("營業額:Q", title="營業額 $"),
-            color=alt.Color("店別:N", scale=alt.Scale(domain=list(STORE_COLOR.keys()),
-                                                      range=list(STORE_COLOR.values()))),
-            tooltip=["月份", "店別", alt.Tooltip("營業額:Q", format="$,.2f"), "杯數", "來客"],
-        ).properties(height=300)
-        st.altair_chart(mbar, use_container_width=True)
-        pivot = mdf.pivot_table(index="月份", columns="店別", values="營業額",
-                                aggfunc="sum").fillna(0)
-        st.dataframe(pivot.style.format("${:,.2f}"), use_container_width=True)
+        months = sorted(mdf["月份"].unique())
+        meta = f"{months[0]} – {months[-1]}"
+        if latest and latest[:7] == months[-1]:
+            meta += f" · {int(latest[5:7])} 月計至 {int(latest[8:])} 日"
+        with st.container(border=True, key="card_monthly"):
+            _html(_heading("每月營業額", meta))
+            mbar = alt.Chart(mdf).mark_bar().encode(
+                x=alt.X("月份:N", title=None, sort=months,
+                        axis=alt.Axis(labelAngle=0, labelExpr="toNumber(slice(datum.label, 5)) + '月'")),
+                xOffset=alt.XOffset("店別:N", sort=list(stores)),
+                y=alt.Y("營業額:Q", title=None, axis=alt.Axis(format="$,.0f", tickCount=5)),
+                color=alt.Color("店別:N", scale=_store_scale(stores)),
+                tooltip=["月份", "店別", alt.Tooltip("營業額:Q", format="$,.2f"), "杯數", "來客"],
+            ).properties(height=240)
+            st.altair_chart(_chart_cfg(mbar), width="stretch", theme=None)
 
-    # ── 同比 YoY（今年 vs 去年同月）──
+    # ── 同比 YoY（今年 vs 去年同月），兩店並排 ──
     yrows = []
     for store in d["stores"]:
         for r in d["monthly"].get(store, []):
             ly = r.get("sales_ly")
             yoy = (r["sales"] - ly) / ly * 100 if ly else None
-            yrows.append({"月份": r["month"], "店別": store,
-                          "今年": r["sales"], "去年同月": ly,
-                          "YoY": round(yoy, 0) if yoy is not None else None})
-    if any(row["去年同月"] for row in yrows):
-        st.subheader("同比 YoY（今年 vs 去年同月）")
-        ydf = pd.DataFrame(yrows)
-
-        def _money(v):
-            return "—" if v is None or pd.isna(v) else f"${v:,.2f}"
-
-        def _yoy_text(v):
-            if v is None or pd.isna(v):
-                return "—"
-            return f"{'▲' if v >= 0 else '▼'} {abs(v):.0f}%"
-
-        def _yoy_color(v):
-            if v is None or pd.isna(v):
-                return "color:#9aa0a6"
-            return ("color:#1a9850;font-weight:700" if v >= 0
-                    else "color:#d73027;font-weight:700")
-
-        cols = st.columns(len(d["stores"]))
-        for col, store in zip(cols, d["stores"]):
-            sub = ydf[ydf["店別"] == store][["月份", "今年", "去年同月", "YoY"]]
-            col.markdown(f"##### {store}")
-            sty = (sub.style
-                   .format({"今年": _money, "去年同月": _money, "YoY": _yoy_text})
-                   .map(_yoy_color, subset=["YoY"]))
-            col.dataframe(sty, hide_index=True, use_container_width=True)
-        st.caption("YoY＝(今年−去年同月) ÷ 去年同月，正成長▲綠、衰退▼紅。去年同月已套用同比修正（如缺失月份）。")
-
-    st.divider()
+            yrows.append({"month": r["month"], "store": store, "sales": r["sales"],
+                          "ly": ly, "yoy": yoy})
+    if any(row["ly"] for row in yrows):
+        panels = ""
+        for store in d["stores"]:
+            trs = "".join(
+                f'<tr><td>{r["month"]}</td><td>{_usd(r["sales"])}</td>'
+                f'<td>{_usd(r["ly"]) if r["ly"] else "<span class=na>—</span>"}</td>'
+                f'<td>{_chg_span(r["yoy"])}</td></tr>'
+                for r in yrows if r["store"] == store)
+            panels += (f'<div class="panel">{_heading(f"{_dot(store)}{html.escape(store)} 同比", "今年 vs 去年同月")}'
+                       f'<div class="scroll"><table class="lg"><tr><th>月份</th><th>今年</th>'
+                       f'<th>去年同月</th><th>YoY</th></tr>{trs}</table></div></div>')
+        _html(f'<div class="duo even">{panels}</div>')
+        st.caption("YoY＝(今年−去年同月) ÷ 去年同月。去年同月已套用同比修正（如缺失月份）。")
 
     # ── 品項期間：新品與熱銷各一組選單（含自訂區間），標題帶出實際日期 ──
     PERIOD_LABELS = {"7d": "近 7 天", "14d": "近 14 天", "30d": "近 30 天",
@@ -545,10 +647,6 @@ def render():
     pdates = d.get("period_dates", {})
     has_custom = bool(d.get("item_daily"))
     avail = [k for k in PERIOD_LABELS if k in top_all or k in new_all]
-
-    def _md(iso):
-        p = iso.split("-")
-        return f"{int(p[1])}/{int(p[2])}" if len(p) == 3 else iso
 
     def _plabel(k):
         r = pdates.get(k)
@@ -564,7 +662,8 @@ def render():
         """畫期間選單（含自訂區間），回 (plabel, ns, ti, s, e)；自訂尚未選完回 None。"""
         opts = avail + (["custom"] if has_custom else [])
         sel = st.radio("期間 Period", opts, horizontal=True, key=key + "_p",
-                       format_func=lambda k: "自訂 Custom" if k == "custom" else PERIOD_LABELS[k])
+                       label_visibility="collapsed",
+                       format_func=lambda k: "自訂" if k == "custom" else PERIOD_LABELS[k])
         if sel != "custom":
             r = pdates.get(sel) or []
             try:
@@ -595,62 +694,72 @@ def render():
             return _item_change(idf, stores, s, e)
         return {}, False
 
+    def _store_h(store, extra=""):
+        return (f'<div class="ch-n" style="margin:4px 0 2px"><span>{_dot(store)}'
+                f'<b style="font-weight:500">{html.escape(store)}</b></span>'
+                f'<span class="meta">{extra}</span></div>')
+
     if avail:
         # 新品佔比（自己的期間選單）
-        r = _resolve("new")
-        if r:
-            plabel, ns, _ti, s, e = r
-            chg, has_prev = _chg_for(s, e)
-            st.subheader(f"新品佔比 New Items（{plabel}）")
-            if ns and ns.get("total") and ns["total"].get("qty_all"):
-                t = ns["total"]
-                _kpi_cards([
-                    {"label": "數量佔比 合計", "value": f"{_pct(t['qty_new'], t['qty_all']):.1f}%"},
-                    {"label": "銷售額佔比 合計", "value": f"{_pct(t['amt_new'], t['amt_all']):.1f}%"},
-                ])
-                cols = st.columns(len(stores))
-                for col, store in zip(cols, stores):
-                    x = ns.get(store) or {}
-                    qp, ap = _pct(x.get("qty_new", 0), x.get("qty_all", 0)), \
-                        _pct(x.get("amt_new", 0), x.get("amt_all", 0))
-                    col.markdown(f"##### {store}　數量 {qp:.1f}%・銷售額 {ap:.1f}%")
-                    detail = x.get("detail", [])
-                    if detail:
-                        _new_table(col, detail, chg.get(store) if has_prev else None)
-                    else:
-                        col.caption("無新品銷售")
-                cap = "每支新品的數量、銷售額；佔比＝該新品佔同店同類（飲料或食物）同期總數量（與熱銷品項表口徑一致）。"
-                cap += ("變化＝數量 vs 上一期（同長度、緊接在前），▲綠▼紅、「新」＝前期無此品項。"
-                        if has_prev else "（前一期資料不足，未顯示變化）")
-                st.caption(cap + "新品清單手動維護（兩店分開，改 new_items.json）。")
-            else:
-                st.caption("此期間無新品銷售。")
-        st.divider()
+        with st.container(border=True, key="card_new"):
+            head = st.empty()
+            r = _resolve("new")
+            plabel = r[0] if r else ""
+            head.markdown(_heading("新品佔比", plabel), unsafe_allow_html=True)
+            if r:
+                _, ns, _ti, s, e = r
+                chg, has_prev = _chg_for(s, e)
+                if ns and ns.get("total") and ns["total"].get("qty_all"):
+                    t = ns["total"]
+                    _html('<div class="kp two">'
+                          f'<div><div class="l">兩店數量佔比</div><div class="v">'
+                          f'{_pct(t["qty_new"], t["qty_all"]):.1f}%</div></div>'
+                          f'<div><div class="l">兩店銷售額佔比</div><div class="v">'
+                          f'{_pct(t["amt_new"], t["amt_all"]):.1f}%</div></div></div>')
+                    cols = st.columns(len(stores))
+                    for col, store in zip(cols, stores):
+                        x = ns.get(store) or {}
+                        qp, ap = _pct(x.get("qty_new", 0), x.get("qty_all", 0)), \
+                            _pct(x.get("amt_new", 0), x.get("amt_all", 0))
+                        col.markdown(_store_h(store, f"數量 {qp:.1f}% · 銷售額 {ap:.1f}%"),
+                                     unsafe_allow_html=True)
+                        detail = x.get("detail", [])
+                        if detail:
+                            _new_table(col, detail, chg.get(store) if has_prev else None)
+                        else:
+                            col.caption("無新品銷售")
+                    cap = "佔比＝該新品佔同店同類（飲料或食物）同期總數量（與熱銷品項表口徑一致）。"
+                    cap += ("變化＝數量 vs 上一期（同長度、緊接在前），「新」＝前期無此品項。"
+                            if has_prev else "（前一期資料不足，未顯示變化）")
+                    st.caption(cap + "新品清單手動維護（兩店分開，改 new_items.json）。")
+                else:
+                    st.caption("此期間無新品銷售。")
 
         # 熱銷品項（自己的期間選單）
-        r2 = _resolve("top")
-        if r2:
-            plabel2, _ns2, ti, s2, e2 = r2
-            chg2, has_prev2 = _chg_for(s2, e2)
-            st.subheader(f"熱銷品項 Top Sellers（{plabel2}）")
-            if not ti:
-                st.caption("品項資料暫無（下次資料更新後顯示）。")
-            else:
-                for store in stores:
-                    st.markdown(f"##### {store}")
-                    c1, c2 = st.columns(2)
-                    for col, cat_key, label in ((c1, "drinks", "🥤 飲料 Drinks"),
-                                                (c2, "food", "🍽️ 食物 Food")):
-                        col.caption(label)
-                        rows = ti.get(store, {}).get(cat_key, [])
-                        if rows:
-                            _top_table(col, rows, chg2.get(store) if has_prev2 else None)
-                        else:
-                            col.caption("—")
-                cap = "佔比＝該品項佔同店同類（飲料或食物）同期總數量的百分比。"
-                st.caption(cap + ("　變化＝數量 vs 上一期，▲綠▼紅。" if has_prev2 else ""))
+        with st.container(border=True, key="card_top"):
+            head2 = st.empty()
+            r2 = _resolve("top")
+            head2.markdown(_heading("熱銷品項", r2[0] if r2 else ""), unsafe_allow_html=True)
+            if r2:
+                _, _ns2, ti, s2, e2 = r2
+                chg2, has_prev2 = _chg_for(s2, e2)
+                if not ti:
+                    st.caption("品項資料暫無（下次資料更新後顯示）。")
+                else:
+                    for store in stores:
+                        _html(_store_h(store))
+                        c1, c2 = st.columns(2)
+                        for col, cat_key, label in ((c1, "drinks", "飲料"), (c2, "food", "食物")):
+                            col.caption(label)
+                            rows = ti.get(store, {}).get(cat_key, [])
+                            if rows:
+                                _top_table(col, rows, chg2.get(store) if has_prev2 else None)
+                            else:
+                                col.caption("—")
+                    cap = "佔比＝該品項佔同店同類（飲料或食物）同期總數量的百分比。"
+                    st.caption(cap + ("　變化＝數量 vs 上一期。" if has_prev2 else ""))
 
-    st.caption(f"CrunCheese × CoCo · 資料更新於 {gen} · 每日自動更新")
+    st.caption(f"CrunCheese × CoCo · 資料更新於 {stamp} · 每日自動更新")
 
 
 if check_password():
