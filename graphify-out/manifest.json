@@ -66,9 +66,9 @@
     "semantic_hash": ""
   },
   "boss_data.json": {
-    "mtime": 1793391508.3224235,
-    "seen": 1793391619.4170766,
-    "ast_hash": "dad30b7432df3f86d3d6620ba2ae723e",
+    "mtime": 1793426273.0454147,
+    "seen": 1793426411.792852,
+    "ast_hash": "c5b4b35244c9e8208926273ba133caaf",
     "semantic_hash": ""
   },
   ".claude/skills/ig-audit/SKILL.md": {
@@ -153,6 +153,222 @@
     "mtime": 1793292929.7649958,
     "seen": 1793391619.4170942,
     "ast_hash": "f0e340765552de9245d7faa637cf7f2f",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/assets/base.js": {
+    "mtime": 1793426273.0254724,
+    "seen": 1793426411.7927582,
+    "ast_hash": "5dd0784c14e17078fb7d97f9a837091a",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/assets/charts.js": {
+    "mtime": 1793426273.0258126,
+    "seen": 1793426411.7927682,
+    "ast_hash": "0864e4b64994f8f2f1c1309cb47101fe",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/assets/scenes/stage.js": {
+    "mtime": 1793426273.0261786,
+    "seen": 1793426411.792773,
+    "ast_hash": "e9e37f2ab6a45706a3cedee5c7b983e0",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/evals/evals.json": {
+    "mtime": 1793426273.0261786,
+    "seen": 1793426411.7927759,
+    "ast_hash": "99d6bf5572678a47e797a824b92d0fff",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/library/app.json": {
+    "mtime": 1793426273.0261786,
+    "seen": 1793426411.7927778,
+    "ast_hash": "d06586a5abf11c588624c4ec096caa63",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/library/directions.json": {
+    "mtime": 1793426273.0273535,
+    "seen": 1793426411.7927797,
+    "ast_hash": "2ace3a566f04c62e858d0e301a7f5cb2",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/library/heroes.json": {
+    "mtime": 1793426273.027759,
+    "seen": 1793426411.7927816,
+    "ast_hash": "2a6244b32222798a5915d996e9f6f329",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/library/motions.json": {
+    "mtime": 1793426273.0284567,
+    "seen": 1793426411.7927833,
+    "ast_hash": "89ddb35071ca3c381c9b5654bf0de81d",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/library/palettes.json": {
+    "mtime": 1793426273.0287056,
+    "seen": 1793426411.7927852,
+    "ast_hash": "9c0b1072fa730c38a1e50326daf7342a",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/library/photos.json": {
+    "mtime": 1793426273.0289273,
+    "seen": 1793426411.7927878,
+    "ast_hash": "4eb4f32fe028dbf1c7c121404a3c86b1",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/library/sections.json": {
+    "mtime": 1793426273.0298114,
+    "seen": 1793426411.7927895,
+    "ast_hash": "82fdc4a45c2bbaa256992d833605f50d",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/library/sites.json": {
+    "mtime": 1793426273.0335991,
+    "seen": 1793426411.7927918,
+    "ast_hash": "bc687b33a29748d3e25b70e235fb450c",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/library/type.json": {
+    "mtime": 1793426273.0335991,
+    "seen": 1793426411.7927945,
+    "ast_hash": "0015267c9eb8b8aa0367d3564471c5a4",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/scripts/assets.mjs": {
+    "mtime": 1793426273.03994,
+    "seen": 1793426411.7927966,
+    "ast_hash": "3637e9fb21e2afd2360440e20939aee5",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/scripts/draw.mjs": {
+    "mtime": 1793426273.0410006,
+    "seen": 1793426411.7927985,
+    "ast_hash": "6b49302383e9b8280d8a504554a89ba8",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/scripts/inspect.mjs": {
+    "mtime": 1793426273.0410006,
+    "seen": 1793426411.7928002,
+    "ast_hash": "28249b1995a1579ae7f692d0e32b5df7",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/scripts/lib/app-draw.mjs": {
+    "mtime": 1793426273.0410006,
+    "seen": 1793426411.792802,
+    "ast_hash": "f2b67f939a9714f5dbc66fae8554354b",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/scripts/lib/cdp.mjs": {
+    "mtime": 1793426273.0418503,
+    "seen": 1793426411.7928064,
+    "ast_hash": "ef00d74becd052114890d365820d3e9e",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/scripts/lib/inspection-files.mjs": {
+    "mtime": 1793426273.0418503,
+    "seen": 1793426411.7928085,
+    "ast_hash": "036423fad7c2acdac27c0f326ef3a24e",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/scripts/lib/probe.mjs": {
+    "mtime": 1793426273.0418503,
+    "seen": 1793426411.7928102,
+    "ast_hash": "dad571f8052ec07896f4ccdcd2ea3c55",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/scripts/lib/rules.mjs": {
+    "mtime": 1793426273.0428166,
+    "seen": 1793426411.7928119,
+    "ast_hash": "12fe8da2f2b2eac8fb88c5925b6a8b21",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/scripts/lint.mjs": {
+    "mtime": 1793426273.0428166,
+    "seen": 1793426411.7928138,
+    "ast_hash": "f653ce179e61df363622bdb08fd69fc6",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/scripts/scenes.mjs": {
+    "mtime": 1793426273.0428166,
+    "seen": 1793426411.7928157,
+    "ast_hash": "58d717ed58f82be567350aa6edc9b98d",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/README.md": {
+    "mtime": 1793426273.0247188,
+    "seen": 1793426411.792854,
+    "ast_hash": "584bfa12c35b8c06df428deead797aae",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/SKILL.md": {
+    "mtime": 1793426273.0247188,
+    "seen": 1793426411.7928557,
+    "ast_hash": "fe445bafa7de21620e201c0660782f57",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/references/app-screens.md": {
+    "mtime": 1793426273.0335991,
+    "seen": 1793426411.7928574,
+    "ast_hash": "5ab4d22276990859c67f7ff43819e4cf",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/references/colour.md": {
+    "mtime": 1793426273.0385664,
+    "seen": 1793426411.7928593,
+    "ast_hash": "ed2d6bf506e34cc7ac367a49be4c46b3",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/references/copy.md": {
+    "mtime": 1793426273.0385664,
+    "seen": 1793426411.7928612,
+    "ast_hash": "af0e017bd419b5ba65bcd1674e47664a",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/references/critique.md": {
+    "mtime": 1793426273.0385664,
+    "seen": 1793426411.7928631,
+    "ast_hash": "aa8895d37febb8ef1bbc55980f678ad9",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/references/imagery.md": {
+    "mtime": 1793426273.0385664,
+    "seen": 1793426411.792865,
+    "ast_hash": "b79a629229f225b683a607bfd7ab8beb",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/references/layout.md": {
+    "mtime": 1793426273.0385664,
+    "seen": 1793426411.7928667,
+    "ast_hash": "82c275c532a6e56c43946380a13d1ebe",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/references/motion.md": {
+    "mtime": 1793426273.0385664,
+    "seen": 1793426411.7928684,
+    "ast_hash": "01ba9079a706b741fa608596fc6c2d76",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/references/research.md": {
+    "mtime": 1793426273.03994,
+    "seen": 1793426411.7928698,
+    "ast_hash": "550742238e1ad47035613ee0519e9509",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/references/scenes.md": {
+    "mtime": 1793426273.03994,
+    "seen": 1793426411.792872,
+    "ast_hash": "0f813d901630ec1264b2cdab41216185",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/references/tells.md": {
+    "mtime": 1793426273.03994,
+    "seen": 1793426411.792874,
+    "ast_hash": "c4de5b16893aa24398b7e7365cec0627",
+    "semantic_hash": ""
+  },
+  ".claude/skills/design-taste-frontend/references/type.md": {
+    "mtime": 1793426273.03994,
+    "seen": 1793426411.7928758,
+    "ast_hash": "2258b887a5c37da15dba006e86090f8c",
     "semantic_hash": ""
   }
 }
