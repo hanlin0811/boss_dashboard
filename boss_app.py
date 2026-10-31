@@ -618,6 +618,14 @@ def render():
             st.altair_chart(_chart_cfg(mbar), width="stretch", theme=None)
 
     # ── 同比 YoY（今年 vs 去年同月），兩店並排 ──
+    # 當月還沒過完時，boss_export 的去年同月只算到同一天（月至今對月至今），月份標出「至 N 日」
+    _last = max((r["date"] for s_ in d["stores"] for r in d.get("daily", {}).get(s_, [])), default="")
+    _cur_m = _last[:7]
+    _month_done = bool(_last) and (date.fromisoformat(_last) + timedelta(days=1)).day == 1
+
+    def _mlabel(m):
+        return f"{m}（至 {int(_last[8:10])} 日）" if m == _cur_m and not _month_done else m
+
     yrows = []
     for store in d["stores"]:
         for r in d["monthly"].get(store, []):
@@ -629,7 +637,7 @@ def render():
         panels = ""
         for store in d["stores"]:
             trs = "".join(
-                f'<tr><td>{r["month"]}</td><td>{_usd(r["sales"])}</td>'
+                f'<tr><td>{_mlabel(r["month"])}</td><td>{_usd(r["sales"])}</td>'
                 f'<td>{_usd(r["ly"]) if r["ly"] else "<span class=na>—</span>"}</td>'
                 f'<td>{_chg_span(r["yoy"])}</td></tr>'
                 for r in yrows if r["store"] == store)
@@ -637,7 +645,8 @@ def render():
                        f'<div class="scroll"><table class="lg"><tr><th>月份</th><th>今年</th>'
                        f'<th>去年同月</th><th>YoY</th></tr>{trs}</table></div></div>')
         _html(f'<div class="duo even">{panels}</div>')
-        st.caption("YoY＝(今年−去年同月) ÷ 去年同月。去年同月已套用同比修正（如缺失月份）。")
+        st.caption("YoY＝(今年−去年同月) ÷ 去年同月。當月還沒過完時，去年同月只算到同一天"
+                   "（月至今對月至今）。去年同月已套用同比修正（如缺失月份）。")
 
     # ── 品項期間：新品與熱銷各一組選單（含自訂區間），標題帶出實際日期 ──
     PERIOD_LABELS = {"7d": "近 7 天", "14d": "近 14 天", "30d": "近 30 天",
