@@ -1,6 +1,6 @@
 {
  "generated_at": "2026-11-03",
- "generated_ts": "2026-11-03T18:00:09-08:00",
+ "generated_ts": "2026-11-03T21:35:55-08:00",
  "full_ts": "2026-11-03T09:00:39-08:00",
  "stores": [
   "Azusa",
@@ -637,6 +637,13 @@
     "cups": 46,
     "food": 37,
     "tc": 34
+   },
+   {
+    "date": "2026-11-03",
+    "sales": 414.54,
+    "cups": 46,
+    "food": 25,
+    "tc": 36
    }
   ],
   "Southridge": [
@@ -1356,11 +1363,11 @@
    },
    {
     "month": "2026-11",
-    "sales": 890.46,
-    "cups": 85,
-    "tc": 58,
-    "sales_ly": 1224.45,
-    "tc_ly": 73
+    "sales": 1305.0,
+    "cups": 131,
+    "tc": 94,
+    "sales_ly": 1585.76,
+    "tc_ly": 97
    }
   ],
   "Southridge": [
@@ -1449,8 +1456,8 @@
     "sales": 1214.14,
     "cups": 122,
     "tc": 119,
-    "sales_ly": 2998.23,
-    "tc_ly": 239
+    "sales_ly": 3492.84,
+    "tc_ly": 284
    }
   ]
  },
@@ -59741,42 +59748,42 @@
  "week": {
   "this": {
    "Azusa": {
-    "sales": 3223.05,
-    "cups": 324,
-    "food": 212,
-    "tc": 215
+    "sales": 3200.08,
+    "cups": 322,
+    "food": 209,
+    "tc": 221
    },
    "Southridge": {
-    "sales": 5098.16,
-    "cups": 493,
-    "food": 335,
-    "tc": 483
+    "sales": 4507.83,
+    "cups": 434,
+    "food": 307,
+    "tc": 434
    },
    "total": {
-    "sales": 8321.21,
-    "cups": 817,
-    "food": 547,
-    "tc": 698
+    "sales": 7707.91,
+    "cups": 756,
+    "food": 516,
+    "tc": 655
    }
   },
   "last": {
    "Azusa": {
-    "sales": 3335.15,
-    "cups": 333,
-    "food": 215,
-    "tc": 221
+    "sales": 3434.59,
+    "cups": 349,
+    "food": 223,
+    "tc": 227
    },
    "Southridge": {
-    "sales": 6251.96,
-    "cups": 509,
-    "food": 401,
-    "tc": 520
+    "sales": 6488.71,
+    "cups": 539,
+    "food": 406,
+    "tc": 528
    },
    "total": {
-    "sales": 9587.11,
-    "cups": 842,
-    "food": 616,
-    "tc": 741
+    "sales": 9923.3,
+    "cups": 888,
+    "food": 629,
+    "tc": 755
    }
   }
  },
@@ -59806,5 +59813,7 @@
    }
   }
  },
- "partial": []
+ "partial": [
+  "daily:Southridge:2026-11-03"
+ ]
 }
