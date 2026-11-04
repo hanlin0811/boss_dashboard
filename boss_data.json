@@ -1,7 +1,7 @@
 {
  "generated_at": "2026-11-03",
- "generated_ts": "2026-11-03T21:35:55-08:00",
- "full_ts": "2026-11-03T09:00:39-08:00",
+ "generated_ts": "2026-11-03T22:18:26-08:00",
+ "full_ts": "2026-11-03T22:18:26-08:00",
  "stores": [
   "Azusa",
   "Southridge"
@@ -1276,6 +1276,13 @@
     "cups": 36,
     "food": 22,
     "tc": 41
+   },
+   {
+    "date": "2026-11-03",
+    "sales": 485.43,
+    "cups": 38,
+    "food": 33,
+    "tc": 44
    }
   ]
  },
@@ -1453,9 +1460,9 @@
    },
    {
     "month": "2026-11",
-    "sales": 1214.14,
-    "cups": 122,
-    "tc": 119,
+    "sales": 1699.57,
+    "cups": 160,
+    "tc": 163,
     "sales_ly": 3492.84,
     "tc_ly": 284
    }
@@ -59754,16 +59761,16 @@
     "tc": 221
    },
    "Southridge": {
-    "sales": 4507.83,
-    "cups": 434,
-    "food": 307,
-    "tc": 434
+    "sales": 4993.26,
+    "cups": 472,
+    "food": 340,
+    "tc": 478
    },
    "total": {
-    "sales": 7707.91,
-    "cups": 756,
-    "food": 516,
-    "tc": 655
+    "sales": 8193.34,
+    "cups": 794,
+    "food": 549,
+    "tc": 699
    }
   },
   "last": {
@@ -59792,28 +59799,28 @@
    "this": {
     "Dine In": 58,
     "Pickup": 93,
-    "Delivery": 64
+    "Delivery": 70
    },
    "last": {
-    "Dine In": 68,
-    "Pickup": 82,
-    "Delivery": 71
+    "Dine In": 71,
+    "Pickup": 88,
+    "Delivery": 68
    }
   },
   "Southridge": {
    "this": {
-    "Dine In": 360,
-    "Pickup": 105,
-    "Delivery": 18
+    "Dine In": 362,
+    "Pickup": 99,
+    "Delivery": 17
    },
    "last": {
-    "Dine In": 398,
-    "Pickup": 105,
-    "Delivery": 17
+    "Dine In": 404,
+    "Pickup": 108,
+    "Delivery": 16
    }
   }
  },
  "partial": [
-  "daily:Southridge:2026-11-03"
+  "items"
  ]
 }
