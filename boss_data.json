@@ -1,7 +1,7 @@
 {
  "generated_at": "2026-11-10",
- "generated_ts": "2026-11-10T12:21:30-08:00",
- "full_ts": "2026-11-09T23:05:44-08:00",
+ "generated_ts": "2026-11-10T19:38:09-08:00",
+ "full_ts": "2026-11-10T19:38:09-08:00",
  "stores": [
   "Azusa",
   "Southridge"
@@ -60076,5 +60076,8 @@
    }
   }
  },
- "partial": []
+ "partial": [
+  "items",
+  "channel_mix"
+ ]
 }
