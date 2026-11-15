@@ -4,6 +4,7 @@
 import html
 import json
 from datetime import date, datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 import altair as alt
@@ -451,7 +452,8 @@ def render():
     if gts:
         try:
             gdt = datetime.fromisoformat(gts)
-            stamp = gdt.strftime("%Y-%m-%d %H:%M")
+            # 顯示一律用加州時間（PST/PDT 自動切換），不受資料產生端或伺服器時區影響
+            stamp = gdt.astimezone(ZoneInfo("America/Los_Angeles")).strftime("%Y-%m-%d %H:%M %Z")
             hrs = (datetime.now(timezone.utc) - gdt.astimezone(timezone.utc)).total_seconds() / 3600
             if hrs > 36:
                 stale_hint = f"約 {hrs / 24:.0f} 天前"
@@ -488,7 +490,7 @@ def render():
         finding = _finding(today_d, cur_today, prev_today, stores)
     if alerts:
         finding += f"　近 10 天有 {len(alerts)} 筆異常。"
-    notice = (f'<div class="notice">資料可能未更新：最後更新 {gen}（{stale_hint}）。'
+    notice = (f'<div class="notice">資料可能未更新：最後更新 {stamp}（{stale_hint}）。'
               f'夜間同步可能失敗，以下數字請當「舊資料」看。</div>' if stale_hint else "")
     _html(f'<p class="finding">{finding}</p>'
           f'<p class="stamp">資料更新於 {stamp} · 唯讀</p>{notice}')
