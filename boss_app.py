@@ -17,6 +17,7 @@ st.set_page_config(page_title="CrunCheese × CoCo 營運", page_icon="🧋", lay
 STORE_COLOR = {"Azusa": "#c8641e", "Southridge": "#1d5fbf"}
 FONT = "Geist, 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif"
 DATA = Path(__file__).parent / "boss_data.json"
+LA_TZ = ZoneInfo("America/Los_Angeles")  # 顯示用日期／時間一律以加州時區為準
 
 
 # ── 密碼閘 ──────────────────────────────────────────────────
@@ -453,7 +454,7 @@ def render():
         try:
             gdt = datetime.fromisoformat(gts)
             # 顯示一律用加州時間（PST/PDT 自動切換），不受資料產生端或伺服器時區影響
-            stamp = gdt.astimezone(ZoneInfo("America/Los_Angeles")).strftime("%Y-%m-%d %H:%M %Z")
+            stamp = gdt.astimezone(LA_TZ).strftime("%Y-%m-%d %H:%M %Z")
             hrs = (datetime.now(timezone.utc) - gdt.astimezone(timezone.utc)).total_seconds() / 3600
             if hrs > 36:
                 stale_hint = f"約 {hrs / 24:.0f} 天前"
@@ -461,7 +462,7 @@ def render():
             pass
     else:
         try:
-            age = (date.today() - date.fromisoformat(gen)).days
+            age = (datetime.now(LA_TZ).date() - date.fromisoformat(gen)).days
             if age >= 3:
                 stale_hint = f"{age} 天前"
         except (ValueError, TypeError):
