@@ -1,7 +1,7 @@
 {
  "generated_at": "2026-11-20",
- "generated_ts": "2026-11-20T09:28:02-08:00",
- "full_ts": "2026-11-20T09:28:02-08:00",
+ "generated_ts": "2026-11-20T09:28:32-08:00",
+ "full_ts": "2026-11-20T09:28:32-08:00",
  "stores": [
   "Azusa",
   "Southridge"
@@ -27365,8 +27365,8 @@
    "Milk Tea Frappe with Biscoff® Biscuits Crumbs",
    "Milk Tea",
    "Pearl Milk Tea",
-   "Potato Mozzarella",
    "Crunchy Fries",
+   "Potato Mozzarella",
    "Taro",
    "Pudding Milk Tea",
    "2 Ladies Milk Tea",
@@ -27384,9 +27384,9 @@
    "Strawberry Latte",
    "Original Beef Hotdog",
    "Jumbo Beef Hotdog",
-   "Matcha Strawberry Latte",
-   "Chocolate Slush",
    "Milk Tea Frappe with Biscoff® Biscuits Crumbs",
+   "Chocolate Slush",
+   "Matcha Strawberry Latte",
    "Boneless Chicken Wings",
    "Rainbow Passion Fruit Green Tea",
    "Spring Roll (2 pieces)",
@@ -31957,8 +31957,8 @@
    "Rainbow Lemon Green Tea",
    "Potato Mozzarella",
    "Mozzarella & Cheddar",
-   "Crunchy Fries",
    "Original Hotdog",
+   "Crunchy Fries",
    "Passion Fruit & Mango Slush",
    "All Mozzarella",
    "Pearl Milk Tea",
@@ -31967,8 +31967,8 @@
    "Chicken Tenders",
    "Waffle Fries",
    "Strawberry Black Tea on Cloud",
-   "Popping Red Mars",
    "Brown Sugar Pearl with Fresh Milk",
+   "Popping Red Mars",
    "Cheesy Hot Cheetos Beef Hotdog",
    "Potstickers",
    "Hotdog",
@@ -36779,8 +36779,8 @@
    "Drinks",
    "Drinks",
    "Drinks",
-   "Hotdog",
    "Snack",
+   "Hotdog",
    "Drinks",
    "Drinks",
    "Drinks",
@@ -41371,8 +41371,8 @@
    "Drinks",
    "Hotdogs",
    "Hotdogs",
-   "Snacks",
    "Hotdogs",
+   "Snacks",
    "Drinks",
    "Hotdogs",
    "Drinks",
@@ -50785,8 +50785,8 @@
    1,
    1,
    6,
-   1,
    6,
+   1,
    2,
    14,
    5,
@@ -50795,8 +50795,8 @@
    1,
    2,
    1,
-   3,
    6,
+   3,
    3,
    1,
    2,
@@ -55607,8 +55607,8 @@
    9.0,
    7.32,
    15.88,
-   7.99,
    4.29,
+   7.99,
    20.31,
    9.06,
    39.44,
@@ -55626,9 +55626,9 @@
    15.85,
    2.49,
    7.19,
-   7.65,
-   3.03,
    7.5,
+   3.03,
+   7.65,
    8.75,
    7.56,
    1.99,
@@ -60199,8 +60199,8 @@
    7.05,
    7.99,
    23.37,
-   4.29,
    21.96,
+   4.29,
    13.1,
    96.2,
    29.51,
@@ -60209,8 +60209,8 @@
    8.99,
    12.7,
    7.75,
-   20.4,
    46.26,
+   20.4,
    22.96,
    5.99,
    5.75,
@@ -60333,30 +60333,28 @@
  "channel_mix": {
   "Azusa": {
    "this": {
-    "Dine In": 85,
-    "Pickup": 107,
-    "Delivery": 71
+    "Dine In": 82,
+    "Pickup": 104,
+    "Delivery": 73
    },
    "last": {
-    "Dine In": 82,
-    "Pickup": 94,
-    "Delivery": 67
+    "Dine In": 83,
+    "Pickup": 88,
+    "Delivery": 66
    }
   },
   "Southridge": {
    "this": {
-    "Dine In": 380,
-    "Pickup": 97,
-    "Delivery": 16
+    "Dine In": 387,
+    "Pickup": 98,
+    "Delivery": 21
    },
    "last": {
-    "Dine In": 363,
-    "Pickup": 79,
-    "Delivery": 24
+    "Dine In": 361,
+    "Pickup": 77,
+    "Delivery": 26
    }
   }
  },
- "partial": [
-  "channel_mix"
- ]
+ "partial": []
 }
